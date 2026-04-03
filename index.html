@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ARKIVE — Premium Men's Clothing</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#080808;--bg2:#0f0f0f;--bg3:#171717;--bg4:#1d1d1d;
+  --text:#f0ece4;--muted:#7a766f;--faint:#2e2b27;
+  --gold:#c8a96e;--gold2:#e6d09a;--goldBg:rgba(200,169,110,0.07);
+  --border:rgba(240,236,228,0.06);--border2:rgba(240,236,228,0.12);--border3:rgba(240,236,228,0.22);
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.6;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{text-decoration:none}
+button{cursor:pointer;font-family:'DM Sans',sans-serif}
+
+/* ═══ NAV ═══ */
+nav{position:fixed;top:0;left:0;right:0;z-index:300;display:flex;align-items:center;justify-content:space-between;padding:0 52px;height:68px;background:rgba(8,8,8,0.94);backdrop-filter:blur(18px);border-bottom:1px solid var(--border);transition:border-color .3s}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:300;letter-spacing:.35em;color:var(--text)}
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{color:var(--muted);font-size:11px;letter-spacing:.16em;text-transform:uppercase;transition:color .2s}
+.nav-links a:hover{color:var(--text)}
+.nav-right{display:flex;align-items:center;gap:16px}
+.cart-btn{position:relative;background:none;border:1px solid var(--border2);color:var(--text);width:42px;height:42px;display:flex;align-items:center;justify-content:center;font-size:16px;transition:border-color .2s}
+.cart-btn:hover{border-color:var(--gold);color:var(--gold)}
+.cart-count{position:absolute;top:-6px;right:-6px;background:var(--gold);color:#080808;font-size:9px;font-weight:700;width:18px;height:18px;border-radius:50%;display:none;align-items:center;justify-content:center;letter-spacing:0}
+.cart-count.show{display:flex}
+.nav-cta{background:var(--gold);color:#080808;padding:10px 24px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;transition:background .2s;border:none;white-space:nowrap}
+.nav-cta:hover{background:var(--gold2)}
+@media(max-width:900px){.nav-links{display:none}}
+@media(max-width:600px){nav{padding:0 18px}}
+
+/* ═══ HERO ═══ */
+.hero{height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden;padding:0 24px}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 90% 70% at 55% 45%,#1c1408 0%,var(--bg) 68%)}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:80px 80px;mask-image:radial-gradient(ellipse 65% 65% at 50% 50%,black 0%,transparent 80%)}
+.hero-eyebrow{position:relative;font-size:10px;letter-spacing:.4em;text-transform:uppercase;color:var(--gold);margin-bottom:28px;animation:fadeUp .9s ease both}
+.hero h1{position:relative;font-family:'Cormorant Garamond',serif;font-size:clamp(68px,10.5vw,144px);font-weight:300;line-height:.92;letter-spacing:-.02em;margin-bottom:36px;animation:fadeUp .9s .1s ease both}
+.hero h1 em{font-style:italic;color:var(--gold)}
+.hero-sub{position:relative;font-size:15px;color:var(--muted);max-width:400px;margin-bottom:52px;line-height:1.75;animation:fadeUp .9s .2s ease both}
+.hero-actions{position:relative;display:flex;gap:14px;flex-wrap:wrap;justify-content:center;animation:fadeUp .9s .3s ease both}
+.btn-primary{background:var(--gold);color:#080808;padding:14px 40px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;display:inline-block;transition:all .2s;border:none}
+.btn-primary:hover{background:var(--gold2);transform:translateY(-1px)}
+.btn-outline{border:1px solid var(--border3);color:var(--text);padding:14px 40px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;display:inline-block;transition:all .2s;background:none}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold)}
+.hero-scroll{position:absolute;bottom:36px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:10px;color:var(--muted);font-size:9px;letter-spacing:.25em;text-transform:uppercase;animation:fadeUp .9s .7s ease both}
+.scroll-line{width:1px;height:44px;background:linear-gradient(to bottom,var(--gold),transparent);animation:scrollPulse 2.2s ease-in-out infinite}
+
+/* ═══ MARQUEE ═══ */
+.marquee-wrap{padding:20px 0;overflow:hidden;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.marquee-track{display:flex;animation:marquee 30s linear infinite;width:max-content}
+.m-item{font-family:'Cormorant Garamond',serif;font-size:25px;font-weight:300;font-style:italic;color:var(--faint);white-space:nowrap;padding:0 44px}
+.m-item .dot{color:var(--gold);font-style:normal;font-family:'DM Sans',sans-serif;font-size:11px;margin:0 14px;vertical-align:middle}
+
+/* ═══ SECTIONS ═══ */
+.cat-section{padding:96px 52px}
+@media(max-width:600px){.cat-section{padding:60px 18px}}
+.cat-section+.cat-section{border-top:1px solid var(--border)}
+.section-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:52px;gap:24px;flex-wrap:wrap}
+.eyebrow{font-size:9px;letter-spacing:.35em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+.sec-title{font-family:'Cormorant Garamond',serif;font-size:clamp(38px,5.5vw,62px);font-weight:300;line-height:1.05}
+.sec-title em{font-style:italic;color:var(--gold)}
+.view-all-btn{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--border2);padding-bottom:2px;transition:all .2s;background:none;border-top:none;border-left:none;border-right:none}
+.view-all-btn:hover{color:var(--gold);border-bottom-color:var(--gold)}
+
+/* ═══ PRODUCT GRID ═══ */
+.product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(265px,1fr));gap:2px}
+.product-card{background:var(--bg2);position:relative;overflow:hidden;transition:transform .35s ease}
+.product-card:hover{transform:translateY(-5px)}
+.product-img-wrap{position:relative;padding-top:118%;overflow:hidden;background:var(--bg3)}
+.product-img-wrap img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center;transition:transform .6s ease}
+.product-card:hover .product-img-wrap img{transform:scale(1.04)}
+.product-overlay{position:absolute;inset:0;background:rgba(8,8,8,.42);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .3s}
+.product-card:hover .product-overlay{opacity:1}
+.qv-trigger{background:rgba(200,169,110,.92);color:#080808;padding:10px 26px;font-size:10px;letter-spacing:.16em;text-transform:uppercase;border:none;cursor:pointer;font-family:'DM Sans',sans-serif}
+.product-badge{position:absolute;top:14px;left:14px;background:var(--gold);color:#080808;font-size:8px;letter-spacing:.16em;text-transform:uppercase;padding:5px 11px;z-index:1}
+.product-info{padding:20px 20px 24px}
+.p-type{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+.p-name{font-family:'Cormorant Garamond',serif;font-size:21px;font-weight:400;color:var(--text);margin-bottom:8px;line-height:1.2}
+.p-desc{font-size:11.5px;color:var(--muted);margin-bottom:16px;line-height:1.55}
+.p-footer{display:flex;align-items:center;justify-content:space-between}
+.p-price{font-family:'Cormorant Garamond',serif;font-size:24px;color:var(--text)}
+.swatches{display:flex;gap:6px}
+.sw{width:13px;height:13px;border-radius:50%;border:1px solid var(--border2)}
+.add-cart-btn{position:absolute;bottom:0;left:0;right:0;background:var(--gold);color:#080808;border:none;padding:13px;font-size:10px;letter-spacing:.16em;text-transform:uppercase;transform:translateY(100%);transition:transform .3s ease}
+.product-card:hover .add-cart-btn{transform:translateY(0)}
+
+/* ═══ CART DRAWER ═══ */
+.cart-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:400;opacity:0;pointer-events:none;transition:opacity .35s}
+.cart-overlay.open{opacity:1;pointer-events:all}
+.cart-drawer{position:fixed;top:0;right:0;bottom:0;width:420px;max-width:100vw;background:var(--bg2);z-index:401;transform:translateX(100%);transition:transform .4s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;border-left:1px solid var(--border)}
+.cart-drawer.open{transform:translateX(0)}
+.cart-head{display:flex;align-items:center;justify-content:space-between;padding:28px 28px 20px;border-bottom:1px solid var(--border)}
+.cart-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300;letter-spacing:.05em}
+.cart-close{background:none;border:1px solid var(--border2);color:var(--muted);width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:16px;transition:all .2s}
+.cart-close:hover{border-color:var(--border3);color:var(--text)}
+.cart-body{flex:1;overflow-y:auto;padding:20px 28px}
+.cart-empty{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:16px;color:var(--muted);text-align:center}
+.cart-empty-icon{font-size:40px;opacity:.3}
+.cart-empty p{font-size:13px;line-height:1.6}
+.cart-item{display:flex;gap:14px;padding:16px 0;border-bottom:1px solid var(--border)}
+.cart-item:last-child{border-bottom:none}
+.ci-img{width:70px;height:84px;object-fit:cover;object-position:top;flex-shrink:0;background:var(--bg3)}
+.ci-info{flex:1;min-width:0}
+.ci-name{font-family:'Cormorant Garamond',serif;font-size:17px;margin-bottom:3px;color:var(--text)}
+.ci-meta{font-size:11px;color:var(--muted);margin-bottom:8px}
+.ci-row{display:flex;align-items:center;justify-content:space-between}
+.ci-price{font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--text)}
+.ci-qty{display:flex;align-items:center;gap:0;border:1px solid var(--border)}
+.qty-btn{background:none;border:none;color:var(--muted);width:28px;height:28px;font-size:14px;display:flex;align-items:center;justify-content:center;transition:all .2s}
+.qty-btn:hover{color:var(--text)}
+.qty-num{width:28px;text-align:center;font-size:13px;color:var(--text);border-left:1px solid var(--border);border-right:1px solid var(--border);height:28px;display:flex;align-items:center;justify-content:center}
+.ci-remove{background:none;border:none;color:var(--muted);font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:0;margin-top:8px;transition:color .2s}
+.ci-remove:hover{color:var(--gold)}
+.cart-foot{padding:20px 28px 28px;border-top:1px solid var(--border)}
+.cart-sub{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px}
+.sub-label{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted)}
+.sub-price{font-family:'Cormorant Garamond',serif;font-size:28px;color:var(--text)}
+.cart-note{font-size:11px;color:var(--muted);margin-bottom:20px;line-height:1.5}
+.checkout-btn{width:100%;background:var(--gold);color:#080808;border:none;padding:16px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;transition:background .2s;margin-bottom:10px}
+.checkout-btn:hover{background:var(--gold2)}
+.continue-btn{width:100%;background:none;border:1px solid var(--border2);color:var(--muted);padding:13px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;transition:all .2s}
+.continue-btn:hover{border-color:var(--border3);color:var(--text)}
+
+/* ═══ QUICK VIEW MODAL ═══ */
+.qv-overlay{position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:500;opacity:0;pointer-events:none;transition:opacity .3s;display:flex;align-items:center;justify-content:center;padding:24px}
+.qv-overlay.open{opacity:1;pointer-events:all}
+.qv-modal{background:var(--bg2);border:1px solid var(--border);width:100%;max-width:860px;max-height:90vh;overflow-y:auto;display:grid;grid-template-columns:1fr 1fr;transform:translateY(20px) scale(.97);transition:transform .35s;border-radius:0}
+.qv-overlay.open .qv-modal{transform:translateY(0) scale(1)}
+@media(max-width:700px){.qv-modal{grid-template-columns:1fr}}
+.qv-img-wrap{position:relative;padding-top:0;height:520px;overflow:hidden;background:var(--bg3)}
+@media(max-width:700px){.qv-img-wrap{height:300px}}
+.qv-img-wrap img{width:100%;height:100%;object-fit:cover;object-position:top center}
+.qv-badge{position:absolute;top:16px;left:16px;background:var(--gold);color:#080808;font-size:8px;letter-spacing:.16em;text-transform:uppercase;padding:5px 11px}
+.qv-close{position:absolute;top:14px;right:14px;background:rgba(8,8,8,.8);border:1px solid var(--border2);color:var(--text);width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:18px;z-index:1;cursor:pointer;transition:all .2s}
+.qv-close:hover{background:var(--bg);border-color:var(--gold);color:var(--gold)}
+.qv-info{padding:36px 32px;display:flex;flex-direction:column;gap:0}
+.qv-type{font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.qv-name{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:300;color:var(--text);line-height:1.15;margin-bottom:14px}
+.qv-price{font-family:'Cormorant Garamond',serif;font-size:30px;color:var(--text);margin-bottom:20px}
+.qv-desc{font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:28px;border-bottom:1px solid var(--border);padding-bottom:24px}
+.picker-label{font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;display:flex;align-items:center;justify-content:space-between}
+.size-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}
+.size-opt{border:1px solid var(--border);color:var(--muted);background:none;padding:9px 14px;font-size:12px;letter-spacing:.08em;transition:all .2s;cursor:pointer;font-family:'DM Sans',sans-serif}
+.size-opt:hover{border-color:var(--border2);color:var(--text)}
+.size-opt.active{border-color:var(--gold);color:var(--gold);background:var(--goldBg)}
+.colour-row{display:flex;gap:8px;margin-bottom:28px}
+.col-opt{width:28px;height:28px;border-radius:50%;border:2px solid transparent;cursor:pointer;transition:border-color .2s;position:relative}
+.col-opt.active{border-color:var(--gold)}
+.col-opt.active::after{content:'';position:absolute;inset:-4px;border-radius:50%;border:1px solid var(--gold);opacity:.5}
+.qv-add-btn{width:100%;background:var(--gold);color:#080808;border:none;padding:16px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;transition:background .2s;margin-bottom:10px}
+.qv-add-btn:hover{background:var(--gold2)}
+.qv-wishlist-btn{width:100%;background:none;border:1px solid var(--border2);color:var(--muted);padding:13px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;transition:all .2s}
+.qv-wishlist-btn:hover{border-color:var(--border3);color:var(--text)}
+
+/* ═══ TOAST ═══ */
+#toast-wrap{position:fixed;bottom:32px;right:32px;z-index:600;display:flex;flex-direction:column;gap:10px;pointer-events:none}
+.toast{background:var(--bg3);border:1px solid var(--border2);border-left:3px solid var(--gold);color:var(--text);padding:14px 20px;font-size:13px;min-width:280px;transform:translateX(120%);transition:transform .4s cubic-bezier(.4,0,.2,1);pointer-events:none}
+.toast.show{transform:translateX(0)}
+.toast-title{font-weight:500;margin-bottom:2px;font-size:13px}
+.toast-sub{font-size:11px;color:var(--muted)}
+
+/* ═══ OUTFIT BUILDER ═══ */
+#builder-section{background:var(--bg2);padding:96px 52px;position:relative;overflow:hidden}
+#builder-section::before{content:'';position:absolute;top:-250px;right:-250px;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(200,169,110,.035) 0%,transparent 70%);pointer-events:none}
+@media(max-width:600px){#builder-section{padding:60px 18px}}
+.builder-wrap{max-width:860px;margin:0 auto}
+.builder-intro{margin-bottom:52px}
+.builder-intro p{color:var(--muted);font-size:14px;margin-top:14px;max-width:500px;line-height:1.7}
+.steps-row{display:flex;align-items:center;margin-bottom:12px}
+.step-dot{width:34px;height:34px;border-radius:50%;border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--muted);transition:all .35s;flex-shrink:0}
+.step-dot.active{background:var(--gold);border-color:var(--gold);color:#080808;font-weight:500}
+.step-dot.done{border-color:var(--gold);color:var(--gold)}
+.step-line{flex:1;height:1px;background:var(--border);transition:background .35s}
+.step-line.done{background:var(--gold)}
+.lbl-row{display:flex;justify-content:space-between;margin-bottom:44px}
+.slbl{font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);transition:color .35s;flex:1;text-align:center}
+.slbl.active,.slbl.done{color:var(--gold)}
+.slbl:first-child{text-align:left}
+.slbl:last-child{text-align:right}
+.builder-step{display:none}
+.builder-step.active{display:block}
+.step-q{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,4vw,48px);font-weight:300;line-height:1.1;margin-bottom:8px}
+.step-hint{font-size:13px;color:var(--muted);margin-bottom:40px;line-height:1.6}
+.opts-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(188px,1fr));gap:10px;margin-bottom:40px}
+.opt{border:1px solid var(--border);padding:26px 20px;cursor:pointer;transition:all .22s;position:relative;background:transparent}
+.opt:hover{border-color:var(--border2);background:var(--bg3)}
+.opt.sel{border-color:var(--gold);background:var(--goldBg)}
+.opt-icon{font-size:24px;margin-bottom:14px;line-height:1}
+.opt-label{font-family:'Cormorant Garamond',serif;font-size:21px;color:var(--text);margin-bottom:6px}
+.opt-desc{font-size:11px;color:var(--muted);line-height:1.45}
+.opt-tick{position:absolute;top:12px;right:12px;width:20px;height:20px;border-radius:50%;background:var(--gold);color:#080808;font-size:11px;display:none;align-items:center;justify-content:center}
+.opt.sel .opt-tick{display:flex}
+.col-row{display:flex;gap:7px;margin-bottom:14px}
+.col-pip{width:17px;height:17px;border-radius:50%}
+.step-nav{display:flex;align-items:center;justify-content:space-between}
+.btn-back{background:none;border:1px solid var(--border);color:var(--muted);padding:12px 26px;font-size:10px;letter-spacing:.16em;text-transform:uppercase;transition:all .2s}
+.btn-back:hover{border-color:var(--border2);color:var(--text)}
+.btn-next{background:var(--gold);color:#080808;border:none;padding:14px 42px;font-size:10px;letter-spacing:.16em;text-transform:uppercase;transition:all .2s}
+.btn-next:hover:not(:disabled){background:var(--gold2)}
+.btn-next:disabled{opacity:.35;cursor:not-allowed}
+#result-block{display:none}
+.result-hero{text-align:center;margin-bottom:48px}
+.result-tagline{font-family:'Cormorant Garamond',serif;font-size:clamp(24px,3.5vw,42px);font-style:italic;color:var(--gold);margin-bottom:14px;line-height:1.2}
+.result-desc{font-size:14px;color:var(--muted);max-width:460px;margin:0 auto;line-height:1.75}
+.result-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:2px;margin-bottom:40px}
+.result-total{display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:22px 0;margin-bottom:30px;flex-wrap:wrap;gap:12px}
+.total-label{font-size:9px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:5px}
+.total-save{font-size:11px;color:var(--gold)}
+.total-price{font-family:'Cormorant Garamond',serif;font-size:46px;color:var(--text);line-height:1}
+.result-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn-rebuild{background:none;border:1px solid var(--border2);color:var(--muted);padding:14px 34px;font-size:10px;letter-spacing:.16em;text-transform:uppercase;transition:all .2s}
+.btn-rebuild:hover{border-color:var(--border3);color:var(--text)}
+.btn-addall{background:var(--gold);color:#080808;border:none;padding:14px 48px;font-size:10px;letter-spacing:.16em;text-transform:uppercase;transition:background .2s}
+.btn-addall:hover{background:var(--gold2)}
+
+/* ═══ TRUST BAR ═══ */
+.trust-bar{padding:56px 52px;display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:40px;border-top:1px solid var(--border)}
+@media(max-width:600px){.trust-bar{padding:48px 18px;gap:32px}}
+.trust-item{display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px}
+.trust-icon{width:44px;height:44px;border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:18px}
+.trust-title{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:400;color:var(--text)}
+.trust-desc{font-size:11px;color:var(--muted);line-height:1.6}
+
+/* ═══ FOOTER ═══ */
+footer{padding:52px 52px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px}
+@media(max-width:600px){footer{padding:36px 18px}}
+.footer-logo{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300;letter-spacing:.32em;color:var(--text)}
+.footer-copy{font-size:11px;color:var(--muted)}
+.footer-note{font-size:10px;color:var(--faint)}
+
+/* ═══ ANIMATIONS ═══ */
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+@keyframes scrollPulse{0%,100%{opacity:1;transform:scaleY(1)}50%{opacity:.25;transform:scaleY(.55)}}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+</style>
+</head>
+<body>
+
+<!-- ═══ CART OVERLAY + DRAWER ═══ -->
+<div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cart-head">
+    <span class="cart-title">Your Cart</span>
+    <button class="cart-close" onclick="closeCart()">✕</button>
+  </div>
+  <div class="cart-body" id="cartBody">
+    <div class="cart-empty" id="cartEmpty">
+      <div class="cart-empty-icon">🛍</div>
+      <p>Your cart is empty.<br>Browse the collection and add some pieces.</p>
+      <button class="btn-outline" style="padding:12px 28px;font-size:10px;" onclick="closeCart()">Browse Collection</button>
+    </div>
+  </div>
+  <div class="cart-foot" id="cartFoot" style="display:none">
+    <div class="cart-sub">
+      <span class="sub-label">Subtotal</span>
+      <span class="sub-price" id="cartTotal">£0</span>
+    </div>
+    <p class="cart-note">Free delivery on orders over £60. Taxes included.</p>
+    <button class="checkout-btn" onclick="handleCheckout()">Proceed to Checkout →</button>
+    <button class="continue-btn" onclick="closeCart()">Continue Shopping</button>
+  </div>
+</div>
+
+<!-- ═══ QUICK VIEW MODAL ═══ -->
+<div class="qv-overlay" id="qvOverlay" onclick="closeQV(event)">
+  <div class="qv-modal" id="qvModal">
+    <div class="qv-img-wrap">
+      <img id="qvImg" src="" alt="">
+      <div class="qv-badge" id="qvBadge" style="display:none"></div>
+      <button class="qv-close" onclick="closeQVBtn()">✕</button>
+    </div>
+    <div class="qv-info">
+      <div class="qv-type" id="qvType"></div>
+      <div class="qv-name" id="qvName"></div>
+      <div class="qv-price" id="qvPrice"></div>
+      <div class="qv-desc" id="qvDesc"></div>
+      <div class="picker-label">Select Size</div>
+      <div class="size-row" id="qvSizes"></div>
+      <div class="picker-label">Colour</div>
+      <div class="colour-row" id="qvColours"></div>
+      <button class="qv-add-btn" id="qvAddBtn" onclick="addFromQV()">Add to Cart</button>
+      <button class="qv-wishlist-btn" onclick="addToWishlist()">♡  Save to Wishlist</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ TOAST ═══ -->
+<div id="toast-wrap"></div>
+
+<!-- ═══ NAV ═══ -->
+<nav>
+  <a href="#" class="nav-logo">ARKIVE</a>
+  <ul class="nav-links">
+    <li><a href="#hoodies" onclick="smoothTo('hoodies')">Hoodies</a></li>
+    <li><a href="#tshirts" onclick="smoothTo('tshirts')">T-Shirts</a></li>
+    <li><a href="#trousers" onclick="smoothTo('trousers')">Trousers</a></li>
+    <li><a href="#extras" onclick="smoothTo('extras')">Jackets & More</a></li>
+    <li><a href="#builder-section" onclick="smoothTo('builder-section')">Outfit Builder</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="cart-btn" onclick="openCart()" aria-label="Open cart">
+      🛍
+      <span class="cart-count" id="cartCount">0</span>
+    </button>
+    <button class="nav-cta" onclick="smoothTo('builder-section')">Build an Outfit</button>
+  </div>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <p class="hero-eyebrow">Premium Men's Clothing — New Season</p>
+  <h1>Dress With<br><em>Intention</em></h1>
+  <p class="hero-sub">Curated pieces for every silhouette. From heavyweight hoodies to sharp tailoring — find your fit, own your style.</p>
+  <div class="hero-actions">
+    <button class="btn-primary" onclick="smoothTo('hoodies')">Shop the Collection</button>
+    <button class="btn-outline" onclick="smoothTo('builder-section')">Build an Outfit</button>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    Scroll
+  </div>
+</section>
+
+<!-- ═══ MARQUEE ═══ -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span class="m-item">Oversized Hoodies<span class="dot">✦</span></span>
+    <span class="m-item">Slim Fit Tees<span class="dot">✦</span></span>
+    <span class="m-item">Wide Leg Cargos<span class="dot">✦</span></span>
+    <span class="m-item">Bomber Jackets<span class="dot">✦</span></span>
+    <span class="m-item">Knit Sweaters<span class="dot">✦</span></span>
+    <span class="m-item">Drop Shoulder Fits<span class="dot">✦</span></span>
+    <span class="m-item">Classic Essentials<span class="dot">✦</span></span>
+    <span class="m-item">Tapered Trousers<span class="dot">✦</span></span>
+    <span class="m-item">Oversized Hoodies<span class="dot">✦</span></span>
+    <span class="m-item">Slim Fit Tees<span class="dot">✦</span></span>
+    <span class="m-item">Wide Leg Cargos<span class="dot">✦</span></span>
+    <span class="m-item">Bomber Jackets<span class="dot">✦</span></span>
+    <span class="m-item">Knit Sweaters<span class="dot">✦</span></span>
+    <span class="m-item">Drop Shoulder Fits<span class="dot">✦</span></span>
+    <span class="m-item">Classic Essentials<span class="dot">✦</span></span>
+    <span class="m-item">Tapered Trousers<span class="dot">✦</span></span>
+  </div>
+</div>
+
+<!-- ═══ HOODIES ═══ -->
+<section class="cat-section" id="hoodies">
+  <div class="section-header">
+    <div><p class="eyebrow">Category 01</p><h2 class="sec-title">Hoodies &<br><em>Sweatshirts</em></h2></div>
+    <button class="view-all-btn" onclick="smoothTo('hoodies')">View All Hoodies</button>
+  </div>
+  <div class="product-grid" id="grid-hoodies"></div>
+</section>
+
+<!-- ═══ T-SHIRTS ═══ -->
+<section class="cat-section" id="tshirts">
+  <div class="section-header">
+    <div><p class="eyebrow">Category 02</p><h2 class="sec-title">T-Shirts &<br><em>Tops</em></h2></div>
+    <button class="view-all-btn" onclick="smoothTo('tshirts')">View All T-Shirts</button>
+  </div>
+  <div class="product-grid" id="grid-tshirts"></div>
+</section>
+
+<!-- ═══ TROUSERS ═══ -->
+<section class="cat-section" id="trousers">
+  <div class="section-header">
+    <div><p class="eyebrow">Category 03</p><h2 class="sec-title">Trousers &<br><em>Bottoms</em></h2></div>
+    <button class="view-all-btn" onclick="smoothTo('trousers')">View All Bottoms</button>
+  </div>
+  <div class="product-grid" id="grid-trousers"></div>
+</section>
+
+<!-- ═══ EXTRAS ═══ -->
+<section class="cat-section" id="extras">
+  <div class="section-header">
+    <div><p class="eyebrow">Category 04</p><h2 class="sec-title">Jackets, Knitwear<br><em>& More</em></h2></div>
+    <button class="view-all-btn" onclick="smoothTo('extras')">View All</button>
+  </div>
+  <div class="product-grid" id="grid-extras"></div>
+</section>
+
+<!-- ═══ OUTFIT BUILDER ═══ -->
+<section id="builder-section">
+  <div class="builder-wrap">
+    <div class="builder-intro">
+      <p class="eyebrow">Smart Styling Tool</p>
+      <h2 class="sec-title">Build Your<br><em>Perfect Outfit</em></h2>
+      <p>Answer four quick questions and we'll curate a complete look just for you — ready to buy in one click.</p>
+    </div>
+    <div class="steps-row">
+      <div class="step-dot active" id="dot1">1</div>
+      <div class="step-line" id="ln1"></div>
+      <div class="step-dot" id="dot2">2</div>
+      <div class="step-line" id="ln2"></div>
+      <div class="step-dot" id="dot3">3</div>
+      <div class="step-line" id="ln3"></div>
+      <div class="step-dot" id="dot4">4</div>
+    </div>
+    <div class="lbl-row">
+      <span class="slbl active" id="lbl1">Occasion</span>
+      <span class="slbl" id="lbl2">Style</span>
+      <span class="slbl" id="lbl3">Fit</span>
+      <span class="slbl" id="lbl4">Colour</span>
+    </div>
+
+    <!-- STEP 1 -->
+    <div class="builder-step active" id="bs1">
+      <h3 class="step-q">What's the occasion?</h3>
+      <p class="step-hint">Where are you heading? We'll match the energy of the look to suit it.</p>
+      <div class="opts-grid">
+        <div class="opt" data-s="1" data-v="casual"><div class="opt-icon">☀</div><div class="opt-label">Casual Day</div><div class="opt-desc">Relaxed everyday looks for hanging out, errands, or a low-key meet-up.</div><div class="opt-tick">✓</div></div>
+        <div class="opt" data-s="1" data-v="smart"><div class="opt-icon">◈</div><div class="opt-label">Smart Casual</div><div class="opt-desc">Elevated basics that move from a coffee meeting to an evening dinner.</div><div class="opt-tick">✓</div></div>
+        <div class="opt" data-s="1" data-v="street"><div class="opt-icon">⬡</div><div class="opt-label">Streetwear</div><div class="opt-desc">Bold, expressive fits with real street presence. Turn heads without trying.</div><div class="opt-tick">✓</div></div>
+        <div class="opt" data-s="1" data-v="sport"><div class="opt-icon">◎</div><div class="opt-label">Sport & Active</div><div class="opt-desc">Athletic-inspired looks built for movement and post-workout comfort.</div><div class="opt-tick">✓</div></div>
+      </div>
+      <div class="step-nav"><span></span><button class="btn-next" id="nxt1" disabled onclick="goNext(1)">Continue →</button></div>
+    </div>
+
+    <!-- STEP 2 -->
+    <div class="builder-step" id="bs2">
+      <h3 class="step-q">What's your style vibe?</h3>
+      <p class="step-hint">Pick the aesthetic that best matches how you want to present yourself.</p>
+      <div class="opts-grid">
+        <div class="opt" data-s="2" data-v="minimal"><div class="opt-icon">—</div><div class="opt-label">Minimalist</div><div class="opt-desc">Clean, stripped back, zero excess. Let the silhouette do the talking.</div><div class="opt-tick">✓</div></div>
+        <div class="opt" data-s="2" data-v="bold"><div class="opt-icon">★</div><div class="opt-label">Bold Statement</div><div class="opt-desc">Confident, eye-catching. You walk in and the room immediately notices.</div><div class="opt-tick">✓</div></div>
+        <div class="opt" data-s="2" data-v="classic"><div class="opt-icon">◇</div><div class="opt-label">Classic</div><div class="opt-desc">Timeless cuts and proven combinations that never date and always land.</div><div class="opt-tick">✓</div></div>
+        <div class="opt" data-s="2" data-v="trendy"><div class="opt-icon">⟳</div><div class="opt-label">On Trend</div><div class="opt-desc">Current, fashion-forward pieces. Always on the pulse of what's happening.</div><div class="opt-tick">✓</div></div>
+      </div>
+      <div class="step-nav"><button class="btn-back" onclick="goPrev(2)">← Back</button><button class="btn-next" id="nxt2" disabled onclick="goNext(2)">Continue →</button></div>
+    </div>
+
+    <!-- STEP 3 -->
+    <div class="builder-step" id="bs3">
+      <h3 class="step-q">Preferred fit?</h3>
+      <p class="step-hint">How do you like clothes to sit on your frame?</p>
+      <div class="opts-grid">
+        <div class="opt" data-s="3" data-v="oversized"><div class="opt-icon">⊡</div><div class="opt-label">Oversized</div><div class="opt-desc">Roomy, relaxed, effortless. Boxy proportions with a laid-back energy.</div><div class="opt-tick">✓</div></div>
+        <div class="opt" data-s="3" data-v="regular"><div class="opt-icon">▭</div><div class="opt-label">Regular Fit</div><div class="opt-desc">True to size. Balanced proportions that flatter most body types.</div><div class="opt-tick">✓</div></div>
+        <div class="opt" data-s="3" data-v="slim"><div class="opt-icon">▮</div><div class="opt-label">Slim Fit</div><div class="opt-desc">Close to the body. A sharp, defined silhouette without restriction.</div><div class="opt-tick">✓</div></div>
+      </div>
+      <div class="step-nav"><button class="btn-back" onclick="goPrev(3)">← Back</button><button class="btn-next" id="nxt3" disabled onclick="goNext(3)">Continue →</button></div>
+    </div>
+
+    <!-- STEP 4 -->
+    <div class="builder-step" id="bs4">
+      <h3 class="step-q">Choose your colour palette.</h3>
+      <p class="step-hint">What tones make up your wardrobe?</p>
+      <div class="opts-grid">
+        <div class="opt" data-s="4" data-v="neutral"><div class="col-row"><div class="col-pip" style="background:#f0ece4;border:1px solid rgba(255,255,255,.1)"></div><div class="col-pip" style="background:#c4bfb7"></div><div class="col-pip" style="background:#9a9590"></div></div><div class="opt-label">Neutrals</div><div class="opt-desc">Creams, stones, warm greys. Versatile and always wearable.</div><div class="opt-tick">✓</div></div>
+        <div class="opt" data-s="4" data-v="black"><div class="col-row"><div class="col-pip" style="background:#080808;border:1px solid rgba(255,255,255,.12)"></div><div class="col-pip" style="background:#1e1e1e;border:1px solid rgba(255,255,255,.08)"></div><div class="col-pip" style="background:#2e2e2e;border:1px solid rgba(255,255,255,.06)"></div></div><div class="opt-label">All Black</div><div class="opt-desc">Monochrome and powerful. The most effortlessly cool palette going.</div><div class="opt-tick">✓</div></div>
+        <div class="opt" data-s="4" data-v="earth"><div class="col-row"><div class="col-pip" style="background:#8b6914"></div><div class="col-pip" style="background:#6b4c2a"></div><div class="col-pip" style="background:#4a6741"></div></div><div class="opt-label">Earth Tones</div><div class="opt-desc">Khakis, olives, tans, rusts. Grounded and naturally textured.</div><div class="opt-tick">✓</div></div>
+        <div class="opt" data-s="4" data-v="colour"><div class="col-row"><div class="col-pip" style="background:#2b6bd4"></div><div class="col-pip" style="background:#c1392b"></div><div class="col-pip" style="background:#27a76e"></div></div><div class="opt-label">Colourful</div><div class="opt-desc">Brights, pops, bold hues. Expressive and full of personality.</div><div class="opt-tick">✓</div></div>
+      </div>
+      <div class="step-nav"><button class="btn-back" onclick="goPrev(4)">← Back</button><button class="btn-next" id="nxt4" disabled onclick="buildOutfit()">Generate My Outfit →</button></div>
+    </div>
+
+    <!-- RESULT -->
+    <div id="result-block">
+      <div class="result-hero">
+        <div class="result-tagline" id="rTagline"></div>
+        <p class="result-desc" id="rDesc"></p>
+      </div>
+      <div class="result-grid" id="rGrid"></div>
+      <div class="result-total">
+        <div><span class="total-label">Complete Outfit Total</span><span class="total-save" id="rSave"></span></div>
+        <div class="total-price" id="rPrice"></div>
+      </div>
+      <div class="result-actions">
+        <button class="btn-rebuild" onclick="resetBuilder()">← Start Over</button>
+        <button class="btn-addall" onclick="addAllToCart()">Add All to Cart</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TRUST BAR ═══ -->
+<div class="trust-bar">
+  <div class="trust-item"><div class="trust-icon">⊞</div><div class="trust-title">Premium Quality</div><div class="trust-desc">Every piece uses high-grade fabrics — 380gsm fleece, combed cotton, luxury blends.</div></div>
+  <div class="trust-item"><div class="trust-icon">⟳</div><div class="trust-title">Free Returns</div><div class="trust-desc">30-day hassle-free returns on all orders. We make finding your perfect fit easy.</div></div>
+  <div class="trust-item"><div class="trust-icon">◉</div><div class="trust-title">Fast Dispatch</div><div class="trust-desc">Orders placed before 2pm ship same day. Next-day and international delivery available.</div></div>
+  <div class="trust-item"><div class="trust-icon">✦</div><div class="trust-title">Loyalty Rewards</div><div class="trust-desc">Earn points on every order. Members get early access to new drops and exclusive offers.</div></div>
+</div>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="footer-logo">ARKIVE</div>
+  <p class="footer-copy">© 2025 ARKIVE. Premium Men's Clothing.</p>
+  <p class="footer-note">Demo landing page · Prices in GBP</p>
+</footer>
+
+<script>
+// ═══════════════════════════════════════
+//   PRODUCT DATA
+// ═══════════════════════════════════════
+// All images are men's fashion from Unsplash
+const P = {
+  hoodies:[
+    {id:'h1',name:'Classic Pullover Hoodie',type:'Regular Fit',desc:'Mid-weight 320gsm cotton blend. Ribbed cuffs, kangaroo pocket. The everyday essential refined.',price:45,colors:['#1a1a1a','#d4cfc8','#3b5e3e'],badge:null,
+     img:'https://images.unsplash.com/photo-1556821840-3a63f15732ce?auto=format&fit=crop&w=600&q=80'},
+    {id:'h2',name:'Oversized Drop Shoulder',type:'Oversized Fit',desc:'Exaggerated drop shoulder construction. Heavy 380gsm fleece. Makes a statement with zero effort.',price:58,colors:['#0a0a0a','#c8a96e','#d4cfc8'],badge:'New',
+     img:'https://images.unsplash.com/photo-1588117305388-c2631a279f82?auto=format&fit=crop&w=600&q=80'},
+    {id:'h3',name:'Loose Fit Zip-Up',type:'Loose Fit',desc:'Full-zip loose silhouette in French terry. Wears over a tee or under a jacket effortlessly.',price:52,colors:['#1a1a1a','#888880','#3b5e3e'],badge:null,
+     img:'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=600&q=80'},
+    {id:'h4',name:'Heavyweight Oversized',type:'Oversized Fit',desc:'450gsm ultra-premium fleece. Maximum boxy drop. No graphics, no gimmicks — pure weight and drape.',price:68,colors:['#0a0a0a','#2e2e2e','#6b4c2a'],badge:'Bestseller',
+     img:'https://images.unsplash.com/photo-1578768079052-aa76e52ff62e?auto=format&fit=crop&w=600&q=80'},
+    {id:'h5',name:'Cropped Hoodie',type:'Cropped Fit',desc:'Cut above the waist with a raw-hem finish. Pairs with high-waisted trousers or joggers.',price:42,colors:['#d4cfc8','#c8a96e','#3b6fd4'],badge:null,
+     img:'https://images.unsplash.com/photo-1622445275463-afa2ab738c34?auto=format&fit=crop&w=600&q=80'},
+    {id:'h6',name:'Washed Vintage Hoodie',type:'Regular Fit',desc:'Garment-washed for a lived-in feel right out of the bag. Gets better with every wash.',price:55,colors:['#8b6914','#6b4c2a','#4a6741'],badge:null,
+     img:'https://images.unsplash.com/photo-1614252235316-8c857d38b5f4?auto=format&fit=crop&w=600&q=80'},
+  ],
+  tshirts:[
+    {id:'t1',name:'Classic Crew Neck Tee',type:'Regular Fit',desc:'220gsm combed cotton. Pre-shrunk, clean cut. The backbone of any great wardrobe.',price:22,colors:['#f5f0e8','#0a0a0a','#1a1a1a'],badge:null,
+     img:'https://images.unsplash.com/photo-1503341504253-dff4815485f1?auto=format&fit=crop&w=600&q=80'},
+    {id:'t2',name:'Oversized Boxy Tee',type:'Oversized Fit',desc:'Wide-cut body with dropped shoulders. Wears large by design. No apologies, no constraints.',price:28,colors:['#0a0a0a','#d4cfc8','#c8a96e'],badge:'New',
+     img:'https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?auto=format&fit=crop&w=600&q=80'},
+    {id:'t3',name:'Slim Fit V-Neck',type:'Slim Fit',desc:'Tapered V-neck that shows off the shape without being tight. Versatile dressing made easy.',price:24,colors:['#0a0a0a','#1a1a1a','#d4cfc8'],badge:null,
+     img:'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=600&q=80'},
+    {id:'t4',name:'Longline Loose Tee',type:'Loose Fit',desc:'Extended drop hem. Wears effortlessly with shorts, cargos or joggers. Relaxed and modern.',price:26,colors:['#1a1a1a','#888880','#4a6741'],badge:null,
+     img:'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80'},
+    {id:'t5',name:'Slim Fit Pocket Tee',type:'Slim Fit',desc:'Slim cut with a minimal chest pocket detail. Understated refinement that elevates the basics.',price:25,colors:['#0a0a0a','#3b6fd4','#c1392b'],badge:null,
+     img:'https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?auto=format&fit=crop&w=600&q=80'},
+    {id:'t6',name:'Oversized Graphic Tee',type:'Oversized Fit',desc:'Statement print on 260gsm heavyweight cotton. Washed to perfection before it ships to you.',price:32,colors:['#0a0a0a','#d4cfc8'],badge:'Bestseller',
+     img:'https://images.unsplash.com/photo-1516257984-3c44f8a2b9f8?auto=format&fit=crop&w=600&q=80'},
+  ],
+  trousers:[
+    {id:'tr1',name:'Slim Fit Chinos',type:'Slim Fit',desc:'Tapered leg in stretch cotton twill. Smart enough for most occasions, casual enough for all.',price:48,colors:['#d4cfc8','#6b4c2a','#0a0a0a'],badge:null,
+     img:'https://images.unsplash.com/photo-1560243563-062bfc001d68?auto=format&fit=crop&w=600&q=80'},
+    {id:'tr2',name:'Wide Leg Cargo',type:'Wide Leg',desc:'Six-pocket utility cargo with a commanding wide-leg silhouette. The standout bottom this season.',price:62,colors:['#4a6741','#0a0a0a','#6b4c2a'],badge:'New',
+     img:'https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?auto=format&fit=crop&w=600&q=80'},
+    {id:'tr3',name:'Tapered Joggers',type:'Tapered Fit',desc:'Drawstring waist with a tapered ankle cuff. The casual-smart hybrid that goes anywhere.',price:40,colors:['#1a1a1a','#0a0a0a','#888880'],badge:null,
+     img:'https://images.unsplash.com/photo-1552902865-b72c031ac5ea?auto=format&fit=crop&w=600&q=80'},
+    {id:'tr4',name:'Skinny Jeans',type:'Skinny Fit',desc:'Stretch selvedge denim that moves with you. A timeless silhouette refined for modern proportions.',price:52,colors:['#0a0a0a','#1e3a5f','#1a1a1a'],badge:null,
+     img:'https://images.unsplash.com/photo-1542272604-787c3835535d?auto=format&fit=crop&w=600&q=80'},
+    {id:'tr5',name:'Straight Leg Jeans',type:'Straight Fit',desc:'Classic straight cut in rigid 12oz denim. The most reliable trouser in any wardrobe, full stop.',price:50,colors:['#1e3a5f','#0a0a0a','#888880'],badge:'Bestseller',
+     img:'https://images.unsplash.com/photo-1473966968600-fa801b869a1a?auto=format&fit=crop&w=600&q=80'},
+    {id:'tr6',name:'Pleated Wide Trousers',type:'Wide Leg',desc:'Front pleats and a relaxed wide leg. Wears just as well with a tee as with a button-up shirt.',price:58,colors:['#d4cfc8','#0a0a0a','#888880'],badge:null,
+     img:'https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=600&q=80'},
+    {id:'tr7',name:'Relaxed Shorts',type:'Relaxed Fit',desc:'Mid-thigh with an elasticated waist. The essential transitional short for warmer days.',price:32,colors:['#8b6914','#d4cfc8','#0a0a0a'],badge:null,
+     img:'https://images.unsplash.com/photo-1591195853828-11db59a44f43?auto=format&fit=crop&w=600&q=80'},
+    {id:'tr8',name:'Tech Track Pants',type:'Regular Fit',desc:'Lightweight recycled nylon with zip ankle closures. Sport-luxe you can actually wear all day.',price:45,colors:['#0a0a0a','#1a1a1a','#3b6fd4'],badge:null,
+     img:'https://images.unsplash.com/photo-1517438476312-10d79c077509?auto=format&fit=crop&w=600&q=80'},
+  ],
+  extras:[
+    {id:'e1',name:'Puffer Jacket',type:'Outerwear',desc:'Lightweight fill, heavyweight warmth. Packable and powerful — the season-defining outer layer.',price:95,colors:['#0a0a0a','#1a1a1a','#4a6741'],badge:'New',
+     img:'https://images.unsplash.com/photo-1551698618-1dfe5d97d256?auto=format&fit=crop&w=600&q=80'},
+    {id:'e2',name:'Bomber Jacket',type:'Outerwear',desc:'Satin-finish varsity bomber with ribbed trim. A wardrobe cornerstone since the 1960s. Yours now.',price:78,colors:['#0a0a0a','#6b4c2a','#1e3a5f'],badge:null,
+     img:'https://images.unsplash.com/photo-1548883354-94bcfe321cbb?auto=format&fit=crop&w=600&q=80'},
+    {id:'e3',name:'Coach Jacket',type:'Outerwear',desc:'Lightweight nylon shell with zip chest pocket. The perfect transitional piece between seasons.',price:72,colors:['#4a6741','#0a0a0a','#8b6914'],badge:null,
+     img:'https://images.unsplash.com/photo-1519419691349-be6816b9be6c?auto=format&fit=crop&w=600&q=80'},
+    {id:'e4',name:'Denim Trucker Jacket',type:'Outerwear',desc:'Rigid 12oz denim, classic trucker proportions. Gets more characterful with every single wear.',price:68,colors:['#1e3a5f','#0a0a0a','#888880'],badge:null,
+     img:'https://images.unsplash.com/photo-1527016021513-b09758b777bd?auto=format&fit=crop&w=600&q=80'},
+    {id:'e5',name:'Chunky Knit Sweater',type:'Knitwear',desc:'Heavy gauge knit in a relaxed boxy fit. Premium merino-blend. The cold-weather uniform.',price:65,colors:['#d4cfc8','#8b6914','#0a0a0a'],badge:'Bestseller',
+     img:'https://images.unsplash.com/photo-1608228088998-57828365d486?auto=format&fit=crop&w=600&q=80'},
+    {id:'e6',name:'Oxford Button-Up Shirt',type:'Shirt',desc:'Classic Oxford cloth button-up. Always sharp, always right. Dress it up or wear open over a tee.',price:42,colors:['#f5f0e8','#1e3a5f','#c1392b'],badge:null,
+     img:'https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=600&q=80'},
+    {id:'e7',name:'Fleece Quarter-Zip',type:'Knitwear',desc:'Soft anti-pill fleece in a relaxed midlayer cut. Essential insulation for colder days.',price:55,colors:['#d4cfc8','#888880','#0a0a0a'],badge:null,
+     img:'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=600&q=80'},
+    {id:'e8',name:'Longline Trench Coat',type:'Outerwear',desc:'Tailored trench with contemporary proportions. An investment silhouette for every season.',price:135,colors:['#d4cfc8','#6b4c2a','#0a0a0a'],badge:'Premium',
+     img:'https://images.unsplash.com/photo-1539533018447-63fcce2678e3?auto=format&fit=crop&w=600&q=80'},
+  ]
+};
+
+const ALL=[...P.hoodies,...P.tshirts,...P.trousers,...P.extras];
+const byId=id=>ALL.find(p=>p.id===id);
+
+// ═══ OUTFIT MAP ═══
+const OUTFITS = {
+  'casual-minimal-oversized-neutral':{top:'h1',bottom:'tr5',layer:'e3',tagline:'The Relaxed Essential',desc:'Clean, unfussy and inherently cool. Oversized hoodie, straight jeans, coach jacket — the pairing that simply works.'},
+  'casual-minimal-oversized-black'  :{top:'h2',bottom:'tr3',layer:'e2',tagline:'Monochrome at Ease',desc:'Head-to-toe black in relaxed silhouettes. Powerful without effort — the most versatile outfit in rotation.'},
+  'casual-minimal-regular-neutral'  :{top:'t1',bottom:'tr5',layer:'e4',tagline:'The Clean Slate',desc:'Crew tee, straight jeans, denim jacket in neutrals. The look that works for virtually any casual occasion.'},
+  'casual-bold-oversized-black'     :{top:'h4',bottom:'tr2',layer:'e1',tagline:'Dark Energy',desc:'Heavy weights and commanding silhouettes. All-black oversized pieces — a seriously strong outfit.'},
+  'casual-classic-regular-neutral'  :{top:'t1',bottom:'tr1',layer:'e5',tagline:'The Timeless Trio',desc:'Classic crew tee, slim chinos, chunky knit. Refined basics that have stood the test of time.'},
+  'casual-trendy-oversized-earth'   :{top:'h3',bottom:'tr2',layer:'e3',tagline:'Earth & Ease',desc:'Earthy tones in a relaxed, contemporary fit. Grounded palettes with current proportions.'},
+  'casual-trendy-oversized-colour'  :{top:'h5',bottom:'tr3',layer:'e2',tagline:'The Statement Casual',desc:'Cropped hoodie, tapered joggers, bomber. Colourful and expressive — full of personality.'},
+  'casual-classic-regular-earth'    :{top:'h6',bottom:'tr5',layer:'e4',tagline:'The Worn-In Classic',desc:'A washed hoodie, straight jeans, denim jacket in earthy tones. Lived-in and completely at ease.'},
+  'smart-classic-slim-neutral'      :{top:'t3',bottom:'tr1',layer:'e5',tagline:'Smart Without Trying',desc:'V-neck tee, slim chinos, chunky knit. An elevated casual look that is ready for almost anything.'},
+  'smart-classic-regular-neutral'   :{top:'e6',bottom:'tr6',layer:'e8',tagline:'The Gentleman Edit',desc:'Oxford shirt, pleated wide trousers, longline trench. Classic proportions with modern execution.'},
+  'smart-minimal-slim-neutral'      :{top:'t5',bottom:'tr1',layer:'e7',tagline:'The Quiet Flex',desc:'Slim pocket tee, slim chinos, quarter-zip. Minimal, precise and polished.'},
+  'smart-minimal-regular-black'     :{top:'t1',bottom:'tr4',layer:'e5',tagline:'Elevated Monochrome',desc:'Clean crew tee, skinny jeans, chunky knit in black. Smart simplicity at its best.'},
+  'smart-bold-regular-colour'       :{top:'e6',bottom:'tr1',layer:'e2',tagline:'The Considered Statement',desc:'Oxford shirt under a bomber with slim chinos. Colourful, considered and sharper than it looks.'},
+  'street-bold-oversized-black'     :{top:'h2',bottom:'tr2',layer:'e1',tagline:'Street Authority',desc:'Oversized hoodie, wide cargo, puffer jacket. The holy trinity of modern streetwear.'},
+  'street-bold-oversized-earth'     :{top:'h3',bottom:'tr2',layer:'e2',tagline:'Urban Explorer',desc:'Earth-toned oversized pieces with utility details. Street credibility meets natural palettes.'},
+  'street-trendy-oversized-colour'  :{top:'t6',bottom:'tr2',layer:'e2',tagline:'The Hype Edit',desc:'Graphic tee, wide leg cargos, bomber. Loud, layered and unmistakably current.'},
+  'street-minimal-oversized-black'  :{top:'h4',bottom:'tr3',layer:null,tagline:'Black Utility',desc:'Heavyweight oversized hoodie with tapered joggers. Simple, stripped back and effortlessly street.'},
+  'street-classic-regular-neutral'  :{top:'t2',bottom:'tr5',layer:'e4',tagline:'Street-to-Classic',desc:'Oversized boxy tee, straight jeans, denim jacket. The universal off-duty look. Never fails.'},
+  'sport-minimal-regular-black'     :{top:'t1',bottom:'tr8',layer:'e7',tagline:'Sport Luxe',desc:'Clean crew tee, tech track pants, quarter-zip fleece. Athletic-inspired but polished enough for anywhere.'},
+  'sport-minimal-oversized-black'   :{top:'h1',bottom:'tr3',layer:null,tagline:'Off-Duty Athlete',desc:'Pullover hoodie over tapered joggers. The undisputed comfort pairing for rest days and beyond.'},
+  'sport-bold-regular-colour'       :{top:'t6',bottom:'tr3',layer:'e2',tagline:'Active Energy',desc:'Graphic tee, tapered joggers, colourful bomber. Athletic energy with a distinct fashion edge.'},
+  'sport-classic-regular-neutral'   :{top:'e7',bottom:'tr8',layer:null,tagline:'The Performance Classic',desc:'Quarter-zip fleece over tech track pants. Clean, functional and surprisingly stylish.'},
+};
+
+// ═══ CART STATE ═══
+let cart=[];
+let currentOutfit=null;
+let qvProduct=null;
+let qvSelectedSize='M';
+let qvSelectedColour=0;
+
+// ═══ RENDER PRODUCTS ═══
+function card(p,isResult=false){
+  const sw=p.colors.map(c=>`<div class="sw" style="background:${c}"></div>`).join('');
+  const badge=p.badge?`<div class="product-badge">${p.badge}</div>`:'';
+  return `<div class="product-card">
+    <div class="product-img-wrap">
+      <img src="${p.img}" alt="${p.name}" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'600\' height=\'750\' viewBox=\'0 0 600 750\'%3E%3Crect width=\'600\' height=\'750\' fill=\'%23171717\'/%3E%3Ctext x=\'50%25\' y=\'50%25\' dominant-baseline=\'middle\' text-anchor=\'middle\' fill=\'%23333\' font-size=\'48\'%3E▣%3C/text%3E%3C/svg%3E'">
+      ${badge}
+      <div class="product-overlay">
+        <button class="qv-trigger" onclick="openQV('${p.id}')">Quick View</button>
+      </div>
+    </div>
+    <div class="product-info">
+      <div class="p-type">${p.type}</div>
+      <div class="p-name">${p.name}</div>
+      <div class="p-desc">${p.desc}</div>
+      <div class="p-footer">
+        <div class="p-price">£${p.price}</div>
+        <div class="swatches">${sw}</div>
+      </div>
+    </div>
+    <button class="add-cart-btn" onclick="addToCart('${p.id}','M')">${isResult?'Add to Cart':'Quick Add'}</button>
+  </div>`;
+}
+
+function renderAll(){
+  document.getElementById('grid-hoodies').innerHTML=P.hoodies.map(p=>card(p)).join('');
+  document.getElementById('grid-tshirts').innerHTML=P.tshirts.map(p=>card(p)).join('');
+  document.getElementById('grid-trousers').innerHTML=P.trousers.map(p=>card(p)).join('');
+  document.getElementById('grid-extras').innerHTML=P.extras.map(p=>card(p)).join('');
+}
+
+// ═══ CART ═══
+function addToCart(id,size,qty=1){
+  const p=byId(id);
+  if(!p)return;
+  const key=id+'|'+(size||'M');
+  const ex=cart.find(i=>i.key===key);
+  if(ex){ex.qty+=qty}else{cart.push({key,id,name:p.name,price:p.price,img:p.img,type:p.type,size:size||'M',qty})}
+  updateCartUI();
+  toast(p.name,'Added to your cart');
+}
+
+function removeFromCart(key){
+  cart=cart.filter(i=>i.key!==key);
+  updateCartUI();
+}
+
+function changeQty(key,delta){
+  const item=cart.find(i=>i.key===key);
+  if(!item)return;
+  item.qty+=delta;
+  if(item.qty<1)cart=cart.filter(i=>i.key!==key);
+  updateCartUI();
+}
+
+function updateCartUI(){
+  const total=cart.reduce((s,i)=>s+i.price*i.qty,0);
+  const count=cart.reduce((s,i)=>s+i.qty,0);
+  const countEl=document.getElementById('cartCount');
+  countEl.textContent=count;
+  countEl.classList.toggle('show',count>0);
+  document.getElementById('cartTotal').textContent='£'+total;
+  const body=document.getElementById('cartBody');
+  const foot=document.getElementById('cartFoot');
+  const empty=document.getElementById('cartEmpty');
+  if(cart.length===0){
+    empty.style.display='flex';foot.style.display='none';
+    body.innerHTML='';body.appendChild(empty);
+  } else {
+    empty.style.display='none';foot.style.display='block';
+    body.innerHTML=cart.map(i=>`
+      <div class="cart-item">
+        <img class="ci-img" src="${i.img}" alt="${i.name}" onerror="this.style.background='#222'">
+        <div class="ci-info">
+          <div class="ci-name">${i.name}</div>
+          <div class="ci-meta">${i.type} · Size ${i.size}</div>
+          <div class="ci-row">
+            <div class="ci-price">£${i.price*i.qty}</div>
+            <div class="ci-qty">
+              <button class="qty-btn" onclick="changeQty('${i.key}',-1)">−</button>
+              <span class="qty-num">${i.qty}</span>
+              <button class="qty-btn" onclick="changeQty('${i.key}',1)">+</button>
+            </div>
+          </div>
+          <button class="ci-remove" onclick="removeFromCart('${i.key}')">Remove</button>
+        </div>
+      </div>`).join('');
+  }
+}
+
+function openCart(){
+  document.getElementById('cartOverlay').classList.add('open');
+  document.getElementById('cartDrawer').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeCart(){
+  document.getElementById('cartOverlay').classList.remove('open');
+  document.getElementById('cartDrawer').classList.remove('open');
+  document.body.style.overflow='';
+}
+function handleCheckout(){
+  if(cart.length===0){toast('Cart is empty','Add some items first');return;}
+  toast('Redirecting...','Taking you to secure checkout');
+  setTimeout(()=>alert('Checkout integration ready!\n\nTotal: £'+cart.reduce((s,i)=>s+i.price*i.qty,0)+'\nItems: '+cart.reduce((s,i)=>s+i.qty,0)),800);
+}
+
+// ═══ QUICK VIEW ═══
+function openQV(id){
+  const p=byId(id);
+  if(!p)return;
+  qvProduct=p;
+  qvSelectedSize='M';
+  qvSelectedColour=0;
+  document.getElementById('qvImg').src=p.img;
+  document.getElementById('qvImg').alt=p.name;
+  const badge=document.getElementById('qvBadge');
+  if(p.badge){badge.textContent=p.badge;badge.style.display='block'}else{badge.style.display='none'}
+  document.getElementById('qvType').textContent=p.type;
+  document.getElementById('qvName').textContent=p.name;
+  document.getElementById('qvPrice').textContent='£'+p.price;
+  document.getElementById('qvDesc').textContent=p.desc;
+  const sizes=['XS','S','M','L','XL','XXL'];
+  document.getElementById('qvSizes').innerHTML=sizes.map(s=>`<button class="size-opt${s==='M'?' active':''}" onclick="selectSize(this,'${s}')">${s}</button>`).join('');
+  document.getElementById('qvColours').innerHTML=p.colors.map((c,i)=>`<div class="col-opt${i===0?' active':''}" style="background:${c}" onclick="selectColour(this,${i})" title="Colour ${i+1}"></div>`).join('');
+  document.getElementById('qvOverlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeQV(e){if(e.target===document.getElementById('qvOverlay'))closeQVBtn()}
+function closeQVBtn(){
+  document.getElementById('qvOverlay').classList.remove('open');
+  document.body.style.overflow='';
+}
+function selectSize(el,s){
+  document.querySelectorAll('.size-opt').forEach(b=>b.classList.remove('active'));
+  el.classList.add('active');
+  qvSelectedSize=s;
+}
+function selectColour(el,i){
+  document.querySelectorAll('.col-opt').forEach(c=>c.classList.remove('active'));
+  el.classList.add('active');
+  qvSelectedColour=i;
+}
+function addFromQV(){
+  if(!qvProduct)return;
+  addToCart(qvProduct.id,qvSelectedSize);
+  closeQVBtn();
+  openCart();
+}
+function addToWishlist(){
+  if(!qvProduct)return;
+  toast(qvProduct.name,'Saved to your wishlist ♡');
+  closeQVBtn();
+}
+
+// ═══ TOAST ═══
+function toast(title,sub){
+  const wrap=document.getElementById('toast-wrap');
+  const t=document.createElement('div');
+  t.className='toast';
+  t.innerHTML=`<div class="toast-title">${title}</div><div class="toast-sub">${sub}</div>`;
+  wrap.appendChild(t);
+  requestAnimationFrame(()=>requestAnimationFrame(()=>t.classList.add('show')));
+  setTimeout(()=>{t.classList.remove('show');setTimeout(()=>t.remove(),500)},2800);
+}
+
+// ═══ SMOOTH SCROLL ═══
+function smoothTo(id){
+  event.preventDefault&&event.preventDefault();
+  const el=document.getElementById(id);
+  if(el)el.scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+// ═══ BUILDER ═══
+let ANS={};
+
+document.querySelectorAll('.opt').forEach(opt=>{
+  opt.addEventListener('click',()=>{
+    const s=+opt.dataset.s;
+    document.querySelectorAll(`[data-s="${s}"]`).forEach(o=>o.classList.remove('sel'));
+    opt.classList.add('sel');
+    ANS[s]=opt.dataset.v;
+    document.getElementById('nxt'+s).disabled=false;
+  });
+});
+
+function syncDots(active){
+  [1,2,3,4].forEach(i=>{
+    const d=document.getElementById('dot'+i);
+    const l=document.getElementById('ln'+i);
+    const b=document.getElementById('lbl'+i);
+    d.className='step-dot'+(i<active?' done':i===active?' active':'');
+    d.textContent=i<active?'✓':i;
+    if(l)l.className='step-line'+(i<active?' done':'');
+    if(b)b.className='slbl'+(i<=active?' active':'');
+  });
+}
+
+function goNext(from){
+  document.getElementById('bs'+from).classList.remove('active');
+  document.getElementById('bs'+(from+1)).classList.add('active');
+  syncDots(from+1);
+}
+function goPrev(from){
+  document.getElementById('bs'+from).classList.remove('active');
+  document.getElementById('bs'+(from-1)).classList.add('active');
+  syncDots(from-1);
+}
+
+function buildOutfit(){
+  const key=`${ANS[1]}-${ANS[2]}-${ANS[3]}-${ANS[4]}`;
+  let outfit=OUTFITS[key];
+  if(!outfit){
+    const k=Object.keys(OUTFITS).find(k=>k.startsWith(ANS[1]+'-'+ANS[2]))||Object.keys(OUTFITS)[0];
+    outfit=OUTFITS[k];
+  }
+  currentOutfit=outfit;
+  const items=[outfit.top,outfit.bottom,outfit.layer].filter(Boolean).map(byId);
+  const total=items.reduce((s,p)=>s+p.price,0);
+  const save=Math.round(total*.1);
+  [1,2,3,4].forEach(i=>{
+    document.getElementById('bs'+i).classList.remove('active');
+    const d=document.getElementById('dot'+i);
+    d.className='step-dot done';d.textContent='✓';
+    if(i<4)document.getElementById('ln'+i).className='step-line done';
+    document.getElementById('lbl'+i).className='slbl done';
+  });
+  document.getElementById('rTagline').textContent=`"${outfit.tagline}"`;
+  document.getElementById('rDesc').textContent=outfit.desc;
+  document.getElementById('rPrice').textContent='£'+total;
+  document.getElementById('rSave').textContent=`Save £${save} when ordering together`;
+  document.getElementById('rGrid').innerHTML=items.map(p=>card(p,true)).join('');
+  document.getElementById('result-block').style.display='block';
+  setTimeout(()=>document.getElementById('result-block').scrollIntoView({behavior:'smooth',block:'start'}),100);
+}
+
+function addAllToCart(){
+  if(!currentOutfit)return;
+  const items=[currentOutfit.top,currentOutfit.bottom,currentOutfit.layer].filter(Boolean).map(byId);
+  items.forEach(p=>addToCart(p.id,'M',1));
+  setTimeout(openCart,400);
+}
+
+function resetBuilder(){
+  ANS={};currentOutfit=null;
+  [1,2,3,4].forEach(i=>document.getElementById('nxt'+i).disabled=true);
+  document.querySelectorAll('.opt').forEach(o=>o.classList.remove('sel'));
+  document.getElementById('result-block').style.display='none';
+  document.getElementById('bs1').classList.add('active');
+  syncDots(1);
+  document.getElementById('builder-section').scrollIntoView({behavior:'smooth'});
+}
+
+// ═══ INIT ═══
+renderAll();
+updateCartUI();
+</script>
+</body>
+</html>
