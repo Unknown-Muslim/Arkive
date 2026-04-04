@@ -242,7 +242,6 @@ footer{padding:52px 52px;border-top:1px solid var(--border);display:flex;align-i
 </head>
 <body>
 
-<!-- ═══ CART OVERLAY + DRAWER ═══ -->
 <div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
 <div class="cart-drawer" id="cartDrawer">
   <div class="cart-head">
@@ -267,7 +266,6 @@ footer{padding:52px 52px;border-top:1px solid var(--border);display:flex;align-i
   </div>
 </div>
 
-<!-- ═══ QUICK VIEW MODAL ═══ -->
 <div class="qv-overlay" id="qvOverlay" onclick="closeQV(event)">
   <div class="qv-modal" id="qvModal">
     <div class="qv-img-wrap">
@@ -290,10 +288,8 @@ footer{padding:52px 52px;border-top:1px solid var(--border);display:flex;align-i
   </div>
 </div>
 
-<!-- ═══ TOAST ═══ -->
 <div id="toast-wrap"></div>
 
-<!-- ═══ NAV ═══ -->
 <nav>
   <a href="#" class="nav-logo">ARKIVE</a>
   <ul class="nav-links">
@@ -312,7 +308,6 @@ footer{padding:52px 52px;border-top:1px solid var(--border);display:flex;align-i
   </div>
 </nav>
 
-<!-- ═══ HERO ═══ -->
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-grid"></div>
@@ -329,7 +324,6 @@ footer{padding:52px 52px;border-top:1px solid var(--border);display:flex;align-i
   </div>
 </section>
 
-<!-- ═══ MARQUEE ═══ -->
 <div class="marquee-wrap">
   <div class="marquee-track">
     <span class="m-item">Oversized Hoodies<span class="dot">✦</span></span>
@@ -351,7 +345,6 @@ footer{padding:52px 52px;border-top:1px solid var(--border);display:flex;align-i
   </div>
 </div>
 
-<!-- ═══ HOODIES ═══ -->
 <section class="cat-section" id="hoodies">
   <div class="section-header">
     <div><p class="eyebrow">Category 01</p><h2 class="sec-title">Hoodies &<br><em>Sweatshirts</em></h2></div>
@@ -360,7 +353,6 @@ footer{padding:52px 52px;border-top:1px solid var(--border);display:flex;align-i
   <div class="product-grid" id="grid-hoodies"></div>
 </section>
 
-<!-- ═══ T-SHIRTS ═══ -->
 <section class="cat-section" id="tshirts">
   <div class="section-header">
     <div><p class="eyebrow">Category 02</p><h2 class="sec-title">T-Shirts &<br><em>Tops</em></h2></div>
@@ -369,7 +361,6 @@ footer{padding:52px 52px;border-top:1px solid var(--border);display:flex;align-i
   <div class="product-grid" id="grid-tshirts"></div>
 </section>
 
-<!-- ═══ TROUSERS ═══ -->
 <section class="cat-section" id="trousers">
   <div class="section-header">
     <div><p class="eyebrow">Category 03</p><h2 class="sec-title">Trousers &<br><em>Bottoms</em></h2></div>
@@ -378,40 +369,35 @@ footer{padding:52px 52px;border-top:1px solid var(--border);display:flex;align-i
   <div class="product-grid" id="grid-trousers"></div>
 </section>
 
-<!-- ═══ EXTRAS ═══ -->
 <section class="cat-section" id="extras">
   <div class="section-header">
-    <div><p class="eyebrow">Category 04</p><h2 class="sec-title">Jackets, Knitwear<br><em>& More</em></h2></div>
-    <button class="view-all-btn" onclick="smoothTo('extras')">View All</button>
+    <div><p class="eyebrow">Category 04</p><h2 class="sec-title">Jackets &<br><em>Mid-Layers</em></h2></div>
+    <button class="view-all-btn" onclick="smoothTo('extras')">View All Layers</button>
   </div>
   <div class="product-grid" id="grid-extras"></div>
 </section>
 
-<!-- ═══ OUTFIT BUILDER ═══ -->
 <section id="builder-section">
   <div class="builder-wrap">
     <div class="builder-intro">
-      <p class="eyebrow">Smart Styling Tool</p>
-      <h2 class="sec-title">Build Your<br><em>Perfect Outfit</em></h2>
-      <p>Answer four quick questions and we'll curate a complete look just for you — ready to buy in one click.</p>
+      <p class="eyebrow">Visual Experience</p>
+      <h2 class="sec-title" style="font-size:clamp(32px,5vw,54px);">Curate Your<br><em>Perfect Outfit</em></h2>
+      <p>Answer four simple questions and our algorithm will build a cohesive three-piece look tailored to your aesthetic, fit preference and occasion.</p>
     </div>
+
     <div class="steps-row">
-      <div class="step-dot active" id="dot1">1</div>
-      <div class="step-line" id="ln1"></div>
-      <div class="step-dot" id="dot2">2</div>
-      <div class="step-line" id="ln2"></div>
-      <div class="step-dot" id="dot3">3</div>
-      <div class="step-line" id="ln3"></div>
+      <div class="step-dot active" id="dot1">1</div><div class="step-line" id="ln1"></div>
+      <div class="step-dot" id="dot2">2</div><div class="step-line" id="ln2"></div>
+      <div class="step-dot" id="dot3">3</div><div class="step-line" id="ln3"></div>
       <div class="step-dot" id="dot4">4</div>
     </div>
     <div class="lbl-row">
-      <span class="slbl active" id="lbl1">Occasion</span>
-      <span class="slbl" id="lbl2">Style</span>
-      <span class="slbl" id="lbl3">Fit</span>
-      <span class="slbl" id="lbl4">Colour</span>
+      <div class="slbl active" id="lbl1">Occasion</div>
+      <div class="slbl" id="lbl2">Aesthetic</div>
+      <div class="slbl" id="lbl3">The Fit</div>
+      <div class="slbl" id="lbl4">Palette</div>
     </div>
 
-    <!-- STEP 1 -->
     <div class="builder-step active" id="bs1">
       <h3 class="step-q">What's the occasion?</h3>
       <p class="step-hint">Where are you heading? We'll match the energy of the look to suit it.</p>
@@ -424,7 +410,6 @@ footer{padding:52px 52px;border-top:1px solid var(--border);display:flex;align-i
       <div class="step-nav"><span></span><button class="btn-next" id="nxt1" disabled onclick="goNext(1)">Continue →</button></div>
     </div>
 
-    <!-- STEP 2 -->
     <div class="builder-step" id="bs2">
       <h3 class="step-q">What's your style vibe?</h3>
       <p class="step-hint">Pick the aesthetic that best matches how you want to present yourself.</p>
@@ -437,32 +422,29 @@ footer{padding:52px 52px;border-top:1px solid var(--border);display:flex;align-i
       <div class="step-nav"><button class="btn-back" onclick="goPrev(2)">← Back</button><button class="btn-next" id="nxt2" disabled onclick="goNext(2)">Continue →</button></div>
     </div>
 
-    <!-- STEP 3 -->
     <div class="builder-step" id="bs3">
       <h3 class="step-q">Preferred fit?</h3>
       <p class="step-hint">How do you like clothes to sit on your frame?</p>
       <div class="opts-grid">
         <div class="opt" data-s="3" data-v="oversized"><div class="opt-icon">⊡</div><div class="opt-label">Oversized</div><div class="opt-desc">Roomy, relaxed, effortless. Boxy proportions with a laid-back energy.</div><div class="opt-tick">✓</div></div>
-        <div class="opt" data-s="3" data-v="regular"><div class="opt-icon">▭</div><div class="opt-label">Regular Fit</div><div class="opt-desc">True to size. Balanced proportions that flatter most body types.</div><div class="opt-tick">✓</div></div>
-        <div class="opt" data-s="3" data-v="slim"><div class="opt-icon">▮</div><div class="opt-label">Slim Fit</div><div class="opt-desc">Close to the body. A sharp, defined silhouette without restriction.</div><div class="opt-tick">✓</div></div>
+        <div class="opt" data-s="3" data-v="regular"><div class="opt-icon">▢</div><div class="opt-label">Regular</div><div class="opt-desc">The standard. Not too tight, not too loose. Perfectly balanced.</div><div class="opt-tick">✓</div></div>
+        <div class="opt" data-s="3" data-v="slim"><div class="opt-icon">▯</div><div class="opt-label">Slim</div><div class="opt-desc">Tapered and closer to the body for a sharp, streamlined appearance.</div><div class="opt-tick">✓</div></div>
       </div>
       <div class="step-nav"><button class="btn-back" onclick="goPrev(3)">← Back</button><button class="btn-next" id="nxt3" disabled onclick="goNext(3)">Continue →</button></div>
     </div>
 
-    <!-- STEP 4 -->
     <div class="builder-step" id="bs4">
-      <h3 class="step-q">Choose your colour palette.</h3>
-      <p class="step-hint">What tones make up your wardrobe?</p>
+      <h3 class="step-q">Colour preference?</h3>
+      <p class="step-hint">Finally, let's lock in the palette for your new ensemble.</p>
       <div class="opts-grid">
-        <div class="opt" data-s="4" data-v="neutral"><div class="col-row"><div class="col-pip" style="background:#f0ece4;border:1px solid rgba(255,255,255,.1)"></div><div class="col-pip" style="background:#c4bfb7"></div><div class="col-pip" style="background:#9a9590"></div></div><div class="opt-label">Neutrals</div><div class="opt-desc">Creams, stones, warm greys. Versatile and always wearable.</div><div class="opt-tick">✓</div></div>
-        <div class="opt" data-s="4" data-v="black"><div class="col-row"><div class="col-pip" style="background:#080808;border:1px solid rgba(255,255,255,.12)"></div><div class="col-pip" style="background:#1e1e1e;border:1px solid rgba(255,255,255,.08)"></div><div class="col-pip" style="background:#2e2e2e;border:1px solid rgba(255,255,255,.06)"></div></div><div class="opt-label">All Black</div><div class="opt-desc">Monochrome and powerful. The most effortlessly cool palette going.</div><div class="opt-tick">✓</div></div>
+        <div class="opt" data-s="4" data-v="neutral"><div class="col-row"><div class="col-pip" style="background:#f0ece4"></div><div class="col-pip" style="background:#d4cfc8"></div><div class="col-pip" style="background:#888880"></div></div><div class="opt-label">Neutral</div><div class="opt-desc">Stone, cream, beige and grey. Sophisticated and easy to mix.</div><div class="opt-tick">✓</div></div>
+        <div class="opt" data-s="4" data-v="black"><div class="col-row"><div class="col-pip" style="background:#1a1a1a"></div><div class="col-pip" style="background:#0a0a0a"></div><div class="col-pip" style="background:#2e2b27"></div></div><div class="opt-label">All Black</div><div class="opt-desc">Monochrome and powerful. The most effortlessly cool palette going.</div><div class="opt-tick">✓</div></div>
         <div class="opt" data-s="4" data-v="earth"><div class="col-row"><div class="col-pip" style="background:#8b6914"></div><div class="col-pip" style="background:#6b4c2a"></div><div class="col-pip" style="background:#4a6741"></div></div><div class="opt-label">Earth Tones</div><div class="opt-desc">Khakis, olives, tans, rusts. Grounded and naturally textured.</div><div class="opt-tick">✓</div></div>
         <div class="opt" data-s="4" data-v="colour"><div class="col-row"><div class="col-pip" style="background:#2b6bd4"></div><div class="col-pip" style="background:#c1392b"></div><div class="col-pip" style="background:#27a76e"></div></div><div class="opt-label">Colourful</div><div class="opt-desc">Brights, pops, bold hues. Expressive and full of personality.</div><div class="opt-tick">✓</div></div>
       </div>
       <div class="step-nav"><button class="btn-back" onclick="goPrev(4)">← Back</button><button class="btn-next" id="nxt4" disabled onclick="buildOutfit()">Generate My Outfit →</button></div>
     </div>
 
-    <!-- RESULT -->
     <div id="result-block">
       <div class="result-hero">
         <div class="result-tagline" id="rTagline"></div>
@@ -481,7 +463,6 @@ footer{padding:52px 52px;border-top:1px solid var(--border);display:flex;align-i
   </div>
 </section>
 
-<!-- ═══ TRUST BAR ═══ -->
 <div class="trust-bar">
   <div class="trust-item"><div class="trust-icon">⊞</div><div class="trust-title">Premium Quality</div><div class="trust-desc">Every piece uses high-grade fabrics — 380gsm fleece, combed cotton, luxury blends.</div></div>
   <div class="trust-item"><div class="trust-icon">⟳</div><div class="trust-title">Free Returns</div><div class="trust-desc">30-day hassle-free returns on all orders. We make finding your perfect fit easy.</div></div>
@@ -489,7 +470,6 @@ footer{padding:52px 52px;border-top:1px solid var(--border);display:flex;align-i
   <div class="trust-item"><div class="trust-icon">✦</div><div class="trust-title">Loyalty Rewards</div><div class="trust-desc">Earn points on every order. Members get early access to new drops and exclusive offers.</div></div>
 </div>
 
-<!-- ═══ FOOTER ═══ -->
 <footer>
   <div class="footer-logo">ARKIVE</div>
   <p class="footer-copy">© 2025 ARKIVE. Premium Men's Clothing.</p>
@@ -498,73 +478,65 @@ footer{padding:52px 52px;border-top:1px solid var(--border);display:flex;align-i
 
 <script>
 // ═══════════════════════════════════════
-//   PRODUCT DATA
+// PRODUCT DATA
 // ═══════════════════════════════════════
-// All images are men's fashion from Unsplash
+// Citations:
 const P = {
-  hoodies:[
-    {id:'h1',name:'Classic Pullover Hoodie',type:'Regular Fit',desc:'Mid-weight 320gsm cotton blend. Ribbed cuffs, kangaroo pocket. The everyday essential refined.',price:45,colors:['#1a1a1a','#d4cfc8','#3b5e3e'],badge:null,
-     img:'https://images.unsplash.com/photo-1556821840-3a63f15732ce?auto=format&fit=crop&w=600&q=80'},
-    {id:'h2',name:'Oversized Drop Shoulder',type:'Oversized Fit',desc:'Exaggerated drop shoulder construction. Heavy 380gsm fleece. Makes a statement with zero effort.',price:58,colors:['#0a0a0a','#c8a96e','#d4cfc8'],badge:'New',
-     img:'https://images.unsplash.com/photo-1588117305388-c2631a279f82?auto=format&fit=crop&w=600&q=80'},
-    {id:'h3',name:'Loose Fit Zip-Up',type:'Loose Fit',desc:'Full-zip loose silhouette in French terry. Wears over a tee or under a jacket effortlessly.',price:52,colors:['#1a1a1a','#888880','#3b5e3e'],badge:null,
-     img:'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=600&q=80'},
-    {id:'h4',name:'Heavyweight Oversized',type:'Oversized Fit',desc:'450gsm ultra-premium fleece. Maximum boxy drop. No graphics, no gimmicks — pure weight and drape.',price:68,colors:['#0a0a0a','#2e2e2e','#6b4c2a'],badge:'Bestseller',
-     img:'https://images.unsplash.com/photo-1578768079052-aa76e52ff62e?auto=format&fit=crop&w=600&q=80'},
-    {id:'h5',name:'Cropped Hoodie',type:'Cropped Fit',desc:'Cut above the waist with a raw-hem finish. Pairs with high-waisted trousers or joggers.',price:42,colors:['#d4cfc8','#c8a96e','#3b6fd4'],badge:null,
-     img:'https://images.unsplash.com/photo-1622445275463-afa2ab738c34?auto=format&fit=crop&w=600&q=80'},
-    {id:'h6',name:'Washed Vintage Hoodie',type:'Regular Fit',desc:'Garment-washed for a lived-in feel right out of the bag. Gets better with every wash.',price:55,colors:['#8b6914','#6b4c2a','#4a6741'],badge:null,
-     img:'https://images.unsplash.com/photo-1614252235316-8c857d38b5f4?auto=format&fit=crop&w=600&q=80'},
+  hoodies: [
+    {id:'h1',name:'Oversized Hoodie',type:'Oversized Fit',desc:'Heavyweight 380gsm fleece in a washed vintage black. Dropped shoulders and a double-layered hood.',price:55,colors:['#1a1a1a','#0a0a0a','#2e2b27'],badge:'Bestseller', 
+     img:'https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=600&q=80'},
+    {id:'h2',name:'Essential Hoodie',type:'Regular Fit',desc:'The perfect daily driver. Soft-touch cotton blend with tonal embroidery on the chest.',price:48,colors:['#0a0a0a','#d4cfc8','#171717'],badge:null, 
+     img:'https://images.unsplash.com/photo-1521223890158-f9f7c3d5bab3?auto=format&fit=crop&w=600&q=80'},
+    {id:'h3',name:'Heavyweight Hoodie',type:'Boxy Fit',desc:'Structure that holds. A rigid, premium feel in a versatile stone grey palette.',price:62,colors:['#d4cfc8','#888880','#6b4c2a'],badge:'New', 
+     img:'https://images.unsplash.com/photo-1513789172139-474426c57b80?auto=format&fit=crop&w=600&q=80'},
+    {id:'h4',name:'Signature Hoodie',type:'Oversized Fit',desc:'Our most popular silhouette. Deep black, high-density fabric, and a clean minimalist finish.',price:58,colors:['#0a0a0a'],badge:null, 
+     img:'https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?auto=format&fit=crop&w=600&q=80'},
+    {id:'h5',name:'Cropped Hoodie',type:'Relaxed Fit',desc:'Modern proportions with a raw hem detail. Sits perfectly at the waist for a contemporary look.',price:52,colors:['#c1392b','#3b6fd4','#0a0a0a'],badge:null, 
+     img:'https://images.unsplash.com/photo-1578587018452-892bacefd3f2?auto=format&fit=crop&w=600&q=80'},
+    {id:'h6',name:'Washed Hoodie',type:'Regular Fit',desc:'Garment dyed for a lived-in feel from day one. Soft, breathable, and full of character.',price:50,colors:['#6b4c2a','#4a6741','#8b6914'],badge:null, 
+     img:'https://images.unsplash.com/photo-1544642899-f0d6e5f6ed6a?auto=format&fit=crop&w=600&q=80'}
   ],
-  tshirts:[
-    {id:'t1',name:'Classic Crew Neck Tee',type:'Regular Fit',desc:'220gsm combed cotton. Pre-shrunk, clean cut. The backbone of any great wardrobe.',price:22,colors:['#f5f0e8','#0a0a0a','#1a1a1a'],badge:null,
-     img:'https://images.unsplash.com/photo-1503341504253-dff4815485f1?auto=format&fit=crop&w=600&q=80'},
-    {id:'t2',name:'Oversized Boxy Tee',type:'Oversized Fit',desc:'Wide-cut body with dropped shoulders. Wears large by design. No apologies, no constraints.',price:28,colors:['#0a0a0a','#d4cfc8','#c8a96e'],badge:'New',
-     img:'https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?auto=format&fit=crop&w=600&q=80'},
-    {id:'t3',name:'Slim Fit V-Neck',type:'Slim Fit',desc:'Tapered V-neck that shows off the shape without being tight. Versatile dressing made easy.',price:24,colors:['#0a0a0a','#1a1a1a','#d4cfc8'],badge:null,
-     img:'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=600&q=80'},
-    {id:'t4',name:'Longline Loose Tee',type:'Loose Fit',desc:'Extended drop hem. Wears effortlessly with shorts, cargos or joggers. Relaxed and modern.',price:26,colors:['#1a1a1a','#888880','#4a6741'],badge:null,
-     img:'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80'},
-    {id:'t5',name:'Slim Fit Pocket Tee',type:'Slim Fit',desc:'Slim cut with a minimal chest pocket detail. Understated refinement that elevates the basics.',price:25,colors:['#0a0a0a','#3b6fd4','#c1392b'],badge:null,
-     img:'https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?auto=format&fit=crop&w=600&q=80'},
-    {id:'t6',name:'Oversized Graphic Tee',type:'Oversized Fit',desc:'Statement print on 260gsm heavyweight cotton. Washed to perfection before it ships to you.',price:32,colors:['#0a0a0a','#d4cfc8'],badge:'Bestseller',
-     img:'https://images.unsplash.com/photo-1516257984-3c44f8a2b9f8?auto=format&fit=crop&w=600&q=80'},
+  tshirts: [
+    {id:'t1',name:'Classic Crew Tee',type:'Regular Fit',desc:'Combed 220gsm cotton. The backbone of any great wardrobe.',price:22,colors:['#f5f0e8','#0a0a0a','#1a1a1a'],badge:null, 
+     img:'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=600&q=80'},
+    {id:'t2',name:'Oversized Boxy Tee',type:'Oversized Fit',desc:'Wide-cut body with dropped shoulders. Wears large by design.',price:28,colors:['#0a0a0a','#d4cfc8','#c8a96e'],badge:'New', 
+     img:'https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?auto=format&fit=crop&w=600&q=80'},
+    {id:'t3',name:'Slim Fit V-Neck',type:'Slim Fit',desc:'Tapered V-neck that shows off the shape without being tight.',price:24,colors:['#0a0a0a','#1a1a1a','#d4cfc8'],badge:null, 
+     img:'https://images.unsplash.com/photo-1574180563860-dc195977926e?auto=format&fit=crop&w=600&q=80'},
+    {id:'t4',name:'Longline Loose Tee',type:'Loose Fit',desc:'Extended drop hem. Wears effortlessly with shorts, cargos or joggers.',price:26,colors:['#1a1a1a','#888880','#4a6741'],badge:null, 
+     img:'https://images.unsplash.com/photo-1562157873-818bc0726f68?auto=format&fit=crop&w=600&q=80'},
+    {id:'t5',name:'Slim Fit Pocket Tee',type:'Slim Fit',desc:'Slim cut with a minimal chest pocket detail. Understated refinement.',price:25,colors:['#0a0a0a','#3b6fd4','#c1392b'],badge:null, 
+     img:'https://images.unsplash.com/photo-1581655353564-df123a1eb820?auto=format&fit=crop&w=600&q=80'},
+    {id:'t6',name:'Graphic Tee',type:'Oversized Fit',desc:'Statement print on 260gsm heavyweight cotton. Washed to perfection.',price:32,colors:['#0a0a0a','#d4cfc8'],badge:'Bestseller', 
+     img:'https://images.unsplash.com/photo-1576566588028-4147f3842f27?auto=format&fit=crop&w=600&q=80'}
   ],
-  trousers:[
-    {id:'tr1',name:'Slim Fit Chinos',type:'Slim Fit',desc:'Tapered leg in stretch cotton twill. Smart enough for most occasions, casual enough for all.',price:48,colors:['#d4cfc8','#6b4c2a','#0a0a0a'],badge:null,
-     img:'https://images.unsplash.com/photo-1560243563-062bfc001d68?auto=format&fit=crop&w=600&q=80'},
-    {id:'tr2',name:'Wide Leg Cargo',type:'Wide Leg',desc:'Six-pocket utility cargo with a commanding wide-leg silhouette. The standout bottom this season.',price:62,colors:['#4a6741','#0a0a0a','#6b4c2a'],badge:'New',
-     img:'https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?auto=format&fit=crop&w=600&q=80'},
-    {id:'tr3',name:'Tapered Joggers',type:'Tapered Fit',desc:'Drawstring waist with a tapered ankle cuff. The casual-smart hybrid that goes anywhere.',price:40,colors:['#1a1a1a','#0a0a0a','#888880'],badge:null,
-     img:'https://images.unsplash.com/photo-1552902865-b72c031ac5ea?auto=format&fit=crop&w=600&q=80'},
-    {id:'tr4',name:'Skinny Jeans',type:'Skinny Fit',desc:'Stretch selvedge denim that moves with you. A timeless silhouette refined for modern proportions.',price:52,colors:['#0a0a0a','#1e3a5f','#1a1a1a'],badge:null,
-     img:'https://images.unsplash.com/photo-1542272604-787c3835535d?auto=format&fit=crop&w=600&q=80'},
-    {id:'tr5',name:'Straight Leg Jeans',type:'Straight Fit',desc:'Classic straight cut in rigid 12oz denim. The most reliable trouser in any wardrobe, full stop.',price:50,colors:['#1e3a5f','#0a0a0a','#888880'],badge:'Bestseller',
+  trousers: [
+    {id:'tr1',name:'Slim Chino',type:'Slim Fit',desc:'Stretch cotton twill with a clean taper. The ultimate smart-casual staple.',price:45,colors:['#6b4c2a','#0a0a0a','#d4cfc8'],badge:null, 
      img:'https://images.unsplash.com/photo-1473966968600-fa801b869a1a?auto=format&fit=crop&w=600&q=80'},
-    {id:'tr6',name:'Pleated Wide Trousers',type:'Wide Leg',desc:'Front pleats and a relaxed wide leg. Wears just as well with a tee as with a button-up shirt.',price:58,colors:['#d4cfc8','#0a0a0a','#888880'],badge:null,
-     img:'https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=600&q=80'},
-    {id:'tr7',name:'Relaxed Shorts',type:'Relaxed Fit',desc:'Mid-thigh with an elasticated waist. The essential transitional short for warmer days.',price:32,colors:['#8b6914','#d4cfc8','#0a0a0a'],badge:null,
-     img:'https://images.unsplash.com/photo-1591195853828-11db59a44f43?auto=format&fit=crop&w=600&q=80'},
-    {id:'tr8',name:'Tech Track Pants',type:'Regular Fit',desc:'Lightweight recycled nylon with zip ankle closures. Sport-luxe you can actually wear all day.',price:45,colors:['#0a0a0a','#1a1a1a','#3b6fd4'],badge:null,
-     img:'https://images.unsplash.com/photo-1517438476312-10d79c077509?auto=format&fit=crop&w=600&q=80'},
+    {id:'tr2',name:'Wide Leg Cargo',type:'Loose Fit',desc:'Military inspired with a modern drape. Eight-pocket construction.',price:58,colors:['#4a6741','#0a0a0a','#2e2b27'],badge:'New', 
+     img:'https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&w=600&q=80'},
+    {id:'tr3',name:'Tapered Jogger',type:'Relaxed Fit',desc:'Heavyweight fleece with elasticated cuffs and hidden zip pockets.',price:42,colors:['#0a0a0a','#1a1a1a','#d4cfc8'],badge:null, 
+     img:'https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?auto=format&fit=crop&w=600&q=80'},
+    {id:'tr4',name:'Utility Pant',type:'Regular Fit',desc:'Durable ripstop fabric with reinforced knee panels. Built to last.',price:52,colors:['#1a1a1a','#8b6914','#4a6741'],badge:null, 
+     img:'https://images.unsplash.com/photo-1624371414361-e6e8ea04c116?auto=format&fit=crop&w=600&q=80'},
+    {id:'tr5',name:'Straight Jean',type:'Regular Fit',desc:'14oz raw selvedge denim. Will age and fade uniquely over time.',price:75,colors:['#0a0a0a','#1a1a1a'],badge:'Premium', 
+     img:'https://images.unsplash.com/photo-1542272604-787c3835535d?auto=format&fit=crop&w=600&q=80'},
+    {id:'tr6',name:'Pleated Trouser',type:'Wide Leg',desc:'Elegant wool blend with a sharp permanent crease. Redefining formal.',price:65,colors:['#0a0a0a','#d4cfc8'],badge:null, 
+     img:'https://images.unsplash.com/photo-1506629082955-511b1aa562c8?auto=format&fit=crop&w=600&q=80'}
   ],
-  extras:[
-    {id:'e1',name:'Puffer Jacket',type:'Outerwear',desc:'Lightweight fill, heavyweight warmth. Packable and powerful — the season-defining outer layer.',price:95,colors:['#0a0a0a','#1a1a1a','#4a6741'],badge:'New',
-     img:'https://images.unsplash.com/photo-1551698618-1dfe5d97d256?auto=format&fit=crop&w=600&q=80'},
-    {id:'e2',name:'Bomber Jacket',type:'Outerwear',desc:'Satin-finish varsity bomber with ribbed trim. A wardrobe cornerstone since the 1960s. Yours now.',price:78,colors:['#0a0a0a','#6b4c2a','#1e3a5f'],badge:null,
-     img:'https://images.unsplash.com/photo-1548883354-94bcfe321cbb?auto=format&fit=crop&w=600&q=80'},
-    {id:'e3',name:'Coach Jacket',type:'Outerwear',desc:'Lightweight nylon shell with zip chest pocket. The perfect transitional piece between seasons.',price:72,colors:['#4a6741','#0a0a0a','#8b6914'],badge:null,
-     img:'https://images.unsplash.com/photo-1519419691349-be6816b9be6c?auto=format&fit=crop&w=600&q=80'},
-    {id:'e4',name:'Denim Trucker Jacket',type:'Outerwear',desc:'Rigid 12oz denim, classic trucker proportions. Gets more characterful with every single wear.',price:68,colors:['#1e3a5f','#0a0a0a','#888880'],badge:null,
-     img:'https://images.unsplash.com/photo-1527016021513-b09758b777bd?auto=format&fit=crop&w=600&q=80'},
-    {id:'e5',name:'Chunky Knit Sweater',type:'Knitwear',desc:'Heavy gauge knit in a relaxed boxy fit. Premium merino-blend. The cold-weather uniform.',price:65,colors:['#d4cfc8','#8b6914','#0a0a0a'],badge:'Bestseller',
-     img:'https://images.unsplash.com/photo-1608228088998-57828365d486?auto=format&fit=crop&w=600&q=80'},
-    {id:'e6',name:'Oxford Button-Up Shirt',type:'Shirt',desc:'Classic Oxford cloth button-up. Always sharp, always right. Dress it up or wear open over a tee.',price:42,colors:['#f5f0e8','#1e3a5f','#c1392b'],badge:null,
-     img:'https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=600&q=80'},
-    {id:'e7',name:'Fleece Quarter-Zip',type:'Knitwear',desc:'Soft anti-pill fleece in a relaxed midlayer cut. Essential insulation for colder days.',price:55,colors:['#d4cfc8','#888880','#0a0a0a'],badge:null,
-     img:'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=600&q=80'},
-    {id:'e8',name:'Longline Trench Coat',type:'Outerwear',desc:'Tailored trench with contemporary proportions. An investment silhouette for every season.',price:135,colors:['#d4cfc8','#6b4c2a','#0a0a0a'],badge:'Premium',
-     img:'https://images.unsplash.com/photo-1539533018447-63fcce2678e3?auto=format&fit=crop&w=600&q=80'},
+  extras: [
+    {id:'e1',name:'Bomber Jacket',type:'Outerwear',desc:'Insulated nylon shell with a slight sheen. A streetwear icon updated.',price:85,colors:['#0a0a0a','#4a6741'],badge:null, 
+     img:'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&w=600&q=80'},
+    {id:'e2',name:'Harrington Jacket',type:'Outerwear',desc:'Lightweight and weather-resistant. Perfect for transitional layering.',price:78,colors:['#1a1a1a','#6b4c2a'],badge:null, 
+     img:'https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=600&q=80'},
+    {id:'e3',name:'Coach Jacket',type:'Outerwear',desc:'Minimalist snap-front jacket with a drawstring waist. Effortless style.',price:72,colors:['#0a0a0a','#d4cfc8'],badge:null, 
+     img:'https://images.unsplash.com/photo-1617137968427-85924c800a22?auto=format&fit=crop&w=600&q=80'},
+    {id:'e4',name:'Sherpa Fleece',type:'Mid-layer',desc:'High-pile warmth in a clean cream palette. Ideal for colder nights.',price:68,colors:['#f5f0e8','#6b4c2a'],badge:'Bestseller', 
+     img:'https://images.unsplash.com/photo-1604644401890-0bd678c83788?auto=format&fit=crop&w=600&q=80'},
+    {id:'e5',name:'Knitted Polo',type:'Knitwear',desc:'Fine-gauge merino wool. The bridge between a tee and a formal shirt.',price:58,colors:['#8b6914','#1a1a1a','#6b4c2a'],badge:null, 
+     img:'https://images.unsplash.com/photo-1610652492500-ded49ceeb378?auto=format&fit=crop&w=600&q=80'},
+    {id:'e6',name:'Overcoat',type:'Outerwear',desc:'Traditional longline trench with contemporary proportions.',price:135,colors:['#d4cfc8','#6b4c2a','#0a0a0a'],badge:'Premium', 
+     img:'https://images.unsplash.com/photo-1539533018447-63fcce2678e3?auto=format&fit=crop&w=600&q=80'}
   ]
 };
 
@@ -574,27 +546,25 @@ const byId=id=>ALL.find(p=>p.id===id);
 // ═══ OUTFIT MAP ═══
 const OUTFITS = {
   'casual-minimal-oversized-neutral':{top:'h1',bottom:'tr5',layer:'e3',tagline:'The Relaxed Essential',desc:'Clean, unfussy and inherently cool. Oversized hoodie, straight jeans, coach jacket — the pairing that simply works.'},
-  'casual-minimal-oversized-black'  :{top:'h2',bottom:'tr3',layer:'e2',tagline:'Monochrome at Ease',desc:'Head-to-toe black in relaxed silhouettes. Powerful without effort — the most versatile outfit in rotation.'},
-  'casual-minimal-regular-neutral'  :{top:'t1',bottom:'tr5',layer:'e4',tagline:'The Clean Slate',desc:'Crew tee, straight jeans, denim jacket in neutrals. The look that works for virtually any casual occasion.'},
-  'casual-bold-oversized-black'     :{top:'h4',bottom:'tr2',layer:'e1',tagline:'Dark Energy',desc:'Heavy weights and commanding silhouettes. All-black oversized pieces — a seriously strong outfit.'},
-  'casual-classic-regular-neutral'  :{top:'t1',bottom:'tr1',layer:'e5',tagline:'The Timeless Trio',desc:'Classic crew tee, slim chinos, chunky knit. Refined basics that have stood the test of time.'},
-  'casual-trendy-oversized-earth'   :{top:'h3',bottom:'tr2',layer:'e3',tagline:'Earth & Ease',desc:'Earthy tones in a relaxed, contemporary fit. Grounded palettes with current proportions.'},
-  'casual-trendy-oversized-colour'  :{top:'h5',bottom:'tr3',layer:'e2',tagline:'The Statement Casual',desc:'Cropped hoodie, tapered joggers, bomber. Colourful and expressive — full of personality.'},
-  'casual-classic-regular-earth'    :{top:'h6',bottom:'tr5',layer:'e4',tagline:'The Worn-In Classic',desc:'A washed hoodie, straight jeans, denim jacket in earthy tones. Lived-in and completely at ease.'},
-  'smart-classic-slim-neutral'      :{top:'t3',bottom:'tr1',layer:'e5',tagline:'Smart Without Trying',desc:'V-neck tee, slim chinos, chunky knit. An elevated casual look that is ready for almost anything.'},
-  'smart-classic-regular-neutral'   :{top:'e6',bottom:'tr6',layer:'e8',tagline:'The Gentleman Edit',desc:'Oxford shirt, pleated wide trousers, longline trench. Classic proportions with modern execution.'},
-  'smart-minimal-slim-neutral'      :{top:'t5',bottom:'tr1',layer:'e7',tagline:'The Quiet Flex',desc:'Slim pocket tee, slim chinos, quarter-zip. Minimal, precise and polished.'},
-  'smart-minimal-regular-black'     :{top:'t1',bottom:'tr4',layer:'e5',tagline:'Elevated Monochrome',desc:'Clean crew tee, skinny jeans, chunky knit in black. Smart simplicity at its best.'},
-  'smart-bold-regular-colour'       :{top:'e6',bottom:'tr1',layer:'e2',tagline:'The Considered Statement',desc:'Oxford shirt under a bomber with slim chinos. Colourful, considered and sharper than it looks.'},
-  'street-bold-oversized-black'     :{top:'h2',bottom:'tr2',layer:'e1',tagline:'Street Authority',desc:'Oversized hoodie, wide cargo, puffer jacket. The holy trinity of modern streetwear.'},
-  'street-bold-oversized-earth'     :{top:'h3',bottom:'tr2',layer:'e2',tagline:'Urban Explorer',desc:'Earth-toned oversized pieces with utility details. Street credibility meets natural palettes.'},
-  'street-trendy-oversized-colour'  :{top:'t6',bottom:'tr2',layer:'e2',tagline:'The Hype Edit',desc:'Graphic tee, wide leg cargos, bomber. Loud, layered and unmistakably current.'},
-  'street-minimal-oversized-black'  :{top:'h4',bottom:'tr3',layer:null,tagline:'Black Utility',desc:'Heavyweight oversized hoodie with tapered joggers. Simple, stripped back and effortlessly street.'},
-  'street-classic-regular-neutral'  :{top:'t2',bottom:'tr5',layer:'e4',tagline:'Street-to-Classic',desc:'Oversized boxy tee, straight jeans, denim jacket. The universal off-duty look. Never fails.'},
-  'sport-minimal-regular-black'     :{top:'t1',bottom:'tr8',layer:'e7',tagline:'Sport Luxe',desc:'Clean crew tee, tech track pants, quarter-zip fleece. Athletic-inspired but polished enough for anywhere.'},
-  'sport-minimal-oversized-black'   :{top:'h1',bottom:'tr3',layer:null,tagline:'Off-Duty Athlete',desc:'Pullover hoodie over tapered joggers. The undisputed comfort pairing for rest days and beyond.'},
-  'sport-bold-regular-colour'       :{top:'t6',bottom:'tr3',layer:'e2',tagline:'Active Energy',desc:'Graphic tee, tapered joggers, colourful bomber. Athletic energy with a distinct fashion edge.'},
-  'sport-classic-regular-neutral'   :{top:'e7',bottom:'tr8',layer:null,tagline:'The Performance Classic',desc:'Quarter-zip fleece over tech track pants. Clean, functional and surprisingly stylish.'},
+  'casual-minimal-oversized-black' :{top:'h2',bottom:'tr3',layer:'e2',tagline:'Monochrome at Ease',desc:'Head-to-toe black in relaxed silhouettes. Powerful without effort — the most versatile outfit in rotation.'},
+  'casual-minimal-regular-neutral' :{top:'t1',bottom:'tr5',layer:'e4',tagline:'The Clean Slate',desc:'Crew tee, straight jeans, denim jacket in neutrals. The look that works for virtually any casual occasion.'},
+  'casual-bold-oversized-black' :{top:'h4',bottom:'tr2',layer:'e1',tagline:'Dark Energy',desc:'Heavy weights and commanding silhouettes. All-black oversized pieces — a seriously strong outfit.'},
+  'casual-classic-regular-neutral' :{top:'t1',bottom:'tr1',layer:'e5',tagline:'The Timeless Trio',desc:'Classic crew tee, slim chinos, chunky knit. Refined basics that have stood the test of time.'},
+  'casual-trendy-oversized-earth' :{top:'h3',bottom:'tr2',layer:'e3',tagline:'Earth & Ease',desc:'Earthy tones in a relaxed, contemporary fit. Grounded palettes with current proportions.'},
+  'casual-trendy-oversized-colour' :{top:'h5',bottom:'tr3',layer:'e2',tagline:'The Statement Casual',desc:'Cropped hoodie, tapered joggers, bomber. Colourful and expressive — full of personality.'},
+  'casual-classic-regular-earth' :{top:'h6',bottom:'tr5',layer:'e4',tagline:'The Worn-In Classic',desc:'A washed hoodie, straight jeans, denim jacket in earthy tones. Lived-in and completely at ease.'},
+  'smart-classic-slim-neutral' :{top:'t3',bottom:'tr1',layer:'e5',tagline:'Smart Without Trying',desc:'V-neck tee, slim chinos, chunky knit. An elevated casual look that is ready for almost anything.'},
+  'smart-classic-regular-neutral' :{top:'e6',bottom:'tr6',layer:'e5',tagline:'The Gentleman Edit',desc:'Oxford shirt, pleated wide trousers, longline trench. Classic proportions with modern execution.'},
+  'smart-minimal-slim-neutral' :{top:'t5',bottom:'tr1',layer:'e5',tagline:'The Quiet Flex',desc:'Slim pocket tee, slim chinos, quarter-zip. Minimal, precise and polished.'},
+  'smart-minimal-regular-black' :{top:'t1',bottom:'tr4',layer:'e5',tagline:'Elevated Monochrome',desc:'Clean crew tee, skinny jeans, chunky knit in black. Smart simplicity at its best.'},
+  'smart-bold-regular-colour' :{top:'e6',bottom:'tr1',layer:'e2',tagline:'The Considered Statement',desc:'Oxford shirt under a bomber with slim chinos. Colourful, considered and sharper than it looks.'},
+  'street-bold-oversized-black' :{top:'h2',bottom:'tr2',layer:'e1',tagline:'Street Authority',desc:'Oversized hoodie, wide cargo, puffer jacket. The holy trinity of modern streetwear.'},
+  'street-bold-oversized-earth' :{top:'h3',bottom:'tr2',layer:'e2',tagline:'Urban Explorer',desc:'Earth-toned oversized pieces with utility details. Street credibility meets natural palettes.'},
+  'street-trendy-oversized-colour' :{top:'t6',bottom:'tr2',layer:'e2',tagline:'The Hype Edit',desc:'Graphic tee, wide leg cargos, bomber. Loud, layered and unmistakably current.'},
+  'street-minimal-oversized-black' :{top:'h4',bottom:'tr3',layer:null,tagline:'Black Utility',desc:'Heavyweight oversized hoodie with tapered joggers. Simple, stripped back and strictly for the streets.'},
+  'street-classic-regular-neutral' :{top:'t1',bottom:'tr2',layer:'e3',tagline:'Modern Street Classic',desc:'Crew tee, wide leg cargo and a coach jacket. The silhouette is wide but the look is clean.'},
+  'sport-trendy-relaxed-colour' :{top:'h5',bottom:'tr3',layer:null,tagline:'Active Expression',desc:'Cropped hoodie with tapered joggers. A punchy, athletic silhouette with a fashion edge.'},
+  'sport-classic-regular-neutral' :{top:'e4',bottom:'tr3',layer:null,tagline:'The Performance Classic',desc:'Quarter-zip fleece over tech track pants. Clean, functional and surprisingly stylish.'},
 };
 
 // ═══ CART STATE ═══
@@ -603,6 +573,13 @@ let currentOutfit=null;
 let qvProduct=null;
 let qvSelectedSize='M';
 let qvSelectedColour=0;
+let ANS={};
+
+// ═══ UTILS ═══
+function smoothTo(id){
+  const el=document.getElementById(id);
+  if(el)el.scrollIntoView({behavior:'smooth',block:'start'});
+}
 
 // ═══ RENDER PRODUCTS ═══
 function card(p,isResult=false){
@@ -661,132 +638,106 @@ function changeQty(key,delta){
 }
 
 function updateCartUI(){
-  const total=cart.reduce((s,i)=>s+i.price*i.qty,0);
-  const count=cart.reduce((s,i)=>s+i.qty,0);
-  const countEl=document.getElementById('cartCount');
-  countEl.textContent=count;
-  countEl.classList.toggle('show',count>0);
-  document.getElementById('cartTotal').textContent='£'+total;
   const body=document.getElementById('cartBody');
-  const foot=document.getElementById('cartFoot');
   const empty=document.getElementById('cartEmpty');
+  const foot=document.getElementById('cartFoot');
+  const count=document.getElementById('cartCount');
+  
+  const totalQty=cart.reduce((s,i)=>s+i.qty,0);
+  count.textContent=totalQty;
+  count.className='cart-count'+(totalQty>0?' show':'');
+
   if(cart.length===0){
-    empty.style.display='flex';foot.style.display='none';
-    body.innerHTML='';body.appendChild(empty);
+    empty.style.display='flex';
+    body.innerHTML='';
+    foot.style.display='none';
   } else {
-    empty.style.display='none';foot.style.display='block';
-    body.innerHTML=cart.map(i=>`
-      <div class="cart-item">
-        <img class="ci-img" src="${i.img}" alt="${i.name}" onerror="this.style.background='#222'">
+    empty.style.display='none';
+    foot.style.display='block';
+    let h='',total=0;
+    cart.forEach(i=>{
+      total+=(i.price*i.qty);
+      h+=`<div class="cart-item">
+        <img src="${i.img}" class="ci-img">
         <div class="ci-info">
           <div class="ci-name">${i.name}</div>
           <div class="ci-meta">${i.type} · Size ${i.size}</div>
           <div class="ci-row">
-            <div class="ci-price">£${i.price*i.qty}</div>
             <div class="ci-qty">
-              <button class="qty-btn" onclick="changeQty('${i.key}',-1)">−</button>
-              <span class="qty-num">${i.qty}</span>
+              <button class="qty-btn" onclick="changeQty('${i.key}',-1)">-</button>
+              <div class="qty-num">${i.qty}</div>
               <button class="qty-btn" onclick="changeQty('${i.key}',1)">+</button>
             </div>
+            <div class="ci-price">£${i.price*i.qty}</div>
           </div>
           <button class="ci-remove" onclick="removeFromCart('${i.key}')">Remove</button>
         </div>
-      </div>`).join('');
+      </div>`;
+    });
+    body.innerHTML=h;
+    document.getElementById('cartTotal').textContent='£'+total;
   }
 }
 
-function openCart(){
-  document.getElementById('cartOverlay').classList.add('open');
-  document.getElementById('cartDrawer').classList.add('open');
-  document.body.style.overflow='hidden';
-}
-function closeCart(){
-  document.getElementById('cartOverlay').classList.remove('open');
-  document.getElementById('cartDrawer').classList.remove('open');
-  document.body.style.overflow='';
-}
-function handleCheckout(){
-  if(cart.length===0){toast('Cart is empty','Add some items first');return;}
-  toast('Redirecting...','Taking you to secure checkout');
-  setTimeout(()=>alert('Checkout integration ready!\n\nTotal: £'+cart.reduce((s,i)=>s+i.price*i.qty,0)+'\nItems: '+cart.reduce((s,i)=>s+i.qty,0)),800);
-}
+function openCart(){document.getElementById('cartDrawer').classList.add('open');document.getElementById('cartOverlay').classList.add('open')}
+function closeCart(){document.getElementById('cartDrawer').classList.remove('open');document.getElementById('cartOverlay').classList.remove('open')}
+function handleCheckout(){alert('Checkout integration placeholder — Proceeding to Secure Arkive Portal.');}
 
 // ═══ QUICK VIEW ═══
 function openQV(id){
-  const p=byId(id);
-  if(!p)return;
-  qvProduct=p;
-  qvSelectedSize='M';
-  qvSelectedColour=0;
+  const p=byId(id); if(!p)return;
+  qvProduct=p; qvSelectedSize='M'; qvSelectedColour=0;
   document.getElementById('qvImg').src=p.img;
-  document.getElementById('qvImg').alt=p.name;
-  const badge=document.getElementById('qvBadge');
-  if(p.badge){badge.textContent=p.badge;badge.style.display='block'}else{badge.style.display='none'}
   document.getElementById('qvType').textContent=p.type;
   document.getElementById('qvName').textContent=p.name;
   document.getElementById('qvPrice').textContent='£'+p.price;
   document.getElementById('qvDesc').textContent=p.desc;
-  const sizes=['XS','S','M','L','XL','XXL'];
-  document.getElementById('qvSizes').innerHTML=sizes.map(s=>`<button class="size-opt${s==='M'?' active':''}" onclick="selectSize(this,'${s}')">${s}</button>`).join('');
-  document.getElementById('qvColours').innerHTML=p.colors.map((c,i)=>`<div class="col-opt${i===0?' active':''}" style="background:${c}" onclick="selectColour(this,${i})" title="Colour ${i+1}"></div>`).join('');
+  
+  const b=document.getElementById('qvBadge');
+  if(p.badge){b.textContent=p.badge;b.style.display='block'}else{b.style.display='none'}
+
+  const sz=['S','M','L','XL'];
+  document.getElementById('qvSizes').innerHTML=sz.map(s=>`<button class="size-opt ${s==='M'?'active':''}" onclick="setQVSize('${s}',this)">${s}</button>`).join('');
+  document.getElementById('qvColours').innerHTML=p.colors.map((c,i)=>`<div class="col-opt ${i===0?'active':''}" style="background:${c}" onclick="setQVCol(${i},this)"></div>`).join('');
+  
   document.getElementById('qvOverlay').classList.add('open');
-  document.body.style.overflow='hidden';
 }
-function closeQV(e){if(e.target===document.getElementById('qvOverlay'))closeQVBtn()}
-function closeQVBtn(){
-  document.getElementById('qvOverlay').classList.remove('open');
-  document.body.style.overflow='';
-}
-function selectSize(el,s){
-  document.querySelectorAll('.size-opt').forEach(b=>b.classList.remove('active'));
-  el.classList.add('active');
+function setQVSize(s,btn){
   qvSelectedSize=s;
+  document.querySelectorAll('.size-opt').forEach(o=>o.classList.remove('active'));
+  btn.classList.add('active');
 }
-function selectColour(el,i){
-  document.querySelectorAll('.col-opt').forEach(c=>c.classList.remove('active'));
-  el.classList.add('active');
+function setQVCol(i,btn){
   qvSelectedColour=i;
+  document.querySelectorAll('.col-opt').forEach(o=>o.classList.remove('active'));
+  btn.classList.add('active');
 }
 function addFromQV(){
-  if(!qvProduct)return;
-  addToCart(qvProduct.id,qvSelectedSize);
-  closeQVBtn();
-  openCart();
+  if(qvProduct){addToCart(qvProduct.id,qvSelectedSize);closeQVBtn()}
 }
-function addToWishlist(){
-  if(!qvProduct)return;
-  toast(qvProduct.name,'Saved to your wishlist ♡');
-  closeQVBtn();
-}
+function closeQV(e){if(e.target.id==='qvOverlay')closeQVBtn()}
+function closeQVBtn(){document.getElementById('qvOverlay').classList.remove('open')}
+function addToWishlist(){toast(qvProduct.name,'Saved to your wishlist');}
 
 // ═══ TOAST ═══
 function toast(title,sub){
-  const wrap=document.getElementById('toast-wrap');
+  const w=document.getElementById('toast-wrap');
   const t=document.createElement('div');
   t.className='toast';
   t.innerHTML=`<div class="toast-title">${title}</div><div class="toast-sub">${sub}</div>`;
-  wrap.appendChild(t);
-  requestAnimationFrame(()=>requestAnimationFrame(()=>t.classList.add('show')));
-  setTimeout(()=>{t.classList.remove('show');setTimeout(()=>t.remove(),500)},2800);
+  w.appendChild(t);
+  setTimeout(()=>t.classList.add('show'),10);
+  setTimeout(()=>{t.classList.remove('show');setTimeout(()=>t.remove(),400)},3000);
 }
 
-// ═══ SMOOTH SCROLL ═══
-function smoothTo(id){
-  event.preventDefault&&event.preventDefault();
-  const el=document.getElementById(id);
-  if(el)el.scrollIntoView({behavior:'smooth',block:'start'});
-}
-
-// ═══ BUILDER ═══
-let ANS={};
-
-document.querySelectorAll('.opt').forEach(opt=>{
-  opt.addEventListener('click',()=>{
-    const s=+opt.dataset.s;
-    document.querySelectorAll(`[data-s="${s}"]`).forEach(o=>o.classList.remove('sel'));
-    opt.classList.add('sel');
-    ANS[s]=opt.dataset.v;
-    document.getElementById('nxt'+s).disabled=false;
+// ═══ BUILDER LOGIC ═══
+document.querySelectorAll('.opt').forEach(o=>{
+  o.addEventListener('click',()=>{
+    const step=o.dataset.s;
+    document.querySelectorAll(`.opt[data-s="${step}"]`).forEach(x=>x.classList.remove('sel'));
+    o.classList.add('sel');
+    ANS[step]=o.dataset.v;
+    document.getElementById('nxt'+step).disabled=false;
   });
 });
 
@@ -807,6 +758,7 @@ function goNext(from){
   document.getElementById('bs'+(from+1)).classList.add('active');
   syncDots(from+1);
 }
+
 function goPrev(from){
   document.getElementById('bs'+from).classList.remove('active');
   document.getElementById('bs'+(from-1)).classList.add('active');
@@ -815,17 +767,14 @@ function goPrev(from){
 
 function buildOutfit(){
   const key=`${ANS[1]}-${ANS[2]}-${ANS[3]}-${ANS[4]}`;
-  let outfit=OUTFITS[key];
-  if(!outfit){
-    const k=Object.keys(OUTFITS).find(k=>k.startsWith(ANS[1]+'-'+ANS[2]))||Object.keys(OUTFITS)[0];
-    outfit=OUTFITS[k];
-  }
+  const outfit=OUTFITS[key]||OUTFITS['casual-minimal-oversized-neutral'];
   currentOutfit=outfit;
   const items=[outfit.top,outfit.bottom,outfit.layer].filter(Boolean).map(byId);
-  const total=items.reduce((s,p)=>s+p.price,0);
-  const save=Math.round(total*.1);
+  const total=items.reduce((s,i)=>s+i.price,0);
+  const save=Math.floor(total*0.1);
+
+  document.getElementById('bs4').classList.remove('active');
   [1,2,3,4].forEach(i=>{
-    document.getElementById('bs'+i).classList.remove('active');
     const d=document.getElementById('dot'+i);
     d.className='step-dot done';d.textContent='✓';
     if(i<4)document.getElementById('ln'+i).className='step-line done';
@@ -854,12 +803,10 @@ function resetBuilder(){
   document.getElementById('result-block').style.display='none';
   document.getElementById('bs1').classList.add('active');
   syncDots(1);
-  document.getElementById('builder-section').scrollIntoView({behavior:'smooth'});
 }
 
 // ═══ INIT ═══
 renderAll();
-updateCartUI();
 </script>
 </body>
 </html>
