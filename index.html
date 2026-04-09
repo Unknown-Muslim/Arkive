@@ -8,240 +8,295 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#080808;--bg2:#0f0f0f;--bg3:#171717;--bg4:#1d1d1d;
-  --text:#f0ece4;--muted:#7a766f;--faint:#2e2b27;
-  --gold:#c8a96e;--gold2:#e6d09a;--goldBg:rgba(200,169,110,0.07);
-  --border:rgba(240,236,228,0.06);--border2:rgba(240,236,228,0.12);--border3:rgba(240,236,228,0.22);
+  --bg:#060606;--bg2:#0d0d0d;--bg3:#141414;--bg4:#1a1a1a;
+  --text:#ede9e1;--muted:#7a756e;--faint:#252220;
+  --gold:#c9a96d;--gold2:#e8d49a;--goldBg:rgba(201,169,109,0.07);
+  --border:rgba(237,233,225,0.055);--border2:rgba(237,233,225,0.11);--border3:rgba(237,233,225,0.2);
+  --radius:0px;
 }
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.6;overflow-x:hidden}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.65;overflow-x:hidden}
 img{display:block;max-width:100%}
-a{text-decoration:none}
+a{text-decoration:none;color:inherit}
 button{cursor:pointer;font-family:'DM Sans',sans-serif}
 
-/* ═══ NAV ═══ */
-nav{position:fixed;top:0;left:0;right:0;z-index:300;display:flex;align-items:center;justify-content:space-between;padding:0 52px;height:68px;background:rgba(8,8,8,0.94);backdrop-filter:blur(18px);border-bottom:1px solid var(--border);transition:border-color .3s}
-.nav-logo{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:300;letter-spacing:.35em;color:var(--text)}
-.nav-links{display:flex;gap:32px;list-style:none}
-.nav-links a{color:var(--muted);font-size:11px;letter-spacing:.16em;text-transform:uppercase;transition:color .2s}
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:300;display:flex;align-items:center;justify-content:space-between;padding:0 56px;height:70px;background:rgba(6,6,6,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300;letter-spacing:.55em;color:var(--text);text-transform:uppercase}
+.nav-links{display:flex;gap:34px;list-style:none}
+.nav-links a{color:var(--muted);font-size:10px;letter-spacing:.2em;text-transform:uppercase;transition:color .25s}
 .nav-links a:hover{color:var(--text)}
-.nav-right{display:flex;align-items:center;gap:16px}
-.cart-btn{position:relative;background:none;border:1px solid var(--border2);color:var(--text);width:42px;height:42px;display:flex;align-items:center;justify-content:center;font-size:16px;transition:border-color .2s}
+.nav-right{display:flex;align-items:center;gap:14px}
+.cart-btn{position:relative;background:none;border:1px solid var(--border2);color:var(--muted);width:40px;height:40px;display:flex;align-items:center;justify-content:center;font-size:15px;transition:all .25s}
 .cart-btn:hover{border-color:var(--gold);color:var(--gold)}
-.cart-count{position:absolute;top:-6px;right:-6px;background:var(--gold);color:#080808;font-size:9px;font-weight:700;width:18px;height:18px;border-radius:50%;display:none;align-items:center;justify-content:center;letter-spacing:0}
+.cart-count{position:absolute;top:-5px;right:-5px;background:var(--gold);color:#060606;font-size:8px;font-weight:700;width:17px;height:17px;border-radius:50%;display:none;align-items:center;justify-content:center}
 .cart-count.show{display:flex}
-.nav-cta{background:var(--gold);color:#080808;padding:10px 24px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;transition:background .2s;border:none;white-space:nowrap}
-.nav-cta:hover{background:var(--gold2)}
-@media(max-width:900px){.nav-links{display:none}}
-@media(max-width:600px){nav{padding:0 18px}}
+.nav-cta{background:transparent;border:1px solid var(--gold);color:var(--gold);padding:9px 22px;font-size:10px;letter-spacing:.2em;text-transform:uppercase;transition:all .25s}
+.nav-cta:hover{background:var(--gold);color:#060606}
+@media(max-width:960px){.nav-links{display:none}}
+@media(max-width:600px){nav{padding:0 20px}}
 
-/* ═══ HERO ═══ */
-.hero{height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden;padding:0 24px}
-.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 90% 70% at 55% 45%,#1c1408 0%,var(--bg) 68%)}
-.hero-grid{position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:80px 80px;mask-image:radial-gradient(ellipse 65% 65% at 50% 50%,black 0%,transparent 80%)}
-.hero-eyebrow{position:relative;font-size:10px;letter-spacing:.4em;text-transform:uppercase;color:var(--gold);margin-bottom:28px;animation:fadeUp .9s ease both}
-.hero h1{position:relative;font-family:'Cormorant Garamond',serif;font-size:clamp(68px,10.5vw,144px);font-weight:300;line-height:.92;letter-spacing:-.02em;margin-bottom:36px;animation:fadeUp .9s .1s ease both}
-.hero h1 em{font-style:italic;color:var(--gold)}
-.hero-sub{position:relative;font-size:15px;color:var(--muted);max-width:400px;margin-bottom:52px;line-height:1.75;animation:fadeUp .9s .2s ease both}
-.hero-actions{position:relative;display:flex;gap:14px;flex-wrap:wrap;justify-content:center;animation:fadeUp .9s .3s ease both}
-.btn-primary{background:var(--gold);color:#080808;padding:14px 40px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;display:inline-block;transition:all .2s;border:none}
-.btn-primary:hover{background:var(--gold2);transform:translateY(-1px)}
-.btn-outline{border:1px solid var(--border3);color:var(--text);padding:14px 40px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;display:inline-block;transition:all .2s;background:none}
-.btn-outline:hover{border-color:var(--gold);color:var(--gold)}
-.hero-scroll{position:absolute;bottom:36px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:10px;color:var(--muted);font-size:9px;letter-spacing:.25em;text-transform:uppercase;animation:fadeUp .9s .7s ease both}
-.scroll-line{width:1px;height:44px;background:linear-gradient(to bottom,var(--gold),transparent);animation:scrollPulse 2.2s ease-in-out infinite}
+/* ── HERO ── */
+.hero{height:100vh;min-height:700px;position:relative;overflow:hidden;display:flex;align-items:flex-end}
+.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;filter:brightness(.55)}
+.hero-veil{position:absolute;inset:0;background:linear-gradient(to top,rgba(6,6,6,.98) 0%,rgba(6,6,6,.45) 45%,rgba(6,6,6,.1) 100%)}
+.hero-veil2{position:absolute;inset:0;background:linear-gradient(105deg,rgba(6,6,6,.55) 0%,transparent 60%)}
+.hero-content{position:relative;z-index:2;padding:0 56px 88px;max-width:780px}
+.hero-season{display:flex;align-items:center;gap:16px;margin-bottom:28px;animation:fadeUp .9s ease both}
+.hero-season-line{width:32px;height:1px;background:var(--gold)}
+.hero-season span{font-size:9px;letter-spacing:.4em;text-transform:uppercase;color:var(--gold)}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(58px,8.5vw,124px);font-weight:300;line-height:.9;letter-spacing:-.02em;margin-bottom:28px;animation:fadeUp .9s .1s ease both}
+.hero h1 em{font-style:italic;color:var(--gold);display:block}
+.hero-sub{font-size:15px;color:rgba(237,233,225,.55);max-width:420px;margin-bottom:44px;line-height:1.8;animation:fadeUp .9s .2s ease both}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;animation:fadeUp .9s .3s ease both}
+.btn-primary{background:var(--gold);color:#060606;padding:14px 38px;font-size:10px;letter-spacing:.2em;text-transform:uppercase;border:none;transition:all .25s}
+.btn-primary:hover{background:var(--gold2);transform:translateY(-2px)}
+.btn-ghost{border:1px solid rgba(237,233,225,.25);color:var(--text);padding:14px 38px;font-size:10px;letter-spacing:.2em;text-transform:uppercase;background:none;transition:all .25s}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+.hero-scroll{position:absolute;right:52px;bottom:88px;z-index:2;display:flex;flex-direction:column;align-items:center;gap:10px;animation:fadeUp 1s .8s ease both}
+.scroll-label{font-size:8px;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);writing-mode:vertical-rl}
+.scroll-line{width:1px;height:52px;background:linear-gradient(to bottom,var(--gold),transparent);animation:scrollPulse 2.4s ease-in-out infinite}
+@media(max-width:600px){.hero-content{padding:0 20px 72px}.hero-scroll{display:none}}
 
-/* ═══ MARQUEE ═══ */
-.marquee-wrap{padding:20px 0;overflow:hidden;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
-.marquee-track{display:flex;animation:marquee 30s linear infinite;width:max-content}
-.m-item{font-family:'Cormorant Garamond',serif;font-size:25px;font-weight:300;font-style:italic;color:var(--faint);white-space:nowrap;padding:0 44px}
-.m-item .dot{color:var(--gold);font-style:normal;font-family:'DM Sans',sans-serif;font-size:11px;margin:0 14px;vertical-align:middle}
+/* ── STATS BAR ── */
+.stats-bar{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--border)}
+.stat{padding:32px 40px;border-right:1px solid var(--border);text-align:center}
+.stat:last-child{border-right:none}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:300;color:var(--gold);line-height:1;margin-bottom:6px}
+.stat-label{font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+@media(max-width:700px){.stats-bar{grid-template-columns:1fr 1fr}.stat{border-right:none;border-bottom:1px solid var(--border)}}
 
-/* ═══ SECTIONS ═══ */
-.cat-section{padding:96px 52px}
-@media(max-width:600px){.cat-section{padding:60px 18px}}
+/* ── MARQUEE ── */
+.marquee-wrap{padding:18px 0;overflow:hidden;border-bottom:1px solid var(--border)}
+.marquee-track{display:flex;animation:marquee 32s linear infinite;width:max-content}
+.m-item{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300;font-style:italic;color:var(--faint);white-space:nowrap;padding:0 42px}
+.m-item .dot{color:var(--gold);font-style:normal;font-family:'DM Sans',sans-serif;font-size:10px;margin:0 12px;vertical-align:middle;opacity:.8}
+
+/* ── EDITORIAL SPLIT ── */
+.editorial{display:grid;grid-template-columns:1fr 1fr;min-height:600px}
+.editorial-img{position:relative;overflow:hidden}
+.editorial-img img{width:100%;height:100%;object-fit:cover;object-position:top center;transition:transform .8s ease}
+.editorial:hover .editorial-img img{transform:scale(1.03)}
+.editorial-img-overlay{position:absolute;inset:0;background:linear-gradient(to right,transparent 60%,var(--bg) 100%)}
+.editorial-body{padding:80px 64px;display:flex;flex-direction:column;justify-content:center;background:var(--bg2)}
+.editorial-tag{font-size:8px;letter-spacing:.4em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;display:flex;align-items:center;gap:12px}
+.editorial-tag::before{content:'';width:24px;height:1px;background:var(--gold)}
+.editorial-h{font-family:'Cormorant Garamond',serif;font-size:clamp(36px,4vw,56px);font-weight:300;line-height:1.05;margin-bottom:20px}
+.editorial-h em{font-style:italic;color:var(--gold)}
+.editorial-p{font-size:13px;color:var(--muted);line-height:1.85;max-width:380px;margin-bottom:36px}
+.editorial-link{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--text);display:inline-flex;align-items:center;gap:10px;border-bottom:1px solid var(--border2);padding-bottom:4px;transition:all .25s;background:none;border-top:none;border-left:none;border-right:none}
+.editorial-link:hover{color:var(--gold);border-bottom-color:var(--gold)}
+@media(max-width:800px){.editorial{grid-template-columns:1fr}.editorial-img{height:380px}.editorial-body{padding:52px 24px}}
+
+/* ── SECTIONS ── */
+.cat-section{padding:100px 56px}
+@media(max-width:600px){.cat-section{padding:64px 20px}}
 .cat-section+.cat-section{border-top:1px solid var(--border)}
-.section-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:52px;gap:24px;flex-wrap:wrap}
-.eyebrow{font-size:9px;letter-spacing:.35em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
-.sec-title{font-family:'Cormorant Garamond',serif;font-size:clamp(38px,5.5vw,62px);font-weight:300;line-height:1.05}
+.section-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:56px;gap:24px;flex-wrap:wrap}
+.eyebrow{font-size:8px;letter-spacing:.4em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.eyebrow::before{content:'';width:18px;height:1px;background:var(--gold)}
+.sec-title{font-family:'Cormorant Garamond',serif;font-size:clamp(40px,5.5vw,64px);font-weight:300;line-height:1}
 .sec-title em{font-style:italic;color:var(--gold)}
-.view-all-btn{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--border2);padding-bottom:2px;transition:all .2s;background:none;border-top:none;border-left:none;border-right:none}
+.view-all-btn{font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);background:none;border:none;border-bottom:1px solid var(--border2);padding-bottom:3px;transition:all .25s;cursor:pointer}
 .view-all-btn:hover{color:var(--gold);border-bottom-color:var(--gold)}
 
-/* ═══ PRODUCT GRID ═══ */
-.product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(265px,1fr));gap:2px}
-.product-card{background:var(--bg2);position:relative;overflow:hidden;transition:transform .35s ease}
-.product-card:hover{transform:translateY(-5px)}
-.product-img-wrap{position:relative;padding-top:118%;overflow:hidden;background:var(--bg3)}
-.product-img-wrap img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center;transition:transform .6s ease}
-.product-card:hover .product-img-wrap img{transform:scale(1.04)}
-.product-overlay{position:absolute;inset:0;background:rgba(8,8,8,.42);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .3s}
+/* ── PRODUCT GRID ── */
+.product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:2px}
+.product-card{background:var(--bg2);position:relative;overflow:hidden;transition:transform .4s cubic-bezier(.25,.46,.45,.94)}
+.product-card:hover{transform:translateY(-6px)}
+.product-img-wrap{position:relative;padding-top:122%;overflow:hidden;background:var(--bg3)}
+.product-img-wrap img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center;transition:transform .7s cubic-bezier(.25,.46,.45,.94)}
+.product-card:hover .product-img-wrap img{transform:scale(1.06)}
+/* shine effect */
+.product-img-wrap::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.06) 0%,transparent 50%);opacity:0;transition:opacity .35s;pointer-events:none}
+.product-card:hover .product-img-wrap::after{opacity:1}
+.product-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(6,6,6,.7) 0%,transparent 60%);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .3s}
 .product-card:hover .product-overlay{opacity:1}
-.qv-trigger{background:rgba(200,169,110,.92);color:#080808;padding:10px 26px;font-size:10px;letter-spacing:.16em;text-transform:uppercase;border:none;cursor:pointer;font-family:'DM Sans',sans-serif}
-.product-badge{position:absolute;top:14px;left:14px;background:var(--gold);color:#080808;font-size:8px;letter-spacing:.16em;text-transform:uppercase;padding:5px 11px;z-index:1}
-.product-info{padding:20px 20px 24px}
-.p-type{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
-.p-name{font-family:'Cormorant Garamond',serif;font-size:21px;font-weight:400;color:var(--text);margin-bottom:8px;line-height:1.2}
-.p-desc{font-size:11.5px;color:var(--muted);margin-bottom:16px;line-height:1.55}
+.qv-trigger{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) translateY(8px);background:rgba(201,169,109,.95);color:#060606;padding:10px 26px;font-size:9px;letter-spacing:.2em;text-transform:uppercase;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;transition:transform .3s,opacity .3s;opacity:0}
+.product-card:hover .qv-trigger{opacity:1;transform:translate(-50%,-50%) translateY(0)}
+.product-badge{position:absolute;top:16px;left:16px;background:var(--gold);color:#060606;font-size:7px;letter-spacing:.18em;text-transform:uppercase;padding:5px 12px;z-index:2;font-weight:500}
+.product-badge.prem{background:transparent;border:1px solid var(--gold);color:var(--gold)}
+.product-info{padding:22px 22px 26px;border-top:1px solid var(--border)}
+.p-type{font-size:8px;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:7px}
+.p-name{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;color:var(--text);margin-bottom:7px;line-height:1.2}
+.p-desc{font-size:11px;color:var(--muted);margin-bottom:18px;line-height:1.6}
 .p-footer{display:flex;align-items:center;justify-content:space-between}
-.p-price{font-family:'Cormorant Garamond',serif;font-size:24px;color:var(--text)}
-.swatches{display:flex;gap:6px}
-.sw{width:13px;height:13px;border-radius:50%;border:1px solid var(--border2)}
-.add-cart-btn{position:absolute;bottom:0;left:0;right:0;background:var(--gold);color:#080808;border:none;padding:13px;font-size:10px;letter-spacing:.16em;text-transform:uppercase;transform:translateY(100%);transition:transform .3s ease}
+.p-price{font-family:'Cormorant Garamond',serif;font-size:26px;color:var(--text)}
+.swatches{display:flex;gap:5px}
+.sw{width:12px;height:12px;border-radius:50%;border:1px solid rgba(255,255,255,.08)}
+.add-cart-btn{position:absolute;bottom:0;left:0;right:0;background:var(--gold);color:#060606;border:none;padding:14px;font-size:9px;letter-spacing:.2em;text-transform:uppercase;transform:translateY(100%);transition:transform .35s cubic-bezier(.25,.46,.45,.94);font-weight:500}
 .product-card:hover .add-cart-btn{transform:translateY(0)}
 
-/* ═══ CART DRAWER ═══ */
-.cart-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:400;opacity:0;pointer-events:none;transition:opacity .35s}
+/* ── FEATURE STRIP ── */
+.feature-strip{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.feature-block{padding:56px 48px;position:relative}
+.feature-block+.feature-block{border-left:1px solid var(--border)}
+.feature-num{font-family:'Cormorant Garamond',serif;font-size:72px;font-weight:300;color:var(--faint);line-height:1;margin-bottom:-10px}
+.feature-h{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:300;color:var(--text);margin-bottom:12px}
+.feature-p{font-size:12px;color:var(--muted);line-height:1.75;max-width:260px}
+@media(max-width:800px){.feature-strip{grid-template-columns:1fr}.feature-block+.feature-block{border-left:none;border-top:1px solid var(--border)}}
+@media(max-width:600px){.feature-block{padding:40px 20px}}
+
+/* ── CART DRAWER ── */
+.cart-overlay{position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:400;opacity:0;pointer-events:none;transition:opacity .35s}
 .cart-overlay.open{opacity:1;pointer-events:all}
-.cart-drawer{position:fixed;top:0;right:0;bottom:0;width:420px;max-width:100vw;background:var(--bg2);z-index:401;transform:translateX(100%);transition:transform .4s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;border-left:1px solid var(--border)}
+.cart-drawer{position:fixed;top:0;right:0;bottom:0;width:420px;max-width:100vw;background:var(--bg2);z-index:401;transform:translateX(100%);transition:transform .42s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;border-left:1px solid var(--border)}
 .cart-drawer.open{transform:translateX(0)}
-.cart-head{display:flex;align-items:center;justify-content:space-between;padding:28px 28px 20px;border-bottom:1px solid var(--border)}
-.cart-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300;letter-spacing:.05em}
+.cart-head{display:flex;align-items:center;justify-content:space-between;padding:28px 28px 22px;border-bottom:1px solid var(--border)}
+.cart-title{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:300;letter-spacing:.04em}
 .cart-close{background:none;border:1px solid var(--border2);color:var(--muted);width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:16px;transition:all .2s}
 .cart-close:hover{border-color:var(--border3);color:var(--text)}
 .cart-body{flex:1;overflow-y:auto;padding:20px 28px}
 .cart-empty{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:16px;color:var(--muted);text-align:center}
-.cart-empty-icon{font-size:40px;opacity:.3}
-.cart-empty p{font-size:13px;line-height:1.6}
-.cart-item{display:flex;gap:14px;padding:16px 0;border-bottom:1px solid var(--border)}
+.cart-empty-icon{font-size:36px;opacity:.2}
+.cart-empty p{font-size:13px;line-height:1.65;color:var(--muted)}
+.cart-item{display:flex;gap:14px;padding:18px 0;border-bottom:1px solid var(--border)}
 .cart-item:last-child{border-bottom:none}
-.ci-img{width:70px;height:84px;object-fit:cover;object-position:top;flex-shrink:0;background:var(--bg3)}
+.ci-img{width:68px;height:82px;object-fit:cover;object-position:top;flex-shrink:0;background:var(--bg3)}
 .ci-info{flex:1;min-width:0}
 .ci-name{font-family:'Cormorant Garamond',serif;font-size:17px;margin-bottom:3px;color:var(--text)}
-.ci-meta{font-size:11px;color:var(--muted);margin-bottom:8px}
+.ci-meta{font-size:10px;color:var(--muted);margin-bottom:10px;letter-spacing:.06em}
 .ci-row{display:flex;align-items:center;justify-content:space-between}
 .ci-price{font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--text)}
-.ci-qty{display:flex;align-items:center;gap:0;border:1px solid var(--border)}
-.qty-btn{background:none;border:none;color:var(--muted);width:28px;height:28px;font-size:14px;display:flex;align-items:center;justify-content:center;transition:all .2s}
+.ci-qty{display:flex;align-items:center;border:1px solid var(--border)}
+.qty-btn{background:none;border:none;color:var(--muted);width:28px;height:28px;font-size:13px;display:flex;align-items:center;justify-content:center;transition:color .2s}
 .qty-btn:hover{color:var(--text)}
-.qty-num{width:28px;text-align:center;font-size:13px;color:var(--text);border-left:1px solid var(--border);border-right:1px solid var(--border);height:28px;display:flex;align-items:center;justify-content:center}
-.ci-remove{background:none;border:none;color:var(--muted);font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:0;margin-top:8px;transition:color .2s}
+.qty-num{width:28px;text-align:center;font-size:12px;color:var(--text);border-left:1px solid var(--border);border-right:1px solid var(--border);height:28px;display:flex;align-items:center;justify-content:center}
+.ci-remove{background:none;border:none;color:var(--muted);font-size:10px;letter-spacing:.14em;text-transform:uppercase;padding:0;margin-top:8px;transition:color .2s}
 .ci-remove:hover{color:var(--gold)}
-.cart-foot{padding:20px 28px 28px;border-top:1px solid var(--border)}
+.cart-foot{padding:22px 28px 30px;border-top:1px solid var(--border)}
 .cart-sub{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px}
-.sub-label{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted)}
-.sub-price{font-family:'Cormorant Garamond',serif;font-size:28px;color:var(--text)}
-.cart-note{font-size:11px;color:var(--muted);margin-bottom:20px;line-height:1.5}
-.checkout-btn{width:100%;background:var(--gold);color:#080808;border:none;padding:16px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;transition:background .2s;margin-bottom:10px}
+.sub-label{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.sub-price{font-family:'Cormorant Garamond',serif;font-size:30px;color:var(--text)}
+.cart-note{font-size:11px;color:var(--muted);margin-bottom:22px;line-height:1.55}
+.checkout-btn{width:100%;background:var(--gold);color:#060606;border:none;padding:16px;font-size:10px;letter-spacing:.2em;text-transform:uppercase;transition:background .2s;margin-bottom:10px;font-weight:500}
 .checkout-btn:hover{background:var(--gold2)}
-.continue-btn{width:100%;background:none;border:1px solid var(--border2);color:var(--muted);padding:13px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;transition:all .2s}
+.continue-btn{width:100%;background:none;border:1px solid var(--border2);color:var(--muted);padding:13px;font-size:10px;letter-spacing:.18em;text-transform:uppercase;transition:all .2s}
 .continue-btn:hover{border-color:var(--border3);color:var(--text)}
 
-/* ═══ QUICK VIEW MODAL ═══ */
-.qv-overlay{position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:500;opacity:0;pointer-events:none;transition:opacity .3s;display:flex;align-items:center;justify-content:center;padding:24px}
+/* ── QUICK VIEW ── */
+.qv-overlay{position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:500;opacity:0;pointer-events:none;transition:opacity .3s;display:flex;align-items:center;justify-content:center;padding:20px}
 .qv-overlay.open{opacity:1;pointer-events:all}
-.qv-modal{background:var(--bg2);border:1px solid var(--border);width:100%;max-width:860px;max-height:90vh;overflow-y:auto;display:grid;grid-template-columns:1fr 1fr;transform:translateY(20px) scale(.97);transition:transform .35s;border-radius:0}
+.qv-modal{background:var(--bg2);border:1px solid var(--border);width:100%;max-width:880px;max-height:92vh;overflow-y:auto;display:grid;grid-template-columns:1fr 1fr;transform:translateY(16px) scale(.975);transition:transform .35s cubic-bezier(.25,.46,.45,.94)}
 .qv-overlay.open .qv-modal{transform:translateY(0) scale(1)}
-@media(max-width:700px){.qv-modal{grid-template-columns:1fr}}
-.qv-img-wrap{position:relative;padding-top:0;height:520px;overflow:hidden;background:var(--bg3)}
-@media(max-width:700px){.qv-img-wrap{height:300px}}
+@media(max-width:680px){.qv-modal{grid-template-columns:1fr}}
+.qv-img-wrap{position:relative;height:540px;overflow:hidden;background:var(--bg3)}
+@media(max-width:680px){.qv-img-wrap{height:280px}}
 .qv-img-wrap img{width:100%;height:100%;object-fit:cover;object-position:top center}
-.qv-badge{position:absolute;top:16px;left:16px;background:var(--gold);color:#080808;font-size:8px;letter-spacing:.16em;text-transform:uppercase;padding:5px 11px}
-.qv-close{position:absolute;top:14px;right:14px;background:rgba(8,8,8,.8);border:1px solid var(--border2);color:var(--text);width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:18px;z-index:1;cursor:pointer;transition:all .2s}
-.qv-close:hover{background:var(--bg);border-color:var(--gold);color:var(--gold)}
-.qv-info{padding:36px 32px;display:flex;flex-direction:column;gap:0}
-.qv-type{font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
-.qv-name{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:300;color:var(--text);line-height:1.15;margin-bottom:14px}
-.qv-price{font-family:'Cormorant Garamond',serif;font-size:30px;color:var(--text);margin-bottom:20px}
-.qv-desc{font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:28px;border-bottom:1px solid var(--border);padding-bottom:24px}
-.picker-label{font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;display:flex;align-items:center;justify-content:space-between}
-.size-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}
-.size-opt{border:1px solid var(--border);color:var(--muted);background:none;padding:9px 14px;font-size:12px;letter-spacing:.08em;transition:all .2s;cursor:pointer;font-family:'DM Sans',sans-serif}
+.qv-badge-modal{position:absolute;top:16px;left:16px;background:var(--gold);color:#060606;font-size:7px;letter-spacing:.18em;text-transform:uppercase;padding:5px 11px;font-weight:500}
+.qv-close{position:absolute;top:14px;right:14px;background:rgba(6,6,6,.85);border:1px solid var(--border2);color:var(--text);width:34px;height:34px;display:flex;align-items:center;justify-content:center;font-size:16px;z-index:1;cursor:pointer;transition:all .2s}
+.qv-close:hover{border-color:var(--gold);color:var(--gold)}
+.qv-info{padding:40px 34px;display:flex;flex-direction:column}
+.qv-type{font-size:8px;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+.qv-name{font-family:'Cormorant Garamond',serif;font-size:34px;font-weight:300;color:var(--text);line-height:1.1;margin-bottom:12px}
+.qv-price{font-family:'Cormorant Garamond',serif;font-size:28px;color:var(--text);margin-bottom:22px}
+.qv-desc{font-size:13px;color:var(--muted);line-height:1.75;margin-bottom:28px;border-bottom:1px solid var(--border);padding-bottom:26px}
+.picker-label{font-size:8px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+.size-row{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:24px}
+.size-opt{border:1px solid var(--border);color:var(--muted);background:none;padding:9px 13px;font-size:11px;letter-spacing:.06em;transition:all .2s;cursor:pointer;font-family:'DM Sans',sans-serif}
 .size-opt:hover{border-color:var(--border2);color:var(--text)}
 .size-opt.active{border-color:var(--gold);color:var(--gold);background:var(--goldBg)}
-.colour-row{display:flex;gap:8px;margin-bottom:28px}
-.col-opt{width:28px;height:28px;border-radius:50%;border:2px solid transparent;cursor:pointer;transition:border-color .2s;position:relative}
+.colour-row{display:flex;gap:9px;margin-bottom:30px}
+.col-opt{width:26px;height:26px;border-radius:50%;border:2px solid transparent;cursor:pointer;transition:all .2s;position:relative}
 .col-opt.active{border-color:var(--gold)}
-.col-opt.active::after{content:'';position:absolute;inset:-4px;border-radius:50%;border:1px solid var(--gold);opacity:.5}
-.qv-add-btn{width:100%;background:var(--gold);color:#080808;border:none;padding:16px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;transition:background .2s;margin-bottom:10px}
+.col-opt.active::after{content:'';position:absolute;inset:-4px;border-radius:50%;border:1px solid rgba(201,169,109,.4)}
+.qv-add-btn{width:100%;background:var(--gold);color:#060606;border:none;padding:16px;font-size:10px;letter-spacing:.2em;text-transform:uppercase;transition:background .2s;margin-bottom:10px;font-weight:500}
 .qv-add-btn:hover{background:var(--gold2)}
-.qv-wishlist-btn{width:100%;background:none;border:1px solid var(--border2);color:var(--muted);padding:13px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;transition:all .2s}
+.qv-wishlist-btn{width:100%;background:none;border:1px solid var(--border2);color:var(--muted);padding:13px;font-size:10px;letter-spacing:.18em;text-transform:uppercase;transition:all .2s}
 .qv-wishlist-btn:hover{border-color:var(--border3);color:var(--text)}
 
-/* ═══ TOAST ═══ */
-#toast-wrap{position:fixed;bottom:32px;right:32px;z-index:600;display:flex;flex-direction:column;gap:10px;pointer-events:none}
-.toast{background:var(--bg3);border:1px solid var(--border2);border-left:3px solid var(--gold);color:var(--text);padding:14px 20px;font-size:13px;min-width:280px;transform:translateX(120%);transition:transform .4s cubic-bezier(.4,0,.2,1);pointer-events:none}
+/* ── TOAST ── */
+#toast-wrap{position:fixed;bottom:30px;right:30px;z-index:600;display:flex;flex-direction:column;gap:10px;pointer-events:none}
+.toast{background:var(--bg3);border:1px solid var(--border2);border-left:2px solid var(--gold);color:var(--text);padding:14px 20px;font-size:13px;min-width:270px;transform:translateX(110%);transition:transform .42s cubic-bezier(.25,.46,.45,.94)}
 .toast.show{transform:translateX(0)}
 .toast-title{font-weight:500;margin-bottom:2px;font-size:13px}
 .toast-sub{font-size:11px;color:var(--muted)}
 
-/* ═══ OUTFIT BUILDER ═══ */
-#builder-section{background:var(--bg2);padding:96px 52px;position:relative;overflow:hidden}
-#builder-section::before{content:'';position:absolute;top:-250px;right:-250px;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(200,169,110,.035) 0%,transparent 70%);pointer-events:none}
-@media(max-width:600px){#builder-section{padding:60px 18px}}
-.builder-wrap{max-width:860px;margin:0 auto}
-.builder-intro{margin-bottom:52px}
-.builder-intro p{color:var(--muted);font-size:14px;margin-top:14px;max-width:500px;line-height:1.7}
-.steps-row{display:flex;align-items:center;margin-bottom:12px}
-.step-dot{width:34px;height:34px;border-radius:50%;border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--muted);transition:all .35s;flex-shrink:0}
-.step-dot.active{background:var(--gold);border-color:var(--gold);color:#080808;font-weight:500}
+/* ── OUTFIT BUILDER ── */
+#builder-section{background:var(--bg2);padding:100px 56px;position:relative;overflow:hidden;border-top:1px solid var(--border)}
+#builder-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 50% at 80% 50%,rgba(201,169,109,.03) 0%,transparent 70%);pointer-events:none}
+@media(max-width:600px){#builder-section{padding:64px 20px}}
+.builder-wrap{max-width:880px;margin:0 auto}
+.builder-intro{margin-bottom:56px}
+.builder-intro p{color:var(--muted);font-size:14px;margin-top:16px;max-width:500px;line-height:1.8}
+.steps-row{display:flex;align-items:center;margin-bottom:10px}
+.step-dot{width:32px;height:32px;border-radius:50%;border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--muted);transition:all .35s;flex-shrink:0}
+.step-dot.active{background:var(--gold);border-color:var(--gold);color:#060606;font-weight:500}
 .step-dot.done{border-color:var(--gold);color:var(--gold)}
 .step-line{flex:1;height:1px;background:var(--border);transition:background .35s}
 .step-line.done{background:var(--gold)}
-.lbl-row{display:flex;justify-content:space-between;margin-bottom:44px}
-.slbl{font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);transition:color .35s;flex:1;text-align:center}
+.lbl-row{display:flex;justify-content:space-between;margin-bottom:48px}
+.slbl{font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);transition:color .35s;flex:1;text-align:center}
 .slbl.active,.slbl.done{color:var(--gold)}
 .slbl:first-child{text-align:left}
 .slbl:last-child{text-align:right}
 .builder-step{display:none}
 .builder-step.active{display:block}
-.step-q{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,4vw,48px);font-weight:300;line-height:1.1;margin-bottom:8px}
-.step-hint{font-size:13px;color:var(--muted);margin-bottom:40px;line-height:1.6}
-.opts-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(188px,1fr));gap:10px;margin-bottom:40px}
-.opt{border:1px solid var(--border);padding:26px 20px;cursor:pointer;transition:all .22s;position:relative;background:transparent}
-.opt:hover{border-color:var(--border2);background:var(--bg3)}
-.opt.sel{border-color:var(--gold);background:var(--goldBg)}
-.opt-icon{font-size:24px;margin-bottom:14px;line-height:1}
-.opt-label{font-family:'Cormorant Garamond',serif;font-size:21px;color:var(--text);margin-bottom:6px}
-.opt-desc{font-size:11px;color:var(--muted);line-height:1.45}
-.opt-tick{position:absolute;top:12px;right:12px;width:20px;height:20px;border-radius:50%;background:var(--gold);color:#080808;font-size:11px;display:none;align-items:center;justify-content:center}
+.step-q{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,4vw,50px);font-weight:300;line-height:1.1;margin-bottom:8px}
+.step-hint{font-size:13px;color:var(--muted);margin-bottom:40px;line-height:1.65}
+.opts-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(192px,1fr));gap:2px;margin-bottom:40px}
+.opt{border:none;outline:1px solid var(--border);padding:28px 22px;cursor:pointer;transition:all .25s;position:relative;background:var(--bg3)}
+.opt:hover{outline-color:var(--border2);background:var(--bg4)}
+.opt.sel{outline:1px solid var(--gold);background:var(--goldBg)}
+.opt-icon{font-size:22px;margin-bottom:16px;line-height:1;color:var(--muted)}
+.opt.sel .opt-icon{color:var(--gold)}
+.opt-label{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--text);margin-bottom:6px}
+.opt-desc{font-size:11px;color:var(--muted);line-height:1.5}
+.opt-tick{position:absolute;top:14px;right:14px;width:18px;height:18px;border-radius:50%;background:var(--gold);color:#060606;font-size:10px;display:none;align-items:center;justify-content:center;font-weight:700}
 .opt.sel .opt-tick{display:flex}
-.col-row{display:flex;gap:7px;margin-bottom:14px}
-.col-pip{width:17px;height:17px;border-radius:50%}
+.col-row{display:flex;gap:6px;margin-bottom:14px}
+.col-pip{width:16px;height:16px;border-radius:50%}
 .step-nav{display:flex;align-items:center;justify-content:space-between}
-.btn-back{background:none;border:1px solid var(--border);color:var(--muted);padding:12px 26px;font-size:10px;letter-spacing:.16em;text-transform:uppercase;transition:all .2s}
+.btn-back{background:none;border:1px solid var(--border);color:var(--muted);padding:12px 26px;font-size:9px;letter-spacing:.2em;text-transform:uppercase;transition:all .25s}
 .btn-back:hover{border-color:var(--border2);color:var(--text)}
-.btn-next{background:var(--gold);color:#080808;border:none;padding:14px 42px;font-size:10px;letter-spacing:.16em;text-transform:uppercase;transition:all .2s}
+.btn-next{background:var(--gold);color:#060606;border:none;padding:14px 42px;font-size:9px;letter-spacing:.2em;text-transform:uppercase;transition:all .25s;font-weight:500}
 .btn-next:hover:not(:disabled){background:var(--gold2)}
-.btn-next:disabled{opacity:.35;cursor:not-allowed}
-#result-block{display:none}
-.result-hero{text-align:center;margin-bottom:48px}
-.result-tagline{font-family:'Cormorant Garamond',serif;font-size:clamp(24px,3.5vw,42px);font-style:italic;color:var(--gold);margin-bottom:14px;line-height:1.2}
-.result-desc{font-size:14px;color:var(--muted);max-width:460px;margin:0 auto;line-height:1.75}
-.result-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:2px;margin-bottom:40px}
-.result-total{display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:22px 0;margin-bottom:30px;flex-wrap:wrap;gap:12px}
-.total-label{font-size:9px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:5px}
+.btn-next:disabled{opacity:.3;cursor:not-allowed}
+#result-block{display:none;padding-top:8px}
+.result-hero{text-align:center;margin-bottom:52px}
+.result-tagline{font-family:'Cormorant Garamond',serif;font-size:clamp(26px,3.8vw,46px);font-style:italic;color:var(--gold);margin-bottom:14px;line-height:1.2}
+.result-desc{font-size:14px;color:var(--muted);max-width:460px;margin:0 auto;line-height:1.8}
+.result-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:2px;margin-bottom:44px}
+.result-total{display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:24px 0;margin-bottom:32px;flex-wrap:wrap;gap:14px}
+.total-label{font-size:8px;letter-spacing:.26em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:6px}
 .total-save{font-size:11px;color:var(--gold)}
-.total-price{font-family:'Cormorant Garamond',serif;font-size:46px;color:var(--text);line-height:1}
+.total-price{font-family:'Cormorant Garamond',serif;font-size:50px;color:var(--text);line-height:1}
 .result-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-.btn-rebuild{background:none;border:1px solid var(--border2);color:var(--muted);padding:14px 34px;font-size:10px;letter-spacing:.16em;text-transform:uppercase;transition:all .2s}
+.btn-rebuild{background:none;border:1px solid var(--border2);color:var(--muted);padding:14px 34px;font-size:9px;letter-spacing:.2em;text-transform:uppercase;transition:all .25s}
 .btn-rebuild:hover{border-color:var(--border3);color:var(--text)}
-.btn-addall{background:var(--gold);color:#080808;border:none;padding:14px 48px;font-size:10px;letter-spacing:.16em;text-transform:uppercase;transition:background .2s}
+.btn-addall{background:var(--gold);color:#060606;border:none;padding:14px 50px;font-size:9px;letter-spacing:.2em;text-transform:uppercase;transition:background .25s;font-weight:500}
 .btn-addall:hover{background:var(--gold2)}
 
-/* ═══ TRUST BAR ═══ */
-.trust-bar{padding:56px 52px;display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:40px;border-top:1px solid var(--border)}
-@media(max-width:600px){.trust-bar{padding:48px 18px;gap:32px}}
-.trust-item{display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px}
-.trust-icon{width:44px;height:44px;border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:18px}
-.trust-title{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:400;color:var(--text)}
-.trust-desc{font-size:11px;color:var(--muted);line-height:1.6}
+/* ── TRUST BAR ── */
+.trust-bar{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--border)}
+.trust-item{padding:52px 40px;border-right:1px solid var(--border);display:flex;flex-direction:column;gap:16px}
+.trust-item:last-child{border-right:none}
+.trust-icon{width:40px;height:40px;border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:16px;flex-shrink:0}
+.trust-title{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:300;color:var(--text)}
+.trust-desc{font-size:11px;color:var(--muted);line-height:1.65}
+@media(max-width:800px){.trust-bar{grid-template-columns:1fr 1fr}.trust-item{border-right:none;border-bottom:1px solid var(--border)}}
+@media(max-width:500px){.trust-bar{grid-template-columns:1fr}}
 
-/* ═══ FOOTER ═══ */
-footer{padding:52px 52px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px}
-@media(max-width:600px){footer{padding:36px 18px}}
-.footer-logo{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300;letter-spacing:.32em;color:var(--text)}
-.footer-copy{font-size:11px;color:var(--muted)}
-.footer-note{font-size:10px;color:var(--faint)}
+/* ── FOOTER ── */
+.footer-main{padding:64px 56px;border-top:1px solid var(--border);display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:32px}
+.footer-logo-wrap{display:flex;flex-direction:column;gap:10px}
+.footer-logo{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:300;letter-spacing:.55em;color:var(--text);text-transform:uppercase}
+.footer-tagline{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.footer-links{display:flex;gap:28px;list-style:none;justify-content:center}
+.footer-links a{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);transition:color .2s}
+.footer-links a:hover{color:var(--gold)}
+.footer-copy{text-align:right;font-size:10px;color:var(--muted)}
+@media(max-width:700px){.footer-main{grid-template-columns:1fr;text-align:center;padding:48px 20px}.footer-links{flex-wrap:wrap;justify-content:center}.footer-copy{text-align:center}}
 
-/* ═══ ANIMATIONS ═══ */
-@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
-@keyframes scrollPulse{0%,100%{opacity:1;transform:scaleY(1)}50%{opacity:.25;transform:scaleY(.55)}}
+/* ── KEYFRAMES ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
+@keyframes scrollPulse{0%,100%{opacity:1;transform:scaleY(1)}50%{opacity:.2;transform:scaleY(.5)}}
 @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 </style>
 </head>
 <body>
 
+<!-- CART -->
 <div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
 <div class="cart-drawer" id="cartDrawer">
   <div class="cart-head">
@@ -250,27 +305,24 @@ footer{padding:52px 52px;border-top:1px solid var(--border);display:flex;align-i
   </div>
   <div class="cart-body" id="cartBody">
     <div class="cart-empty" id="cartEmpty">
-      <div class="cart-empty-icon">🛍</div>
+      <div class="cart-empty-icon">◻</div>
       <p>Your cart is empty.<br>Browse the collection and add some pieces.</p>
-      <button class="btn-outline" style="padding:12px 28px;font-size:10px;" onclick="closeCart()">Browse Collection</button>
     </div>
   </div>
   <div class="cart-foot" id="cartFoot" style="display:none">
-    <div class="cart-sub">
-      <span class="sub-label">Subtotal</span>
-      <span class="sub-price" id="cartTotal">£0</span>
-    </div>
-    <p class="cart-note">Free delivery on orders over £60. Taxes included.</p>
+    <div class="cart-sub"><span class="sub-label">Subtotal</span><span class="sub-price" id="cartTotal">£0</span></div>
+    <p class="cart-note">Free delivery on orders over £60. Returns within 30 days.</p>
     <button class="checkout-btn" onclick="handleCheckout()">Proceed to Checkout →</button>
     <button class="continue-btn" onclick="closeCart()">Continue Shopping</button>
   </div>
 </div>
 
+<!-- QUICK VIEW -->
 <div class="qv-overlay" id="qvOverlay" onclick="closeQV(event)">
   <div class="qv-modal" id="qvModal">
     <div class="qv-img-wrap">
       <img id="qvImg" src="" alt="">
-      <div class="qv-badge" id="qvBadge" style="display:none"></div>
+      <div class="qv-badge-modal" id="qvBadge" style="display:none"></div>
       <button class="qv-close" onclick="closeQVBtn()">✕</button>
     </div>
     <div class="qv-info">
@@ -282,7 +334,7 @@ footer{padding:52px 52px;border-top:1px solid var(--border);display:flex;align-i
       <div class="size-row" id="qvSizes"></div>
       <div class="picker-label">Colour</div>
       <div class="colour-row" id="qvColours"></div>
-      <button class="qv-add-btn" id="qvAddBtn" onclick="addFromQV()">Add to Cart</button>
+      <button class="qv-add-btn" onclick="addFromQV()">Add to Cart</button>
       <button class="qv-wishlist-btn" onclick="addToWishlist()">♡  Save to Wishlist</button>
     </div>
   </div>
@@ -290,40 +342,48 @@ footer{padding:52px 52px;border-top:1px solid var(--border);display:flex;align-i
 
 <div id="toast-wrap"></div>
 
+<!-- NAV -->
 <nav>
-  <a href="#" class="nav-logo">ARKIVE</a>
+  <a href="#" class="nav-logo">Arkive</a>
   <ul class="nav-links">
-    <li><a href="#hoodies" onclick="smoothTo('hoodies')">Hoodies</a></li>
-    <li><a href="#tshirts" onclick="smoothTo('tshirts')">T-Shirts</a></li>
-    <li><a href="#trousers" onclick="smoothTo('trousers')">Trousers</a></li>
-    <li><a href="#extras" onclick="smoothTo('extras')">Jackets & More</a></li>
-    <li><a href="#builder-section" onclick="smoothTo('builder-section')">Outfit Builder</a></li>
+    <li><a href="#hoodies" onclick="smoothTo(event,'hoodies')">Hoodies</a></li>
+    <li><a href="#tshirts" onclick="smoothTo(event,'tshirts')">T-Shirts</a></li>
+    <li><a href="#trousers" onclick="smoothTo(event,'trousers')">Trousers</a></li>
+    <li><a href="#extras" onclick="smoothTo(event,'extras')">Jackets & Layers</a></li>
+    <li><a href="#builder-section" onclick="smoothTo(event,'builder-section')">Outfit Builder</a></li>
   </ul>
   <div class="nav-right">
-    <button class="cart-btn" onclick="openCart()" aria-label="Open cart">
-      🛍
-      <span class="cart-count" id="cartCount">0</span>
-    </button>
-    <button class="nav-cta" onclick="smoothTo('builder-section')">Build an Outfit</button>
+    <button class="cart-btn" onclick="openCart()">◻<span class="cart-count" id="cartCount">0</span></button>
+    <button class="nav-cta" onclick="smoothTo(event,'builder-section')">Build Outfit</button>
   </div>
 </nav>
 
+<!-- HERO -->
 <section class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-grid"></div>
-  <p class="hero-eyebrow">Premium Men's Clothing — New Season</p>
-  <h1>Dress With<br><em>Intention</em></h1>
-  <p class="hero-sub">Curated pieces for every silhouette. From heavyweight hoodies to sharp tailoring — find your fit, own your style.</p>
-  <div class="hero-actions">
-    <button class="btn-primary" onclick="smoothTo('hoodies')">Shop the Collection</button>
-    <button class="btn-outline" onclick="smoothTo('builder-section')">Build an Outfit</button>
+  <img class="hero-img" src="https://images.unsplash.com/photo-1490578474895-699cd4e2cf59?auto=format&fit=crop&w=1800&q=85" alt="Men's fashion editorial">
+  <div class="hero-veil"></div>
+  <div class="hero-veil2"></div>
+  <div class="hero-content">
+    <div class="hero-season"><div class="hero-season-line"></div><span>New Season — 2025 Collection</span></div>
+    <h1>Wear What<br><em>Matters.</em></h1>
+    <p class="hero-sub">Premium menswear built for presence. Every silhouette considered, every fabric chosen with intention.</p>
+    <div class="hero-actions">
+      <button class="btn-primary" onclick="smoothTo(event,'hoodies')">Shop the Collection</button>
+      <button class="btn-ghost" onclick="smoothTo(event,'builder-section')">Build Your Outfit</button>
+    </div>
   </div>
-  <div class="hero-scroll">
-    <div class="scroll-line"></div>
-    Scroll
-  </div>
+  <div class="hero-scroll"><div class="scroll-line"></div><span class="scroll-label">Scroll</span></div>
 </section>
 
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num">380<span style="font-size:20px">gsm</span></div><div class="stat-label">Fleece Weight</div></div>
+  <div class="stat"><div class="stat-num">24</div><div class="stat-label">Pieces This Season</div></div>
+  <div class="stat"><div class="stat-num">30</div><div class="stat-label">Day Free Returns</div></div>
+  <div class="stat"><div class="stat-num">100<span style="font-size:20px">%</span></div><div class="stat-label">Premium Cotton</div></div>
+</div>
+
+<!-- MARQUEE -->
 <div class="marquee-wrap">
   <div class="marquee-track">
     <span class="m-item">Oversized Hoodies<span class="dot">✦</span></span>
@@ -332,51 +392,96 @@ footer{padding:52px 52px;border-top:1px solid var(--border);display:flex;align-i
     <span class="m-item">Bomber Jackets<span class="dot">✦</span></span>
     <span class="m-item">Knit Sweaters<span class="dot">✦</span></span>
     <span class="m-item">Drop Shoulder Fits<span class="dot">✦</span></span>
-    <span class="m-item">Classic Essentials<span class="dot">✦</span></span>
+    <span class="m-item">Premium Denim<span class="dot">✦</span></span>
+    <span class="m-item">Tapered Trousers<span class="dot">✦</span></span>
+    <span class="m-item">Oversized Hoodies<span class="dot">✦</span></span>
+    <span class="m-item">Slim Fit Tees<span class="dot">✦</span></span>
+    <span class="m-item">Wide Leg Cargos<span class="dot">✦</span></span>
+    <span class="m-item">Bomber Jackets<span class="dot">✦</span></span>
+    <span class="m-item">Knit Sweaters<span class="dot">✦</span></span>
+    <span class="m-item">Drop Shoulder Fits<span class="dot">✦</span></span>
+    <span class="m-item">Premium Denim<span class="dot">✦</span></span>
     <span class="m-item">Tapered Trousers<span class="dot">✦</span></span>
   </div>
 </div>
 
+<!-- EDITORIAL SPLIT -->
+<div class="editorial">
+  <div class="editorial-img">
+    <img src="https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?auto=format&fit=crop&w=900&q=85" alt="Editorial men's fashion">
+    <div class="editorial-img-overlay"></div>
+  </div>
+  <div class="editorial-body">
+    <div class="editorial-tag">The ARKIVE Philosophy</div>
+    <h2 class="editorial-h">Clothes Built to<br><em>Last Seasons.</em></h2>
+    <p class="editorial-p">We don't chase trends. We build pieces that anchor a wardrobe — heavy enough to feel premium, refined enough to wear anywhere. Every fabric is sourced with a single question: will this feel better in three years than it does today?</p>
+    <button class="editorial-link" onclick="smoothTo(event,'hoodies')">Explore the Collection →</button>
+  </div>
+</div>
+
+<!-- HOODIES -->
 <section class="cat-section" id="hoodies">
   <div class="section-header">
     <div><p class="eyebrow">Category 01</p><h2 class="sec-title">Hoodies &<br><em>Sweatshirts</em></h2></div>
-    <button class="view-all-btn" onclick="smoothTo('hoodies')">View All Hoodies</button>
+    <button class="view-all-btn" onclick="smoothTo(event,'hoodies')">View All Hoodies</button>
   </div>
   <div class="product-grid" id="grid-hoodies"></div>
 </section>
 
+<!-- FEATURE STRIP -->
+<div class="feature-strip">
+  <div class="feature-block">
+    <div class="feature-num">01</div>
+    <div class="feature-h">Heavyweight Construction</div>
+    <p class="feature-p">Every hoodie starts at 380gsm. You feel it the moment you put it on — a density that speaks to quality before you've even seen the stitching.</p>
+  </div>
+  <div class="feature-block">
+    <div class="feature-num">02</div>
+    <div class="feature-h">Intentional Silhouettes</div>
+    <p class="feature-p">Oversized doesn't mean shapeless. Each pattern is drafted to drape correctly — proportioned to the body, not just scaled up from a regular fit.</p>
+  </div>
+  <div class="feature-block">
+    <div class="feature-num">03</div>
+    <div class="feature-h">Colour Without Compromise</div>
+    <p class="feature-p">Our palette is seasonal but considered. We dye to order, garment-wash for character, and never use shortcuts that fade in the first wash.</p>
+  </div>
+</div>
+
+<!-- T-SHIRTS -->
 <section class="cat-section" id="tshirts">
   <div class="section-header">
     <div><p class="eyebrow">Category 02</p><h2 class="sec-title">T-Shirts &<br><em>Tops</em></h2></div>
-    <button class="view-all-btn" onclick="smoothTo('tshirts')">View All T-Shirts</button>
+    <button class="view-all-btn" onclick="smoothTo(event,'tshirts')">View All T-Shirts</button>
   </div>
   <div class="product-grid" id="grid-tshirts"></div>
 </section>
 
+<!-- TROUSERS -->
 <section class="cat-section" id="trousers">
   <div class="section-header">
     <div><p class="eyebrow">Category 03</p><h2 class="sec-title">Trousers &<br><em>Bottoms</em></h2></div>
-    <button class="view-all-btn" onclick="smoothTo('trousers')">View All Bottoms</button>
+    <button class="view-all-btn" onclick="smoothTo(event,'trousers')">View All Bottoms</button>
   </div>
   <div class="product-grid" id="grid-trousers"></div>
 </section>
 
+<!-- EXTRAS -->
 <section class="cat-section" id="extras">
   <div class="section-header">
     <div><p class="eyebrow">Category 04</p><h2 class="sec-title">Jackets &<br><em>Mid-Layers</em></h2></div>
-    <button class="view-all-btn" onclick="smoothTo('extras')">View All Layers</button>
+    <button class="view-all-btn" onclick="smoothTo(event,'extras')">View All Layers</button>
   </div>
   <div class="product-grid" id="grid-extras"></div>
 </section>
 
+<!-- OUTFIT BUILDER -->
 <section id="builder-section">
   <div class="builder-wrap">
     <div class="builder-intro">
-      <p class="eyebrow">Visual Experience</p>
-      <h2 class="sec-title" style="font-size:clamp(32px,5vw,54px);">Curate Your<br><em>Perfect Outfit</em></h2>
-      <p>Answer four simple questions and our algorithm will build a cohesive three-piece look tailored to your aesthetic, fit preference and occasion.</p>
+      <p class="eyebrow">Smart Styling Tool</p>
+      <h2 class="sec-title">Curate Your<br><em>Perfect Outfit</em></h2>
+      <p>Answer four questions. Our system builds a complete three-piece look tailored to your aesthetic, occasion and colour preference — ready to add to cart in one click.</p>
     </div>
-
     <div class="steps-row">
       <div class="step-dot active" id="dot1">1</div><div class="step-line" id="ln1"></div>
       <div class="step-dot" id="dot2">2</div><div class="step-line" id="ln2"></div>
@@ -384,50 +489,53 @@ footer{padding:52px 52px;border-top:1px solid var(--border);display:flex;align-i
       <div class="step-dot" id="dot4">4</div>
     </div>
     <div class="lbl-row">
-      <div class="slbl active" id="lbl1">Occasion</div>
-      <div class="slbl" id="lbl2">Aesthetic</div>
-      <div class="slbl" id="lbl3">The Fit</div>
-      <div class="slbl" id="lbl4">Palette</div>
+      <span class="slbl active" id="lbl1">Occasion</span>
+      <span class="slbl" id="lbl2">Aesthetic</span>
+      <span class="slbl" id="lbl3">The Fit</span>
+      <span class="slbl" id="lbl4">Palette</span>
     </div>
 
     <div class="builder-step active" id="bs1">
       <h3 class="step-q">What's the occasion?</h3>
-      <p class="step-hint">Where are you heading? We'll match the energy of the look to suit it.</p>
+      <p class="step-hint">Where are you heading? We'll match the energy of the look.</p>
       <div class="opts-grid">
-        <div class="opt" data-s="1" data-v="casual"><div class="opt-icon">☀</div><div class="opt-label">Casual Day</div><div class="opt-desc">Relaxed everyday looks for hanging out, errands, or a low-key meet-up.</div><div class="opt-tick">✓</div></div>
-        <div class="opt" data-s="1" data-v="smart"><div class="opt-icon">◈</div><div class="opt-label">Smart Casual</div><div class="opt-desc">Elevated basics that move from a coffee meeting to an evening dinner.</div><div class="opt-tick">✓</div></div>
-        <div class="opt" data-s="1" data-v="street"><div class="opt-icon">⬡</div><div class="opt-label">Streetwear</div><div class="opt-desc">Bold, expressive fits with real street presence. Turn heads without trying.</div><div class="opt-tick">✓</div></div>
-        <div class="opt" data-s="1" data-v="sport"><div class="opt-icon">◎</div><div class="opt-label">Sport & Active</div><div class="opt-desc">Athletic-inspired looks built for movement and post-workout comfort.</div><div class="opt-tick">✓</div></div>
+        <div class="opt" data-s="1" data-v="casual"><div class="opt-icon">☀</div><div class="opt-label">Casual Day</div><div class="opt-desc">Effortless daily wear. Hanging out, errands, a low-key meet-up.</div><div class="opt-tick">✓</div></div>
+        <div class="opt" data-s="1" data-v="smart"><div class="opt-icon">◈</div><div class="opt-label">Smart Casual</div><div class="opt-desc">Elevated basics that move from a coffee to an evening dinner.</div><div class="opt-tick">✓</div></div>
+        <div class="opt" data-s="1" data-v="street"><div class="opt-icon">⬡</div><div class="opt-label">Streetwear</div><div class="opt-desc">Bold, expressive fits with real street presence.</div><div class="opt-tick">✓</div></div>
+        <div class="opt" data-s="1" data-v="sport"><div class="opt-icon">◎</div><div class="opt-label">Sport & Active</div><div class="opt-desc">Athletic-inspired looks built for movement and comfort.</div><div class="opt-tick">✓</div></div>
       </div>
       <div class="step-nav"><span></span><button class="btn-next" id="nxt1" disabled onclick="goNext(1)">Continue →</button></div>
     </div>
 
     <div class="builder-step" id="bs2">
-      <h3 class="step-q">What's your style vibe?</h3>
+      <h3 class="step-q">What's your aesthetic?</h3>
+      <p class="step-hint">Pick the vibe you want to lead with.</p>
       <div class="opts-grid">
-        <div class="opt" data-s="2" data-v="minimal"><div class="opt-icon">—</div><div class="opt-label">Minimalist</div><div class="opt-desc">Clean, stripped back, zero excess. Let the silhouette do the talking.</div><div class="opt-tick">✓</div></div>
-        <div class="opt" data-s="2" data-v="bold"><div class="opt-icon">★</div><div class="opt-label">Bold Statement</div><div class="opt-desc">Confident, eye-catching. You walk in and the room immediately notices.</div><div class="opt-tick">✓</div></div>
-        <div class="opt" data-s="2" data-v="classic"><div class="opt-icon">◇</div><div class="opt-label">Classic</div><div class="opt-desc">Timeless cuts and proven combinations that never date and always land.</div><div class="opt-tick">✓</div></div>
-        <div class="opt" data-s="2" data-v="trendy"><div class="opt-icon">⟳</div><div class="opt-label">On Trend</div><div class="opt-desc">Current, fashion-forward pieces. Always on the pulse of what's happening.</div><div class="opt-tick">✓</div></div>
+        <div class="opt" data-s="2" data-v="minimal"><div class="opt-icon">—</div><div class="opt-label">Minimalist</div><div class="opt-desc">Stripped back. Zero excess. Let the silhouette speak.</div><div class="opt-tick">✓</div></div>
+        <div class="opt" data-s="2" data-v="bold"><div class="opt-icon">★</div><div class="opt-label">Bold Statement</div><div class="opt-desc">Confident, eye-catching. You walk in and the room notices.</div><div class="opt-tick">✓</div></div>
+        <div class="opt" data-s="2" data-v="classic"><div class="opt-icon">◇</div><div class="opt-label">Classic</div><div class="opt-desc">Timeless cuts and combinations that never date.</div><div class="opt-tick">✓</div></div>
+        <div class="opt" data-s="2" data-v="trendy"><div class="opt-icon">⟳</div><div class="opt-label">On Trend</div><div class="opt-desc">Fashion-forward. Always on the pulse of now.</div><div class="opt-tick">✓</div></div>
       </div>
       <div class="step-nav"><button class="btn-back" onclick="goPrev(2)">← Back</button><button class="btn-next" id="nxt2" disabled onclick="goNext(2)">Continue →</button></div>
     </div>
 
     <div class="builder-step" id="bs3">
       <h3 class="step-q">Preferred fit?</h3>
+      <p class="step-hint">How do you want the clothes to sit on your frame?</p>
       <div class="opts-grid">
-        <div class="opt" data-s="3" data-v="oversized"><div class="opt-icon">⊡</div><div class="opt-label">Oversized</div><div class="opt-desc">Roomy, relaxed, effortless. Boxy proportions with a laid-back energy.</div><div class="opt-tick">✓</div></div>
-        <div class="opt" data-s="3" data-v="regular"><div class="opt-icon">▢</div><div class="opt-label">Regular</div><div class="opt-desc">The standard. Not too tight, not too loose. Perfectly balanced.</div><div class="opt-tick">✓</div></div>
-        <div class="opt" data-s="3" data-v="slim"><div class="opt-icon">▯</div><div class="opt-label">Slim</div><div class="opt-desc">Tapered and closer to the body for a sharp, streamlined appearance.</div><div class="opt-tick">✓</div></div>
+        <div class="opt" data-s="3" data-v="oversized"><div class="opt-icon">⊡</div><div class="opt-label">Oversized</div><div class="opt-desc">Roomy, relaxed, effortless. Boxy proportions with laid-back energy.</div><div class="opt-tick">✓</div></div>
+        <div class="opt" data-s="3" data-v="regular"><div class="opt-icon">▢</div><div class="opt-label">Regular</div><div class="opt-desc">Balanced and true to size. Flatters most body types.</div><div class="opt-tick">✓</div></div>
+        <div class="opt" data-s="3" data-v="slim"><div class="opt-icon">▯</div><div class="opt-label">Slim</div><div class="opt-desc">Tapered and close to the body. Sharp without restriction.</div><div class="opt-tick">✓</div></div>
       </div>
       <div class="step-nav"><button class="btn-back" onclick="goPrev(3)">← Back</button><button class="btn-next" id="nxt3" disabled onclick="goNext(3)">Continue →</button></div>
     </div>
 
     <div class="builder-step" id="bs4">
-      <h3 class="step-q">Colour preference?</h3>
+      <h3 class="step-q">Choose your colour palette.</h3>
+      <p class="step-hint">What tones make up your wardrobe?</p>
       <div class="opts-grid">
-        <div class="opt" data-s="4" data-v="neutral"><div class="col-row"><div class="col-pip" style="background:#f0ece4"></div><div class="col-pip" style="background:#d4cfc8"></div><div class="col-pip" style="background:#888880"></div></div><div class="opt-label">Neutral</div><div class="opt-desc">Stone, cream, beige and grey. Sophisticated and easy to mix.</div><div class="opt-tick">✓</div></div>
-        <div class="opt" data-s="4" data-v="black"><div class="col-row"><div class="col-pip" style="background:#1a1a1a"></div><div class="col-pip" style="background:#0a0a0a"></div><div class="col-pip" style="background:#2e2b27"></div></div><div class="opt-label">All Black</div><div class="opt-desc">Monochrome and powerful. The most effortlessly cool palette going.</div><div class="opt-tick">✓</div></div>
+        <div class="opt" data-s="4" data-v="neutral"><div class="col-row"><div class="col-pip" style="background:#ede9e1"></div><div class="col-pip" style="background:#c4bfb7"></div><div class="col-pip" style="background:#9a9590"></div></div><div class="opt-label">Neutrals</div><div class="opt-desc">Creams, stones, warm greys. Versatile and always wearable.</div><div class="opt-tick">✓</div></div>
+        <div class="opt" data-s="4" data-v="black"><div class="col-row"><div class="col-pip" style="background:#0a0a0a;border:1px solid rgba(255,255,255,.1)"></div><div class="col-pip" style="background:#1a1a1a;border:1px solid rgba(255,255,255,.07)"></div><div class="col-pip" style="background:#2e2e2e;border:1px solid rgba(255,255,255,.05)"></div></div><div class="opt-label">All Black</div><div class="opt-desc">Monochrome and powerful. The most effortlessly cool palette.</div><div class="opt-tick">✓</div></div>
         <div class="opt" data-s="4" data-v="earth"><div class="col-row"><div class="col-pip" style="background:#8b6914"></div><div class="col-pip" style="background:#6b4c2a"></div><div class="col-pip" style="background:#4a6741"></div></div><div class="opt-label">Earth Tones</div><div class="opt-desc">Khakis, olives, tans, rusts. Grounded and naturally textured.</div><div class="opt-tick">✓</div></div>
         <div class="opt" data-s="4" data-v="colour"><div class="col-row"><div class="col-pip" style="background:#2b6bd4"></div><div class="col-pip" style="background:#c1392b"></div><div class="col-pip" style="background:#27a76e"></div></div><div class="opt-label">Colourful</div><div class="opt-desc">Brights, pops, bold hues. Expressive and full of personality.</div><div class="opt-tick">✓</div></div>
       </div>
@@ -452,116 +560,145 @@ footer{padding:52px 52px;border-top:1px solid var(--border);display:flex;align-i
   </div>
 </section>
 
+<!-- TRUST BAR -->
 <div class="trust-bar">
-  <div class="trust-item"><div class="trust-icon">⊞</div><div class="trust-title">Premium Quality</div><div class="trust-desc">Every piece uses high-grade fabrics — 380gsm fleece, combed cotton, luxury blends.</div></div>
-  <div class="trust-item"><div class="trust-icon">⟳</div><div class="trust-title">Free Returns</div><div class="trust-desc">30-day hassle-free returns on all orders.</div></div>
-  <div class="trust-item"><div class="trust-icon">◉</div><div class="trust-title">Fast Dispatch</div><div class="trust-desc">Orders placed before 2pm ship same day.</div></div>
-  <div class="trust-item"><div class="trust-icon">✦</div><div class="trust-title">Loyalty Rewards</div><div class="trust-desc">Earn points on every order. Members get early access.</div></div>
+  <div class="trust-item"><div class="trust-icon">⊞</div><div class="trust-title">Premium Fabrics</div><div class="trust-desc">380gsm+ fleece, combed cotton and luxury blends. Every piece chosen for longevity, not price.</div></div>
+  <div class="trust-item"><div class="trust-icon">⟳</div><div class="trust-title">30-Day Returns</div><div class="trust-desc">No questions, no hassle. Returns made simple so finding your perfect fit never feels like a risk.</div></div>
+  <div class="trust-item"><div class="trust-icon">◉</div><div class="trust-title">Same-Day Dispatch</div><div class="trust-desc">Orders placed before 2pm ship same day. Express and international delivery available at checkout.</div></div>
+  <div class="trust-item"><div class="trust-icon">✦</div><div class="trust-title">Loyalty Rewards</div><div class="trust-desc">Earn points on every purchase. Members unlock early access to new drops and exclusive pricing.</div></div>
 </div>
 
-<footer>
-  <div class="footer-logo">ARKIVE</div>
-  <p class="footer-copy">© 2025 ARKIVE. Premium Men's Clothing.</p>
+<!-- FOOTER -->
+<footer class="footer-main">
+  <div class="footer-logo-wrap">
+    <div class="footer-logo">Arkive</div>
+    <div class="footer-tagline">Premium Men's Clothing</div>
+  </div>
+  <ul class="footer-links">
+    <li><a href="#hoodies" onclick="smoothTo(event,'hoodies')">Hoodies</a></li>
+    <li><a href="#tshirts" onclick="smoothTo(event,'tshirts')">T-Shirts</a></li>
+    <li><a href="#trousers" onclick="smoothTo(event,'trousers')">Trousers</a></li>
+    <li><a href="#extras" onclick="smoothTo(event,'extras')">Jackets</a></li>
+  </ul>
+  <div class="footer-copy">© 2025 ARKIVE. All rights reserved.</div>
 </footer>
 
 <script>
-  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
-</script>
-<script defer src="/_vercel/insights/script.js"></script>
+window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};
 
-<script>
-// ═══════════════════════════════════════
-// PRODUCT DATA
-// ═══════════════════════════════════════
-const P = {
-  hoodies: [
-    {id:'h1',name:'Oversized Hoodie',type:'Oversized Fit',desc:'Heavyweight 380gsm fleece in a washed vintage black. Dropped shoulders.',price:55,colors:['#1a1a1a','#0a0a0a','#2e2b27'],badge:'Bestseller', 
-     img:'https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=600&q=80'},
-    {id:'h2',name:'Essential Hoodie',type:'Regular Fit',desc:'The perfect daily driver. Soft-touch cotton blend with tonal embroidery.',price:48,colors:['#0a0a0a','#d4cfc8','#171717'],badge:null, 
-     img:'https://images.unsplash.com/photo-1614975059251-992f11792b9f?auto=format&fit=crop&w=600&q=80'},
-    {id:'h3',name:'Heavyweight Hoodie',type:'Boxy Fit',desc:'Structure that holds. A rigid, premium feel in stone grey.',price:62,colors:['#d4cfc8','#888880','#6b4c2a'],badge:'New', 
-     img:'https://images.unsplash.com/photo-1578587018452-892bacefd3f2?auto=format&fit=crop&w=600&q=80'}, 
-    {id:'h4',name:'Signature Hoodie',type:'Oversized Fit',desc:'Our most popular silhouette. Deep black, high-density fabric.',price:58,colors:['#0a0a0a'],badge:null, 
-     img:'https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?auto=format&fit=crop&w=600&q=80'},
-    {id:'h5',name:'Cropped Hoodie',type:'Relaxed Fit',desc:'Modern proportions with a raw hem detail. Sits at the waist.',price:52,colors:['#c1392b','#3b6fd4','#0a0a0a'],badge:null, 
-     img:'https://images.unsplash.com/photo-1620799140188-3b2a02fd9a77?auto=format&fit=crop&w=600&q=80'}, 
-    {id:'h6',name:'Washed Hoodie',type:'Regular Fit',desc:'Garment dyed for a lived-in feel. Soft and breathable.',price:50,colors:['#6b4c2a','#4a6741','#8b6914'],badge:null, 
-     img:'https://images.unsplash.com/photo-1524233513333-e79326e55931?auto=format&fit=crop&w=600&q=80'}
+// ═══ PRODUCT DATA — all men's Unsplash photos ═══
+const P={
+  hoodies:[
+    {id:'h1',name:'Oversized Hoodie',type:'Oversized Fit',desc:'Heavyweight 380gsm fleece. Dropped shoulders, kangaroo pocket. The silhouette that started it all.',price:55,colors:['#1a1a1a','#0a0a0a','#2e2b27'],badge:'Bestseller',
+     img:'https://images.unsplash.com/photo-1556821840-3a63f15732ce?auto=format&fit=crop&w=600&q=80'},
+    {id:'h2',name:'Essential Hoodie',type:'Regular Fit',desc:'Soft-touch 320gsm cotton blend. Ribbed cuffs, tonal stitching throughout. The daily driver.',price:48,colors:['#0a0a0a','#d4cfc8','#171717'],badge:null,
+     img:'https://images.unsplash.com/photo-1588117305388-c2631a279f82?auto=format&fit=crop&w=600&q=80'},
+    {id:'h3',name:'Heavyweight Zip-Up',type:'Boxy Fit',desc:'Full-zip loose silhouette in stone grey French terry. Layering done properly.',price:62,colors:['#d4cfc8','#888880','#0a0a0a'],badge:'New',
+     img:'https://images.unsplash.com/photo-1614252369475-531eba835eb1?auto=format&fit=crop&w=600&q=80'},
+    {id:'h4',name:'Signature Drop Shoulder',type:'Oversized Fit',desc:'Exaggerated drop shoulder, 420gsm. Deep black, high-density fleece that drapes perfectly.',price:58,colors:['#0a0a0a'],badge:null,
+     img:'https://images.unsplash.com/photo-1578587018452-892bacefd3f2?auto=format&fit=crop&w=600&q=80'},
+    {id:'h5',name:'Cropped Hoodie',type:'Cropped Fit',desc:'Modern raw-hem crop, sits at the waist. Pairs with everything below. No compromise.',price:52,colors:['#c1392b','#3b6fd4','#0a0a0a'],badge:null,
+     img:'https://images.unsplash.com/photo-1622445275463-afa2ab738c34?auto=format&fit=crop&w=600&q=80'},
+    {id:'h6',name:'Washed Vintage Hoodie',type:'Regular Fit',desc:'Garment-dyed for a lived-in feel right from the bag. Gets better with every single wash.',price:50,colors:['#6b4c2a','#4a6741','#8b6914'],badge:null,
+     img:'https://images.unsplash.com/photo-1614252235316-8c857d38b5f4?auto=format&fit=crop&w=600&q=80'},
   ],
-  tshirts: [
-    {id:'t1',name:'Classic Crew Tee',type:'Regular Fit',desc:'Combed 220gsm cotton. The backbone of any wardrobe.',price:22,colors:['#f5f0e8','#0a0a0a','#1a1a1a'],badge:null, 
-     img:'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=600&q=80'},
-    {id:'t2',name:'Oversized Boxy Tee',type:'Oversized Fit',desc:'Wide-cut body with dropped shoulders. Wears large.',price:28,colors:['#0a0a0a','#d4cfc8','#c8a96e'],badge:'New', 
-     img:'https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?auto=format&fit=crop&w=600&q=80'},
-    {id:'t3',name:'Slim Fit V-Neck',type:'Slim Fit',desc:'Tapered V-neck that shows off the shape.',price:24,colors:['#0a0a0a','#1a1a1a','#d4cfc8'],badge:null, 
-     img:'https://images.unsplash.com/photo-1624371414361-e6e8ea04c116?auto=format&fit=crop&w=600&q=80'},
-    {id:'t4',name:'Longline Loose Tee',type:'Loose Fit',desc:'Extended drop hem. Effortless with any bottoms.',price:26,colors:['#1a1a1a','#888880','#4a6741'],badge:null, 
-     img:'https://images.unsplash.com/photo-1562157873-818bc0726f68?auto=format&fit=crop&w=600&q=80'},
-    {id:'t5',name:'Slim Fit Pocket Tee',type:'Slim Fit',desc:'Slim cut with a minimal chest pocket detail.',price:25,colors:['#0a0a0a','#3b6fd4','#c1392b'],badge:null, 
-     img:'https://images.unsplash.com/photo-1581655353564-df123a1eb820?auto=format&fit=crop&w=600&q=80'},
-    {id:'t6',name:'Graphic Tee',type:'Oversized Fit',desc:'Statement print on 260gsm cotton. Washed to perfection.',price:32,colors:['#0a0a0a','#d4cfc8'],badge:'Bestseller', 
-     img:'https://images.unsplash.com/photo-1576566588028-4147f3842f27?auto=format&fit=crop&w=600&q=80'}
+  tshirts:[
+    {id:'t1',name:'Classic Crew Tee',type:'Regular Fit',desc:'220gsm combed cotton. Pre-shrunk, clean silhouette. The backbone of any great wardrobe.',price:22,colors:['#f5f0e8','#0a0a0a','#1a1a1a'],badge:null,
+     img:'https://images.unsplash.com/photo-1503342394128-c104d54dba01?auto=format&fit=crop&w=600&q=80'},
+    {id:'t2',name:'Oversized Boxy Tee',type:'Oversized Fit',desc:'Wide-cut body, dropped shoulders. Wears large by design. Heavy 260gsm cotton.',price:28,colors:['#0a0a0a','#d4cfc8','#c8a96e'],badge:'New',
+     img:'https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?auto=format&fit=crop&w=600&q=80'},
+    {id:'t3',name:'Slim V-Neck',type:'Slim Fit',desc:'Tapered V-neck cut that shows the shape without restriction. Smart and versatile.',price:24,colors:['#0a0a0a','#1a1a1a','#d4cfc8'],badge:null,
+     img:'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=600&q=80'},
+    {id:'t4',name:'Longline Loose Tee',type:'Loose Fit',desc:'Extended drop hem. Effortless with cargos, joggers or jeans. Relaxed and modern.',price:26,colors:['#1a1a1a','#888880','#4a6741'],badge:null,
+     img:'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80'},
+    {id:'t5',name:'Slim Pocket Tee',type:'Slim Fit',desc:'Slim cut, minimal chest pocket detail. Understated refinement that quietly elevates basics.',price:25,colors:['#0a0a0a','#3b6fd4','#c1392b'],badge:null,
+     img:'https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?auto=format&fit=crop&w=600&q=80'},
+    {id:'t6',name:'Graphic Tee',type:'Oversized Fit',desc:'Statement print on 260gsm heavyweight cotton. Washed to perfection before shipping.',price:32,colors:['#0a0a0a','#d4cfc8'],badge:'Bestseller',
+     img:'https://images.unsplash.com/photo-1516257984-3c44f8a2b9f8?auto=format&fit=crop&w=600&q=80'},
   ],
-  trousers: [
-    {id:'tr1',name:'Slim Chino',type:'Slim Fit',desc:'Stretch cotton twill with a clean taper.',price:45,colors:['#6b4c2a','#0a0a0a','#d4cfc8'],badge:null, 
+  trousers:[
+    {id:'tr1',name:'Slim Chino',type:'Slim Fit',desc:'Tapered stretch cotton twill with a clean, smart finish. Elevates any top half.',price:45,colors:['#6b4c2a','#0a0a0a','#d4cfc8'],badge:null,
+     img:'https://images.unsplash.com/photo-1560243563-062bfc001d68?auto=format&fit=crop&w=600&q=80'},
+    {id:'tr2',name:'Wide Leg Cargo',type:'Wide Leg',desc:'Military-inspired utility cargo with a commanding wide-leg silhouette. Six pockets.',price:58,colors:['#4a6741','#0a0a0a','#2e2b27'],badge:'New',
+     img:'https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?auto=format&fit=crop&w=600&q=80'},
+    {id:'tr3',name:'Tapered Jogger',type:'Tapered Fit',desc:'Heavyweight fleece jogger with an elasticated cuff. The casual-smart hybrid.',price:42,colors:['#0a0a0a','#1a1a1a','#d4cfc8'],badge:null,
+     img:'https://images.unsplash.com/photo-1552902865-b72c031ac5ea?auto=format&fit=crop&w=600&q=80'},
+    {id:'tr4',name:'Utility Pant',type:'Regular Fit',desc:'Durable ripstop fabric with reinforced knee panels. Built for real movement.',price:52,colors:['#1a1a1a','#8b6914','#4a6741'],badge:null,
      img:'https://images.unsplash.com/photo-1473966968600-fa801b869a1a?auto=format&fit=crop&w=600&q=80'},
-    {id:'tr2',name:'Wide Leg Cargo',type:'Loose Fit',desc:'Military inspired with a modern drape. Eight-pockets.',price:58,colors:['#4a6741','#0a0a0a','#2e2b27'],badge:'New', 
-     img:'https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?auto=format&fit=crop&w=600&q=80'}, 
-    {id:'tr3',name:'Tapered Jogger',type:'Relaxed Fit',desc:'Heavyweight fleece with elasticated cuffs.',price:42,colors:['#0a0a0a','#1a1a1a','#d4cfc8'],badge:null, 
-     img:'https://images.unsplash.com/photo-1491336477066-31156b5e4f35?auto=format&fit=crop&w=600&q=80'},
-    {id:'tr4',name:'Utility Pant',type:'Regular Fit',desc:'Durable ripstop fabric with reinforced panels.',price:52,colors:['#1a1a1a','#8b6914','#4a6741'],badge:null, 
-     img:'https://images.unsplash.com/photo-1475178626620-a4d074967452?auto=format&fit=crop&w=600&q=80'},
-    {id:'tr5',name:'Straight Jean',type:'Regular Fit',desc:'14oz raw selvedge denim. Will age uniquely.',price:75,colors:['#0a0a0a','#1a1a1a'],badge:'Premium', 
+    {id:'tr5',name:'Straight Jean',type:'Regular Fit',desc:'Raw 14oz selvedge denim. Classic straight cut that will age uniquely to the wearer.',price:75,colors:['#0a0a0a','#1e3a5f'],badge:'Premium',
      img:'https://images.unsplash.com/photo-1542272604-787c3835535d?auto=format&fit=crop&w=600&q=80'},
-    {id:'tr6',name:'Pleated Trouser',type:'Wide Leg',desc:'Elegant wool blend with a sharp permanent crease.',price:65,colors:['#0a0a0a','#d4cfc8'],badge:null, 
-     img:'https://images.unsplash.com/photo-1506629082955-511b1aa562c8?auto=format&fit=crop&w=600&q=80'}
+    {id:'tr6',name:'Pleated Trouser',type:'Wide Leg',desc:'Wool-blend with a permanent crease and elevated drape. Wears with anything.',price:65,colors:['#0a0a0a','#d4cfc8'],badge:null,
+     img:'https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=600&q=80'},
+    {id:'tr7',name:'Relaxed Shorts',type:'Relaxed Fit',desc:'Mid-thigh elasticated waist. The essential transitional short for warmer days.',price:32,colors:['#8b6914','#d4cfc8','#0a0a0a'],badge:null,
+     img:'https://images.unsplash.com/photo-1591195853828-11db59a44f43?auto=format&fit=crop&w=600&q=80'},
+    {id:'tr8',name:'Tech Track Pant',type:'Regular Fit',desc:'Lightweight nylon shell with zip ankle closures. Sport-luxe for all day.',price:45,colors:['#0a0a0a','#1a1a1a','#3b6fd4'],badge:null,
+     img:'https://images.unsplash.com/photo-1517438476312-10d79c077509?auto=format&fit=crop&w=600&q=80'},
   ],
-  extras: [
-    {id:'e1',name:'Bomber Jacket',type:'Outerwear',desc:'Insulated nylon shell with a slight sheen.',price:85,colors:['#0a0a0a','#4a6741'],badge:null, 
-     img:'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&w=600&q=80'},
-    {id:'e2',name:'Harrington Jacket',type:'Outerwear',desc:'Lightweight and weather-resistant.',price:78,colors:['#1a1a1a','#6b4c2a'],badge:null, 
-     img:'https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=600&q=80'},
-    {id:'e3',name:'Coach Jacket',type:'Outerwear',desc:'Minimalist snap-front with a drawstring waist.',price:72,colors:['#0a0a0a','#d4cfc8'],badge:null, 
-     img:'https://images.unsplash.com/photo-1617137968427-85924c800a22?auto=format&fit=crop&w=600&q=80'},
-    {id:'e4',name:'Sherpa Fleece',type:'Mid-layer',desc:'High-pile warmth in a clean cream palette.',price:68,colors:['#f5f0e8','#6b4c2a'],badge:'Bestseller', 
-     img:'https://images.unsplash.com/photo-1604644401890-0bd678c83788?auto=format&fit=crop&w=600&q=80'},
-    {id:'e5',name:'Knitted Polo',type:'Knitwear',desc:'Fine-gauge merino wool. Refined layering.',price:58,colors:['#8b6914','#1a1a1a','#6b4c2a'],badge:null, 
-     img:'https://images.unsplash.com/photo-1610652492500-ded49ceeb378?auto=format&fit=crop&w=600&q=80'},
-    {id:'e6',name:'Overcoat',type:'Outerwear',desc:'Traditional longline trench with contemporary proportions.',price:135,colors:['#d4cfc8','#6b4c2a','#0a0a0a'],badge:'Premium', 
-     img:'https://images.unsplash.com/photo-1539533018447-63fcce2678e3?auto=format&fit=crop&w=600&q=80'} 
+  extras:[
+    {id:'e1',name:'Bomber Jacket',type:'Outerwear',desc:'Insulated nylon shell with a subtle sheen and ribbed collar. A wardrobe cornerstone.',price:85,colors:['#0a0a0a','#4a6741'],badge:null,
+     img:'https://images.unsplash.com/photo-1548883354-94bcfe321cbb?auto=format&fit=crop&w=600&q=80'},
+    {id:'e2',name:'Harrington Jacket',type:'Outerwear',desc:'Lightweight, weather-resistant shell. The clean transitional layer.',price:78,colors:['#1a1a1a','#6b4c2a'],badge:null,
+     img:'https://images.unsplash.com/photo-1519419691349-be6816b9be6c?auto=format&fit=crop&w=600&q=80'},
+    {id:'e3',name:'Coach Jacket',type:'Outerwear',desc:'Minimalist snap-front nylon with zip chest pocket. Lightweight and versatile.',price:72,colors:['#0a0a0a','#d4cfc8','#4a6741'],badge:null,
+     img:'https://images.unsplash.com/photo-1527016021513-b09758b777bd?auto=format&fit=crop&w=600&q=80'},
+    {id:'e4',name:'Denim Trucker',type:'Outerwear',desc:'Rigid 12oz denim in classic trucker proportions. Gets more characterful with every wear.',price:68,colors:['#1e3a5f','#0a0a0a'],badge:'Bestseller',
+     img:'https://images.unsplash.com/photo-1551698618-1dfe5d97d256?auto=format&fit=crop&w=600&q=80'},
+    {id:'e5',name:'Chunky Knit Sweater',type:'Knitwear',desc:'Heavy gauge merino-blend in a relaxed boxy fit. The cold-weather essential.',price:65,colors:['#d4cfc8','#8b6914','#0a0a0a'],badge:null,
+     img:'https://images.unsplash.com/photo-1608228088998-57828365d486?auto=format&fit=crop&w=600&q=80'},
+    {id:'e6',name:'Oxford Shirt',type:'Shirt',desc:'Classic Oxford cloth button-up. Sharp enough to dress up, casual enough open over a tee.',price:42,colors:['#f5f0e8','#1e3a5f','#c1392b'],badge:null,
+     img:'https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=600&q=80'},
+    {id:'e7',name:'Quarter-Zip Fleece',type:'Knitwear',desc:'Anti-pill fleece midlayer. Essential insulation for transitional weather.',price:55,colors:['#d4cfc8','#888880','#0a0a0a'],badge:null,
+     img:'https://images.unsplash.com/photo-1513116917658-bdc8cb52e27e?auto=format&fit=crop&w=600&q=80'},
+    {id:'e8',name:'Longline Overcoat',type:'Outerwear',desc:'Tailored trench with contemporary proportions. An investment silhouette for every season.',price:135,colors:['#d4cfc8','#6b4c2a','#0a0a0a'],badge:'Premium',
+     img:'https://images.unsplash.com/photo-1539533018447-63fcce2678e3?auto=format&fit=crop&w=600&q=80'},
   ]
 };
 
 const ALL=[...P.hoodies,...P.tshirts,...P.trousers,...P.extras];
 const byId=id=>ALL.find(p=>p.id===id);
 
-const OUTFITS = {
-  'casual-minimal-oversized-neutral':{top:'h1',bottom:'tr5',layer:'e3',tagline:'The Relaxed Essential',desc:'Clean, unfussy and inherently cool. Oversized hoodie, straight jeans, coach jacket.'},
-  'casual-minimal-oversized-black' :{top:'h2',bottom:'tr3',layer:'e2',tagline:'Monochrome at Ease',desc:'Head-to-toe black in relaxed silhouettes.'}
+const OUTFITS={
+  'casual-minimal-oversized-neutral':{top:'h1',bottom:'tr5',layer:'e3',tagline:'The Relaxed Essential',desc:'Oversized hoodie, straight jeans, coach jacket in neutrals. The pairing that simply works every time.'},
+  'casual-minimal-oversized-black'  :{top:'h4',bottom:'tr3',layer:'e1',tagline:'Monochrome at Ease',desc:'Head-to-toe black in relaxed silhouettes. Powerful without effort.'},
+  'casual-minimal-regular-neutral'  :{top:'t1',bottom:'tr5',layer:'e3',tagline:'The Clean Slate',desc:'Classic crew tee, straight jeans, coach jacket. Reliable, clean and endlessly versatile.'},
+  'casual-bold-oversized-black'     :{top:'h4',bottom:'tr2',layer:'e4',tagline:'Dark Energy',desc:'Heavy oversized hoodie, wide cargo, denim trucker. All-black with serious presence.'},
+  'casual-classic-regular-neutral'  :{top:'t1',bottom:'tr1',layer:'e5',tagline:'The Timeless Trio',desc:'Classic tee, slim chino, chunky knit. Refined basics that have stood the test of time.'},
+  'casual-trendy-oversized-earth'   :{top:'h3',bottom:'tr2',layer:'e2',tagline:'Earth & Ease',desc:'Earthy tones in a relaxed, wide silhouette. Grounded palettes with current proportions.'},
+  'casual-trendy-oversized-colour'  :{top:'h5',bottom:'tr3',layer:'e1',tagline:'The Statement Casual',desc:'Cropped hoodie, tapered joggers, bomber. Colourful and full of personality.'},
+  'casual-classic-regular-earth'    :{top:'h6',bottom:'tr5',layer:'e3',tagline:'The Worn-In Classic',desc:'Washed hoodie, straight jeans, coach jacket in earthy tones. Lived-in and completely at ease.'},
+  'smart-classic-slim-neutral'      :{top:'t3',bottom:'tr1',layer:'e5',tagline:'Smart Without Trying',desc:'V-neck tee, slim chino, chunky knit. Elevated casual ready for anything.'},
+  'smart-classic-regular-neutral'   :{top:'e6',bottom:'tr6',layer:'e8',tagline:'The Gentleman Edit',desc:'Oxford shirt, pleated trouser, longline overcoat. Classic proportions, modern execution.'},
+  'smart-minimal-slim-neutral'      :{top:'t5',bottom:'tr1',layer:'e7',tagline:'The Quiet Flex',desc:'Slim pocket tee, chino, quarter-zip. Minimal, precise and polished.'},
+  'smart-minimal-regular-black'     :{top:'t1',bottom:'tr5',layer:'e5',tagline:'Elevated Monochrome',desc:'Crew tee, straight jeans, chunky knit in black. Smart simplicity at its best.'},
+  'smart-bold-regular-colour'       :{top:'e6',bottom:'tr1',layer:'e1',tagline:'The Considered Statement',desc:'Oxford shirt under a bomber with slim chino. Considered and sharper than it looks.'},
+  'street-bold-oversized-black'     :{top:'h4',bottom:'tr2',layer:'e4',tagline:'Street Authority',desc:'Oversized hoodie, wide cargo, denim trucker. The holy trinity of modern streetwear.'},
+  'street-bold-oversized-earth'     :{top:'h3',bottom:'tr2',layer:'e2',tagline:'Urban Explorer',desc:'Earth-toned oversized pieces with utility detail. Street credibility meets natural palettes.'},
+  'street-trendy-oversized-colour'  :{top:'t6',bottom:'tr2',layer:'e1',tagline:'The Hype Edit',desc:'Graphic tee, wide cargo, bomber. Loud, layered and unmistakably current.'},
+  'street-minimal-oversized-black'  :{top:'h4',bottom:'tr3',layer:null,tagline:'Black Utility',desc:'Heavyweight hoodie with tapered joggers. Stripped back, effortlessly street.'},
+  'street-classic-regular-neutral'  :{top:'t2',bottom:'tr5',layer:'e3',tagline:'Street Classic',desc:'Oversized tee, straight jeans, coach jacket. The universal off-duty look.'},
+  'sport-minimal-regular-black'     :{top:'t1',bottom:'tr8',layer:'e7',tagline:'Sport Luxe',desc:'Crew tee, tech track pant, quarter-zip fleece. Athletic but polished enough for anywhere.'},
+  'sport-minimal-oversized-black'   :{top:'h1',bottom:'tr3',layer:null,tagline:'Off-Duty Athlete',desc:'Pullover hoodie over tapered joggers. The undisputed comfort pairing.'},
+  'sport-bold-regular-colour'       :{top:'t6',bottom:'tr3',layer:'e1',tagline:'Active Energy',desc:'Graphic tee, tapered joggers, bomber. Athletic energy with a fashion edge.'},
+  'sport-classic-regular-neutral'   :{top:'e7',bottom:'tr8',layer:null,tagline:'Performance Classic',desc:'Quarter-zip over tech track pant. Clean, functional and surprisingly stylish.'},
 };
 
-let cart=[];
-let currentOutfit=null;
-let qvProduct=null;
-let qvSelectedSize='M';
-let qvSelectedColour=0;
-let ANS={};
+let cart=[],currentOutfit=null,qvProduct=null,qvSelectedSize='M',qvSelectedColour=0,ANS={};
 
-function smoothTo(id){
+function smoothTo(e,id){
+  e&&e.preventDefault&&e.preventDefault();
   const el=document.getElementById(id);
   if(el)el.scrollIntoView({behavior:'smooth',block:'start'});
 }
 
 function card(p,isResult=false){
   const sw=p.colors.map(c=>`<div class="sw" style="background:${c}"></div>`).join('');
-  const badge=p.badge?`<div class="product-badge">${p.badge}</div>`:'';
+  const badge=p.badge?`<div class="product-badge${p.badge==='Premium'?' prem':''}">${p.badge}</div>`:'';
   return `<div class="product-card">
     <div class="product-img-wrap">
-      <img src="${p.img}" alt="${p.name}" loading="lazy">
+      <img src="${p.img}" alt="${p.name}" loading="lazy" onerror="this.style.opacity='0'">
       ${badge}
-      <div class="product-overlay">
-        <button class="qv-trigger" onclick="openQV('${p.id}')">Quick View</button>
-      </div>
+      <div class="product-overlay"></div>
+      <button class="qv-trigger" onclick="openQV('${p.id}')">Quick View</button>
     </div>
     <div class="product-info">
       <div class="p-type">${p.type}</div>
@@ -584,125 +721,114 @@ function renderAll(){
 }
 
 function addToCart(id,size,qty=1){
-  const p=byId(id); if(!p)return;
+  const p=byId(id);if(!p)return;
   const key=id+'|'+(size||'M');
   const ex=cart.find(i=>i.key===key);
   if(ex){ex.qty+=qty}else{cart.push({key,id,name:p.name,price:p.price,img:p.img,type:p.type,size:size||'M',qty})}
   updateCartUI();
   toast(p.name,'Added to your cart');
-
-  // Track Analytics Event
-  if(window.va) window.va('event', { name: 'add_to_cart', data: { productId: id, productName: p.name } });
+  if(window.va)window.va('event',{name:'add_to_cart',data:{productId:id}});
 }
 
-function removeFromCart(key){
-  cart=cart.filter(i=>i.key!==key);
-  updateCartUI();
-}
+function removeFromCart(key){cart=cart.filter(i=>i.key!==key);updateCartUI()}
 
 function changeQty(key,delta){
-  const item=cart.find(i=>i.key===key); if(!item)return;
+  const item=cart.find(i=>i.key===key);if(!item)return;
   item.qty+=delta;
   if(item.qty<1)cart=cart.filter(i=>i.key!==key);
   updateCartUI();
 }
 
 function updateCartUI(){
+  const total=cart.reduce((s,i)=>s+i.price*i.qty,0);
+  const count=cart.reduce((s,i)=>s+i.qty,0);
+  const countEl=document.getElementById('cartCount');
+  countEl.textContent=count;
+  countEl.className='cart-count'+(count>0?' show':'');
+  document.getElementById('cartTotal').textContent='£'+total;
   const body=document.getElementById('cartBody');
-  const empty=document.getElementById('cartEmpty');
   const foot=document.getElementById('cartFoot');
-  const count=document.getElementById('cartCount');
-  const totalQty=cart.reduce((s,i)=>s+i.qty,0);
-  count.textContent=totalQty;
-  count.className='cart-count'+(totalQty>0?' show':'');
-
+  const empty=document.getElementById('cartEmpty');
   if(cart.length===0){
-    empty.style.display='flex'; body.innerHTML=''; foot.style.display='none';
-  } else {
-    empty.style.display='none'; foot.style.display='block';
-    let h='',total=0;
-    cart.forEach(i=>{
-      total+=(i.price*i.qty);
-      h+=`<div class="cart-item">
-        <img src="${i.img}" class="ci-img">
+    empty.style.display='flex';foot.style.display='none';
+    body.innerHTML='';body.appendChild(empty);
+  }else{
+    empty.style.display='none';foot.style.display='block';
+    body.innerHTML=cart.map(i=>`
+      <div class="cart-item">
+        <img class="ci-img" src="${i.img}" alt="${i.name}">
         <div class="ci-info">
           <div class="ci-name">${i.name}</div>
-          <div class="ci-meta">${i.type} · ${i.size}</div>
+          <div class="ci-meta">${i.type} · Size ${i.size}</div>
           <div class="ci-row">
-            <div class="ci-qty"><button class="qty-btn" onclick="changeQty('${i.key}',-1)">-</button><div class="qty-num">${i.qty}</div><button class="qty-btn" onclick="changeQty('${i.key}',1)">+</button></div>
+            <div class="ci-qty">
+              <button class="qty-btn" onclick="changeQty('${i.key}',-1)">−</button>
+              <div class="qty-num">${i.qty}</div>
+              <button class="qty-btn" onclick="changeQty('${i.key}',1)">+</button>
+            </div>
             <div class="ci-price">£${i.price*i.qty}</div>
           </div>
           <button class="ci-remove" onclick="removeFromCart('${i.key}')">Remove</button>
         </div>
-      </div>`;
-    });
-    body.innerHTML=h;
-    document.getElementById('cartTotal').textContent='£'+total;
+      </div>`).join('');
   }
 }
 
-function openCart(){document.getElementById('cartDrawer').classList.add('open');document.getElementById('cartOverlay').classList.add('open')}
-function closeCart(){document.getElementById('cartDrawer').classList.remove('open');document.getElementById('cartOverlay').classList.remove('open')}
-
+function openCart(){
+  document.getElementById('cartDrawer').classList.add('open');
+  document.getElementById('cartOverlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeCart(){
+  document.getElementById('cartDrawer').classList.remove('open');
+  document.getElementById('cartOverlay').classList.remove('open');
+  document.body.style.overflow='';
+}
 function handleCheckout(){
-  alert('Checkout integration ready.');
-  if(window.va) window.va('event', { name: 'checkout_click', data: { total: document.getElementById('cartTotal').textContent } });
+  if(!cart.length){toast('Cart is empty','Add some pieces first');return}
+  toast('Redirecting…','Taking you to secure checkout');
+  setTimeout(()=>alert('Checkout ready.\n\nTotal: £'+cart.reduce((s,i)=>s+i.price*i.qty,0)+'\nItems: '+cart.reduce((s,i)=>s+i.qty,0)),700);
+  if(window.va)window.va('event',{name:'checkout_click'});
 }
 
 function openQV(id){
-  const p=byId(id); if(!p)return;
-  qvProduct=p; qvSelectedSize='M'; qvSelectedColour=0;
+  const p=byId(id);if(!p)return;
+  qvProduct=p;qvSelectedSize='M';qvSelectedColour=0;
   document.getElementById('qvImg').src=p.img;
   document.getElementById('qvType').textContent=p.type;
   document.getElementById('qvName').textContent=p.name;
   document.getElementById('qvPrice').textContent='£'+p.price;
   document.getElementById('qvDesc').textContent=p.desc;
-  
   const b=document.getElementById('qvBadge');
   if(p.badge){b.textContent=p.badge;b.style.display='block'}else{b.style.display='none'}
-
-  const sz=['S','M','L','XL'];
-  document.getElementById('qvSizes').innerHTML=sz.map(s=>`<button class="size-opt ${s==='M'?'active':''}" onclick="setQVSize('${s}',this)">${s}</button>`).join('');
-  document.getElementById('qvColours').innerHTML=p.colors.map((c,i)=>`<div class="col-opt ${i===0?'active':''}" style="background:${c}" onclick="setQVCol(${i},this)"></div>`).join('');
+  const sz=['XS','S','M','L','XL','XXL'];
+  document.getElementById('qvSizes').innerHTML=sz.map(s=>`<button class="size-opt${s==='M'?' active':''}" onclick="setQVSize('${s}',this)">${s}</button>`).join('');
+  document.getElementById('qvColours').innerHTML=p.colors.map((c,i)=>`<div class="col-opt${i===0?' active':''}" style="background:${c}" onclick="setQVCol(${i},this)"></div>`).join('');
   document.getElementById('qvOverlay').classList.add('open');
+  document.body.style.overflow='hidden';
 }
-
-function setQVSize(s,btn){
-  qvSelectedSize=s;
-  document.querySelectorAll('.size-opt').forEach(o=>o.classList.remove('active'));
-  btn.classList.add('active');
-}
-function setQVCol(i,btn){
-  qvSelectedColour=i;
-  document.querySelectorAll('.col-opt').forEach(o=>o.classList.remove('active'));
-  btn.classList.add('active');
-}
-function addFromQV(){
-  if(qvProduct){addToCart(qvProduct.id,qvSelectedSize);closeQVBtn()}
-}
+function setQVSize(s,btn){qvSelectedSize=s;document.querySelectorAll('.size-opt').forEach(o=>o.classList.remove('active'));btn.classList.add('active')}
+function setQVCol(i,btn){qvSelectedColour=i;document.querySelectorAll('.col-opt').forEach(o=>o.classList.remove('active'));btn.classList.add('active')}
+function addFromQV(){if(qvProduct){addToCart(qvProduct.id,qvSelectedSize);closeQVBtn();openCart()}}
 function closeQV(e){if(e.target.id==='qvOverlay')closeQVBtn()}
-function closeQVBtn(){document.getElementById('qvOverlay').classList.remove('open')}
-function addToWishlist(){
-    toast(qvProduct.name,'Saved to wishlist');
-    if(window.va) window.va('event', { name: 'add_to_wishlist', data: { productId: qvProduct.id } });
-}
+function closeQVBtn(){document.getElementById('qvOverlay').classList.remove('open');document.body.style.overflow=''}
+function addToWishlist(){if(qvProduct)toast(qvProduct.name,'Saved to wishlist ♡');closeQVBtn()}
 
 function toast(title,sub){
   const w=document.getElementById('toast-wrap');
-  const t=document.createElement('div'); t.className='toast';
+  const t=document.createElement('div');t.className='toast';
   t.innerHTML=`<div class="toast-title">${title}</div><div class="toast-sub">${sub}</div>`;
   w.appendChild(t);
   setTimeout(()=>t.classList.add('show'),10);
-  setTimeout(()=>{t.classList.remove('show');setTimeout(()=>t.remove(),400)},3000);
+  setTimeout(()=>{t.classList.remove('show');setTimeout(()=>t.remove(),500)},3200);
 }
 
 document.querySelectorAll('.opt').forEach(o=>{
   o.addEventListener('click',()=>{
-    const step=o.dataset.s;
-    document.querySelectorAll(`.opt[data-s="${step}"]`).forEach(x=>x.classList.remove('sel'));
-    o.classList.add('sel');
-    ANS[step]=o.dataset.v;
-    document.getElementById('nxt'+step).disabled=false;
+    const s=o.dataset.s;
+    document.querySelectorAll(`.opt[data-s="${s}"]`).forEach(x=>x.classList.remove('sel'));
+    o.classList.add('sel');ANS[s]=o.dataset.v;
+    document.getElementById('nxt'+s).disabled=false;
   });
 });
 
@@ -717,30 +843,19 @@ function syncDots(active){
     if(b)b.className='slbl'+(i<=active?' active':'');
   });
 }
-
-function goNext(from){
-  document.getElementById('bs'+from).classList.remove('active');
-  document.getElementById('bs'+(from+1)).classList.add('active');
-  syncDots(from+1);
-}
-
-function goPrev(from){
-  document.getElementById('bs'+from).classList.remove('active');
-  document.getElementById('bs'+(from-1)).classList.add('active');
-  syncDots(from-1);
-}
+function goNext(from){document.getElementById('bs'+from).classList.remove('active');document.getElementById('bs'+(from+1)).classList.add('active');syncDots(from+1)}
+function goPrev(from){document.getElementById('bs'+from).classList.remove('active');document.getElementById('bs'+(from-1)).classList.add('active');syncDots(from-1)}
 
 function buildOutfit(){
   const key=`${ANS[1]}-${ANS[2]}-${ANS[3]}-${ANS[4]}`;
-  const outfit=OUTFITS[key]||OUTFITS['casual-minimal-oversized-neutral'];
+  const outfit=OUTFITS[key]||OUTFITS[Object.keys(OUTFITS).find(k=>k.startsWith(ANS[1]+'-'+ANS[2]))]||OUTFITS['casual-minimal-oversized-neutral'];
   currentOutfit=outfit;
   const items=[outfit.top,outfit.bottom,outfit.layer].filter(Boolean).map(byId);
   const total=items.reduce((s,i)=>s+i.price,0);
-  const save=Math.floor(total*0.1);
-
-  document.getElementById('bs4').classList.remove('active');
+  const save=Math.floor(total*.1);
   [1,2,3,4].forEach(i=>{
-    const d=document.getElementById('dot'+i); d.className='step-dot done'; d.textContent='✓';
+    document.getElementById('bs'+i).classList.remove('active');
+    const d=document.getElementById('dot'+i);d.className='step-dot done';d.textContent='✓';
     if(i<4)document.getElementById('ln'+i).className='step-line done';
     document.getElementById('lbl'+i).className='slbl done';
   });
@@ -750,29 +865,28 @@ function buildOutfit(){
   document.getElementById('rSave').textContent=`Save £${save} on the bundle`;
   document.getElementById('rGrid').innerHTML=items.map(p=>card(p,true)).join('');
   document.getElementById('result-block').style.display='block';
-
-  // Analytics
-  if(window.va) window.va('event', { name: 'outfit_generated', data: { combo: key } });
+  setTimeout(()=>document.getElementById('result-block').scrollIntoView({behavior:'smooth',block:'start'}),100);
+  if(window.va)window.va('event',{name:'outfit_generated',data:{combo:key}});
 }
 
 function addAllToCart(){
   if(!currentOutfit)return;
-  const items=[currentOutfit.top,currentOutfit.bottom,currentOutfit.layer].filter(Boolean).map(byId);
-  items.forEach(p=>addToCart(p.id,'M',1));
-  setTimeout(openCart,400);
+  [currentOutfit.top,currentOutfit.bottom,currentOutfit.layer].filter(Boolean).map(byId).forEach(p=>addToCart(p.id,'M',1));
+  setTimeout(openCart,500);
 }
 
 function resetBuilder(){
-  ANS={}; currentOutfit=null;
+  ANS={};currentOutfit=null;
   [1,2,3,4].forEach(i=>document.getElementById('nxt'+i).disabled=true);
   document.querySelectorAll('.opt').forEach(o=>o.classList.remove('sel'));
   document.getElementById('result-block').style.display='none';
   document.getElementById('bs1').classList.add('active');
   syncDots(1);
+  document.getElementById('builder-section').scrollIntoView({behavior:'smooth'});
 }
 
 renderAll();
+updateCartUI();
 </script>
-
 </body>
 </html>
